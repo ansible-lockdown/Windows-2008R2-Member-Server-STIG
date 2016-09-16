@@ -1,0 +1,480 @@
+- name: "HIGH | V-1073 | AUDIT | Systems must be at supported service pack (SP) or release levels."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1073
+
+- name: "HIGH | V-1073 | PATCH | Systems must be at supported service pack (SP) or release levels."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1073
+
+- name: "HIGH | V-1074 | AUDIT | An approved, up-to-date, DOD antivirus program must be installed and used."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1074
+
+- name: "HIGH | V-1074 | PATCH | An approved, up-to-date, DOD antivirus program must be installed and used."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1074
+
+- name: "HIGH | V-1081 | AUDIT | Local volumes will be formatted using NTFS."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1081
+
+- name: "HIGH | V-1081 | PATCH | Local volumes will be formatted using NTFS."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1081
+
+- name: "HIGH | V-1093 | AUDIT | Anonymous enumeration of shares will be restricted."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1093
+
+- name: "HIGH | V-1093 | PATCH | Anonymous enumeration of shares will be restricted."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1093
+
+- name: "HIGH | V-1102 | AUDIT | Unauthorized accounts must not have the Act as part of the operating system user right."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1102
+
+- name: "HIGH | V-1102 | PATCH | Unauthorized accounts must not have the Act as part of the operating system user right."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1102
+
+- name: "HIGH | V-1121 | AUDIT | Installed FTP server will not be configured to allow access to the system drive."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1121
+
+- name: "HIGH | V-1121 | PATCH | Installed FTP server will not be configured to allow access to the system drive."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1121
+
+- name: "HIGH | V-1127 | AUDIT | Only administrators responsible for the system must have Administrator rights on the system."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1127
+
+- name: "HIGH | V-1127 | PATCH | Only administrators responsible for the system must have Administrator rights on the system."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1127
+
+- name: "HIGH | V-1140 | AUDIT | Users with Administrative privilege will be documented and have separate accounts for administrative duties and normal operational tasks."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1140
+
+- name: "HIGH | V-1140 | PATCH | Users with Administrative privilege will be documented and have separate accounts for administrative duties and normal operational tasks."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1140
+
+- name: "HIGH | V-1152 | AUDIT | Anonymous access to the registry must be restricted."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1152
+
+- name: "HIGH | V-1152 | PATCH | Anonymous access to the registry must be restricted."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1152
+
+- name: "HIGH | V-1153 | AUDIT | The LanMan authentication level will be set to Send NTLMv2 response only\refuse LM & NTLM."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1153
+
+- name: "HIGH | V-1153 | PATCH | The LanMan authentication level will be set to Send NTLMv2 response only\refuse LM & NTLM."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1153
+
+- name: "HIGH | V-1159 | AUDIT | The Recovery Console option will be set to prevent automatic logon to the system."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1159
+
+- name: "HIGH | V-1159 | PATCH | The Recovery Console option will be set to prevent automatic logon to the system."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1159
+
+- name: "HIGH | V-2374 | AUDIT | Autoplay will be disabled for all drives."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-2374
+
+- name: "HIGH | V-2374 | PATCH | Autoplay will be disabled for all drives."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-2374
+
+- name: "HIGH | V-2908 | AUDIT | Unencrypted remote access will not be permitted to system services."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-2908
+
+- name: "HIGH | V-2908 | PATCH | Unencrypted remote access will not be permitted to system services."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-2908
+
+- name: "HIGH | V-3337 | AUDIT | Anonymous SID/Name translation will not be allowed."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-3337
+
+- name: "HIGH | V-3337 | PATCH | Anonymous SID/Name translation will not be allowed."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-3337
+
+- name: "HIGH | V-3338 | AUDIT | Named pipes that can be accessed anonymously will be configured to contain no values."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-3338
+
+- name: "HIGH | V-3338 | PATCH | Named pipes that can be accessed anonymously will be configured to contain no values."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-3338
+
+- name: "HIGH | V-3339 | AUDIT | Unauthorized remotely accessible registry paths must not be configured."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-3339
+
+- name: "HIGH | V-3339 | PATCH | Unauthorized remotely accessible registry paths must not be configured."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-3339
+
+- name: "HIGH | V-3340 | AUDIT | Network shares that can be accessed anonymously will not be allowed."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-3340
+
+- name: "HIGH | V-3340 | PATCH | Network shares that can be accessed anonymously will not be allowed."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-3340
+
+- name: "HIGH | V-3343 | AUDIT | Solicited Remote Assistance will not be allowed."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-3343
+
+- name: "HIGH | V-3343 | PATCH | Solicited Remote Assistance will not be allowed."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-3343
+
+- name: "HIGH | V-3344 | AUDIT | The use of local accounts with blank passwords will be restricted to console logons only."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-3344
+
+- name: "HIGH | V-3344 | PATCH | The use of local accounts with blank passwords will be restricted to console logons only."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-3344
+
+- name: "HIGH | V-3379 | AUDIT | The system will be configured to prevent the storage of the LAN Manager hash of passwords."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-3379
+
+- name: "HIGH | V-3379 | PATCH | The system will be configured to prevent the storage of the LAN Manager hash of passwords."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-3379
+
+- name: "HIGH | V-4443 | AUDIT | Unauthorized remotely accessible registry paths and sub-paths must not be configured."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-4443
+
+- name: "HIGH | V-4443 | PATCH | Unauthorized remotely accessible registry paths and sub-paths must not be configured."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-4443
+
+- name: "HIGH | V-6834 | AUDIT | Anonymous access to Named Pipes and Shares will be restricted."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-6834
+
+- name: "HIGH | V-6834 | PATCH | Anonymous access to Named Pipes and Shares will be restricted."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-6834
+
+- name: "HIGH | V-7002 | AUDIT | DoD information system access will require the use of a password."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-7002
+
+- name: "HIGH | V-7002 | PATCH | DoD information system access will require the use of a password."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-7002
+
+- name: "HIGH | V-18010 | AUDIT | Unauthorized accounts must not have the Debug programs user right."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-18010
+
+- name: "HIGH | V-18010 | PATCH | Unauthorized accounts must not have the Debug programs user right."
+  command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-18010
+

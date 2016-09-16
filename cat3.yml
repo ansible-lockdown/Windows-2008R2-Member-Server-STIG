@@ -1,0 +1,860 @@
+- name: "LOW | V-1075 | AUDIT | The shutdown option will not be available from the logon dialog box."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1075
+
+- name: "LOW | V-1075 | PATCH | The shutdown option will not be available from the logon dialog box."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1075
+
+- name: "LOW | V-1076 | AUDIT | System information backups will be created, updated, and protected."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1076
+
+- name: "LOW | V-1076 | PATCH | System information backups will be created, updated, and protected."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1076
+
+- name: "LOW | V-1090 | AUDIT | Caching of logon credentials must be limited."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1090
+
+- name: "LOW | V-1090 | PATCH | Caching of logon credentials must be limited."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1090
+
+- name: "LOW | V-1112 | AUDIT | Outdated or unused accounts must be removed from the system or disabled."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1112
+
+- name: "LOW | V-1112 | PATCH | Outdated or unused accounts must be removed from the system or disabled."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1112
+
+- name: "LOW | V-1128 | AUDIT | Security configuration tools or equivalent processes will be used to configure platforms for security compliance."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1128
+
+- name: "LOW | V-1128 | PATCH | Security configuration tools or equivalent processes will be used to configure platforms for security compliance."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1128
+
+- name: "LOW | V-1135 | AUDIT | Non-administrative user accounts or groups will only have print permissions of Printer Shares."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1135
+
+- name: "LOW | V-1135 | PATCH | Non-administrative user accounts or groups will only have print permissions of Printer Shares."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1135
+
+- name: "LOW | V-1136 | AUDIT | Users will be forcibly disconnected when their logon hours expire."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1136
+
+- name: "LOW | V-1136 | PATCH | Users will be forcibly disconnected when their logon hours expire."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1136
+
+- name: "LOW | V-1151 | AUDIT | The print driver installation privilege will be restricted to administrators."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1151
+
+- name: "LOW | V-1151 | PATCH | The print driver installation privilege will be restricted to administrators."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1151
+
+- name: "LOW | V-1158 | AUDIT | The Recovery Console SET command must be disabled."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1158
+
+- name: "LOW | V-1158 | PATCH | The Recovery Console SET command must be disabled."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1158
+
+- name: "LOW | V-1165 | AUDIT | The computer account password will not be prevented from being reset."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1165
+
+- name: "LOW | V-1165 | PATCH | The computer account password will not be prevented from being reset."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1165
+
+- name: "LOW | V-1172 | AUDIT | Users will be warned in advance that their passwords will expire."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1172
+
+- name: "LOW | V-1172 | PATCH | Users will be warned in advance that their passwords will expire."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1172
+
+- name: "LOW | V-1173 | AUDIT | The default permissions of Global system objects will be increased."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1173
+
+- name: "LOW | V-1173 | PATCH | The default permissions of Global system objects will be increased."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1173
+
+- name: "LOW | V-1174 | AUDIT | The amount of idle time required before suspending a session must be properly set."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1174
+
+- name: "LOW | V-1174 | PATCH | The amount of idle time required before suspending a session must be properly set."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1174
+
+- name: "LOW | V-3373 | AUDIT | The maximum age for machine account passwords will be set to requirements."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-3373
+
+- name: "LOW | V-3373 | PATCH | The maximum age for machine account passwords will be set to requirements."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-3373
+
+- name: "LOW | V-3472 | AUDIT | If the time service is configured, it will use an authorized time server."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-3472
+
+- name: "LOW | V-3472 | PATCH | If the time service is configured, it will use an authorized time server."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-3472
+
+- name: "LOW | V-4108 | AUDIT | The system must generate an audit event when the audit log reaches a percentage of full threshold."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4108
+
+- name: "LOW | V-4108 | PATCH | The system must generate an audit event when the audit log reaches a percentage of full threshold."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4108
+
+- name: "LOW | V-4110 | AUDIT | The system will be configured to prevent IP source routing."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4110
+
+- name: "LOW | V-4110 | PATCH | The system will be configured to prevent IP source routing."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4110
+
+- name: "LOW | V-4111 | AUDIT | The system will be configured to prevent ICMP redirects from overriding OSPF generated routes."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4111
+
+- name: "LOW | V-4111 | PATCH | The system will be configured to prevent ICMP redirects from overriding OSPF generated routes."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4111
+
+- name: "LOW | V-4112 | AUDIT | The system will be configured to disable the Internet Router Discover Protocol (IRDP)."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4112
+
+- name: "LOW | V-4112 | PATCH | The system will be configured to disable the Internet Router Discover Protocol (IRDP)."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4112
+
+- name: "LOW | V-4113 | AUDIT | The system will be configured to limit how often keep-alive packets are sent."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4113
+
+- name: "LOW | V-4113 | PATCH | The system will be configured to limit how often keep-alive packets are sent."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4113
+
+- name: "LOW | V-4116 | AUDIT | The system must be configured to ignore NetBIOS name release requests except from WINS servers."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4116
+
+- name: "LOW | V-4116 | PATCH | The system must be configured to ignore NetBIOS name release requests except from WINS servers."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4116
+
+- name: "LOW | V-4438 | AUDIT | The system must limit how many times unacknowledged TCP data is retransmitted."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4438
+
+- name: "LOW | V-4438 | PATCH | The system must limit how many times unacknowledged TCP data is retransmitted."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4438
+
+- name: "LOW | V-4442 | AUDIT | The system will be configured to have password protection take effect within a limited time frame when the screen saver becomes active."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4442
+
+- name: "LOW | V-4442 | PATCH | The system will be configured to have password protection take effect within a limited time frame when the screen saver becomes active."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4442
+
+- name: "LOW | V-4445 | AUDIT | Optional Subsystems will not be permitted to operate on the system."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4445
+
+- name: "LOW | V-4445 | PATCH | Optional Subsystems will not be permitted to operate on the system."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4445
+
+- name: "LOW | V-11806 | AUDIT | The system will be configured to prevent the display of the last user name on the logon screen."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-11806
+
+- name: "LOW | V-11806 | PATCH | The system will be configured to prevent the display of the last user name on the logon screen."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-11806
+
+- name: "LOW | V-14232 | AUDIT | IPSec Exemptions will be limited."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-14232
+
+- name: "LOW | V-14232 | PATCH | IPSec Exemptions will be limited."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-14232
+
+- name: "LOW | V-15672 | AUDIT | Event Viewer Events.asp links will be turned off."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15672
+
+- name: "LOW | V-15672 | PATCH | Event Viewer Events.asp links will be turned off."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15672
+
+- name: "LOW | V-15676 | AUDIT | The Order Prints Online wizard will be turned off."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15676
+
+- name: "LOW | V-15676 | PATCH | The Order Prints Online wizard will be turned off."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15676
+
+- name: "LOW | V-15680 | AUDIT | The classic logon screen must be required for user logons."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15680
+
+- name: "LOW | V-15680 | PATCH | The classic logon screen must be required for user logons."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15680
+
+- name: "LOW | V-15686 | AUDIT | Non-administrators will be prevented from applying vendor signed updates."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15686
+
+- name: "LOW | V-15686 | PATCH | Non-administrators will be prevented from applying vendor signed updates."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15686
+
+- name: "LOW | V-15687 | AUDIT | Users will not be presented with Privacy and Installation options on first use of Windows Media Player."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15687
+
+- name: "LOW | V-15687 | PATCH | Users will not be presented with Privacy and Installation options on first use of Windows Media Player."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15687
+
+- name: "LOW | V-15701 | AUDIT | A system restore point will be created when a new device driver is installed."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15701
+
+- name: "LOW | V-15701 | PATCH | A system restore point will be created when a new device driver is installed."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15701
+
+- name: "LOW | V-15702 | AUDIT | An Error Report will not be sent when a generic device driver is installed."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15702
+
+- name: "LOW | V-15702 | PATCH | An Error Report will not be sent when a generic device driver is installed."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15702
+
+- name: "LOW | V-15703 | AUDIT | Users will not be prompted to search Windows Update for device drivers."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15703
+
+- name: "LOW | V-15703 | PATCH | Users will not be prompted to search Windows Update for device drivers."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15703
+
+- name: "LOW | V-15704 | AUDIT | Errors in handwriting recognition on Tablet PCs will not be reported to Microsoft."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15704
+
+- name: "LOW | V-15704 | PATCH | Errors in handwriting recognition on Tablet PCs will not be reported to Microsoft."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15704
+
+- name: "LOW | V-15707 | AUDIT | Remote Assistance log files will be generated."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15707
+
+- name: "LOW | V-15707 | PATCH | Remote Assistance log files will be generated."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15707
+
+- name: "LOW | V-15709 | AUDIT | Game explorer information will not be downloaded from Windows Metadata Services."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15709
+
+- name: "LOW | V-15709 | PATCH | Game explorer information will not be downloaded from Windows Metadata Services."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15709
+
+- name: "LOW | V-15718 | AUDIT | Windows Explorer heap termination on corruption will be disabled."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15718
+
+- name: "LOW | V-15718 | PATCH | Windows Explorer heap termination on corruption will be disabled."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15718
+
+- name: "LOW | V-15719 | AUDIT | Users must be notified if the logon server was inaccessible and cached credentials were used."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15719
+
+- name: "LOW | V-15719 | PATCH | Users must be notified if the logon server was inaccessible and cached credentials were used."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15719
+
+- name: "LOW | V-16001 | AUDIT | The system will be configured to allow only the default client printer to be redirected in the Remote Desktop session. (Remote Desktop Services Role)"
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-16001
+
+- name: "LOW | V-16001 | PATCH | The system will be configured to allow only the default client printer to be redirected in the Remote Desktop session. (Remote Desktop Services Role)"
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-16001
+
+- name: "LOW | V-16005 | AUDIT | The system will be configured to remove the Disconnect option from the Shut Down Windows dialog box on the Remote Desktop Client. (Remote Desktop Services Role)"
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-16005
+
+- name: "LOW | V-16005 | PATCH | The system will be configured to remove the Disconnect option from the Shut Down Windows dialog box on the Remote Desktop Client. (Remote Desktop Services Role)"
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-16005
+
+- name: "LOW | V-21955 | AUDIT | IPv6 source routing will be configured to highest protection."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21955
+
+- name: "LOW | V-21955 | PATCH | IPv6 source routing will be configured to highest protection."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21955
+
+- name: "LOW | V-21956 | AUDIT | IPv6 TCP data retransmissions must be configured to prevent resources from becoming exhausted."
+  command: true
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21956
+
+- name: "LOW | V-21956 | PATCH | IPv6 TCP data retransmissions must be configured to prevent resources from becoming exhausted."
+  command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21956
+
