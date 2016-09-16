@@ -1,0 +1,22 @@
+- name: "LOW | V-1090 | AUDIT | Caching of logon credentials must be limited."
+  win_command: reg query \"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v CachedLogonsCount
+  register: result
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1090
+
+- name: "LOW | V-1090 | PATCH | Caching of logon credentials must be limited."
+  win_regedit: 
+    key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+    value: CachedLogonsCount
+    data: 2
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1090
