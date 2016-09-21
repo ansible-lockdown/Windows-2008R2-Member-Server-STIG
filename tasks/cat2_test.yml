@@ -1,0 +1,22 @@
+- name: "MEDIUM | V-1089 | AUDIT | The required legal notice must be configured to display before console logon."
+  win_command: reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LegalNoticeText
+  register: legal_notice_audit
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1089
+
+- name: "MEDIUM | V-1089 | PATCH | The required legal notice must be configured to display before console logon."
+  win_regedit: 
+    key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System'
+    value: "LegalNoticeText"
+    data: "{{ legal_notice }}"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1089

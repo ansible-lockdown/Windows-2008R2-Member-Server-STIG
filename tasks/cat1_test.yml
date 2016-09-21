@@ -34,6 +34,7 @@
       - audit
       - V-1152
 
+# NOTE: V-1152 is shared between all OS's, but Backup Operators data for 2k12 is 'Read (This key only)' and for 2k8 is 'Special'.
 - name: "HIGH | V-1152 | PATCH | Anonymous access to the registry must be restricted."
   win_regedit: 
     key: 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg'
