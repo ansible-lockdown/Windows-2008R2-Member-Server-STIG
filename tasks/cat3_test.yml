@@ -1,7 +1,7 @@
 - name: "LOW | V-1075 | AUDIT | The shutdown option will not be available from the logon dialog box."
   win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v ShutdownWithoutLogon
   register: shutdown_button_audit
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -25,7 +25,7 @@
 - name: "LOW | V-1090 | AUDIT | Caching of logon credentials must be limited."
   win_command: reg query \"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v CachedLogonsCount
   register: cached_logons_audit
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:

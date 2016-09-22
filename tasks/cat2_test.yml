@@ -1,7 +1,7 @@
 - name: "MEDIUM | V-1089 | AUDIT | The required legal notice must be configured to display before console logon."
   win_command: reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LegalNoticeText
   register: legal_notice_audit
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
