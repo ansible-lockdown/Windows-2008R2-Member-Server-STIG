@@ -44,3 +44,27 @@
       - low
       - patch
       - V-1090
+
+- name: "LOW | V-1136 | AUDIT | Users will be forcibly disconnected when their logon hours expire."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v EnableForcedLogoff
+  register: forced_logoff_audit
+  always_run: yes
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1136
+
+- name: "LOW | V-1136 | PATCH | Users will be forcibly disconnected when their logon hours expire."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters'
+    value: EnableForcedLogoff
+    data: 1
+    datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1136
