@@ -20,3 +20,27 @@
       - medium
       - patch
       - V-1089
+
+- name: "MEDIUM | V-1141 | AUDIT | Unencrypted passwords must not be sent to third-party SMB Servers."
+  win_command: reg query HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters /v EnablePlainTextPassword
+  register: plain_text_password_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1141
+
+- name: "MEDIUM | V-1141 | PATCH | Unencrypted passwords must not be sent to third-party SMB Servers."
+  win_regedit: 
+    key: 'HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters'
+    value: EnablePlainTextPassword
+    data: 0
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1141

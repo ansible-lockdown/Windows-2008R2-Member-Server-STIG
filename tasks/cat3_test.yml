@@ -48,7 +48,7 @@
 - name: "LOW | V-1136 | AUDIT | Users will be forcibly disconnected when their logon hours expire."
   win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v EnableForcedLogoff
   register: forced_logoff_audit
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -68,3 +68,28 @@
       - low
       - patch
       - V-1136
+
+- name: "LOW | V-1151 | AUDIT | The print driver installation privilege will be restricted to administrators."
+  win_command: reg query \"HKLM\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers\" /v AddPrinterDrivers
+  register: add_printer_driver_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1151
+
+- name: "LOW | V-1151 | PATCH | The print driver installation privilege will be restricted to administrators."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers'
+    value: AddPrinterDrivers
+    data: 1
+    datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1151
+
