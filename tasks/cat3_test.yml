@@ -93,3 +93,26 @@
       - patch
       - V-1151
 
+- name: "LOW | V-1158 | AUDIT | The Recovery Console SET command must be disabled."
+  win_command: reg query \"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole\" /v SetCommand
+  register: set_command_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1158
+
+- name: "LOW | V-1158 | PATCH | The Recovery Console SET command must be disabled."
+  win_regedit: 
+    key: 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole'
+    value: SetCommand
+    data: 0
+    datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1158

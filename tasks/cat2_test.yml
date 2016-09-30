@@ -47,7 +47,7 @@
 
 - name: "MEDIUM | V-1154 | AUDIT | The Ctrl+Alt+Del security attention sequence for logons will be enabled."
   win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCAD
-  register: result
+  register: disable_CAD_audit
   check_mode: no
   changed_when: no
   ignore_errors: yes
@@ -71,7 +71,7 @@
 
 - name: "MEDIUM | V-1157 | AUDIT | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
   win_command: reg query \"HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v SCRemoveOption
-  register: result
+  register: SC_removal_audit
   check_mode: no
   changed_when: no
   ignore_errors: yes
