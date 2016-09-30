@@ -44,3 +44,28 @@
       - medium
       - patch
       - V-1141
+
+- name: "MEDIUM | V-1154 | AUDIT | The Ctrl+Alt+Del security attention sequence for logons will be enabled."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCAD
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1154
+
+- name: "MEDIUM | V-1154 | PATCH | The Ctrl+Alt+Del security attention sequence for logons will be enabled."
+  win_regedit: 
+    key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System'
+    value: DisableCAD
+    data: 0
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1154
+
