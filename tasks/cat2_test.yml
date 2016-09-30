@@ -69,3 +69,25 @@
       - patch
       - V-1154
 
+- name: "MEDIUM | V-1157 | AUDIT | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
+  win_command: reg query \"HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v SCRemoveOption
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1157
+
+- name: "MEDIUM | V-1157 | PATCH | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
+  win_regedit: 
+    key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+    value: SCRemoveOption
+    data: 1
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1157
