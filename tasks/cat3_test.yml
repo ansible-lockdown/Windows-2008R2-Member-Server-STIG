@@ -116,3 +116,28 @@
       - low
       - patch
       - V-1158
+
+- name: "LOW | V-1165 | AUDIT | The computer account password will not be prevented from being reset."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\Netlogon\Parameters /v DisablePasswordChange
+  register: disable_password_change_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1165
+
+- name: "LOW | V-1165 | PATCH | The computer account password will not be prevented from being reset."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
+    value: DisablePasswordChange
+    data: 0
+    datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-1165
+

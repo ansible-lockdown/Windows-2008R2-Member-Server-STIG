@@ -91,3 +91,99 @@
       - medium
       - patch
       - V-1157
+
+- name: "MEDIUM | V-1162 | AUDIT | The Windows SMB server will perform SMB packet signing when possible."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v EnableSecuritySignature
+  register: SMB_server_packet_signing_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1162
+
+- name: "MEDIUM | V-1162 | PATCH | The Windows SMB server will perform SMB packet signing when possible."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters'
+    value: EnableSecuritySignature
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1162
+
+- name: "MEDIUM | V-1163 | AUDIT | Outgoing secure channel traffic will be encrypted when possible."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\Netlogon\Parameters /v SealSecureChannel
+  register: encrypt_outgoing_secure_channel_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1163
+
+- name: "MEDIUM | V-1163 | PATCH | Outgoing secure channel traffic will be encrypted when possible."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
+    value: SealSecureChannel
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1163
+
+- name: "MEDIUM | V-1164 | AUDIT | Outgoing secure channel traffic will be signed when possible."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\Netlogon\Parameters /v SignSecureChannel
+  register: sign_outgoing_secure_channel_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1164
+
+- name: "MEDIUM | V-1164 | PATCH | Outgoing secure channel traffic will be signed when possible."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
+    value: SignSecureChannel
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1164
+
+- name: "MEDIUM | V-1166 | AUDIT | The Windows SMB client will be enabled to perform SMB packet signing when possible."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\LanmanWorkstation\Parameters /v EnableSecuritySignature
+  register: SMB_client_packet_signing_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1166
+
+- name: "MEDIUM | V-1166 | PATCH | The Windows SMB client will be enabled to perform SMB packet signing when possible."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Services\LanmanWorkstation\Parameters'
+    value: EnableSecuritySignature
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1166
