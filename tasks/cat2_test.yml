@@ -283,3 +283,27 @@
       - patch
       - V-3377
 
+- name: "MEDIUM | V-3378 | AUDIT | The system will be configured to use the Classic security model."
+  win_command: reg query HKLM\System\CurrentControlSet\Control\Lsa /v ForceGuest
+  register: classic_security_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3378
+
+- name: "MEDIUM | V-3378 | PATCH | The system will be configured to use the Classic security model."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Control\Lsa'
+    value: ForceGuest
+    data: 0
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-3378
+
