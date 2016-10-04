@@ -74,3 +74,27 @@
       - patch
       - V-1159
 
+- name: "HIGH | V-2374 | AUDIT | Autoplay will be disabled for all drives."
+  win_command: reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer /v NoDriveTypeAutorun
+  register: disable_autoplay_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-2374
+
+- name: "HIGH | V-2374 | PATCH | Autoplay will be disabled for all drives."
+  win_regedit: 
+    key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer'
+    value: NoDriveTypeAutorun
+    data: 0x000000ff
+    datatype: dword
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-2374
+
