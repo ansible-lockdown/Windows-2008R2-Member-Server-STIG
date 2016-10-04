@@ -12,9 +12,9 @@
 
 - name: "MEDIUM | V-1089 | PATCH | The required legal notice must be configured to display before console logon."
   win_regedit: 
-    key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System'
-    value: "LegalNoticeText"
-    data: "{{ legal_notice }}"
+      key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System'
+      value: "LegalNoticeText"
+      data: "{{ legal_notice }}"
   tags:
       - cat2
       - medium
@@ -35,10 +35,10 @@
 
 - name: "MEDIUM | V-1141 | PATCH | Unencrypted passwords must not be sent to third-party SMB Servers."
   win_regedit: 
-    key: 'HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters'
-    value: EnablePlainTextPassword
-    data: 0
-    datatype: dword
+      key: 'HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters'
+      value: EnablePlainTextPassword
+      data: 0
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -59,10 +59,10 @@
 
 - name: "MEDIUM | V-1154 | PATCH | The Ctrl+Alt+Del security attention sequence for logons will be enabled."
   win_regedit: 
-    key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System'
-    value: DisableCAD
-    data: 0
-    datatype: dword
+      key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System'
+      value: DisableCAD
+      data: 0
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -83,9 +83,9 @@
 
 - name: "MEDIUM | V-1157 | PATCH | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
   win_regedit: 
-    key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
-    value: SCRemoveOption
-    data: 1
+      key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+      value: SCRemoveOption
+      data: 1
   tags:
       - cat2
       - medium
@@ -106,10 +106,10 @@
 
 - name: "MEDIUM | V-1162 | PATCH | The Windows SMB server will perform SMB packet signing when possible."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters'
-    value: EnableSecuritySignature
-    data: 1
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters'
+      value: EnableSecuritySignature
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -130,10 +130,10 @@
 
 - name: "MEDIUM | V-1163 | PATCH | Outgoing secure channel traffic will be encrypted when possible."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
-    value: SealSecureChannel
-    data: 1
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
+      value: SealSecureChannel
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -154,10 +154,10 @@
 
 - name: "MEDIUM | V-1164 | PATCH | Outgoing secure channel traffic will be signed when possible."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
-    value: SignSecureChannel
-    data: 1
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
+      value: SignSecureChannel
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -178,10 +178,10 @@
 
 - name: "MEDIUM | V-1166 | PATCH | The Windows SMB client will be enabled to perform SMB packet signing when possible."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Services\LanmanWorkstation\Parameters'
-    value: EnableSecuritySignature
-    data: 1
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Services\LanmanWorkstation\Parameters'
+      value: EnableSecuritySignature
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -202,9 +202,9 @@
 
 - name: "MEDIUM | V-1171 | PATCH | Ejection of removable NTFS media is not restricted to Administrators."
   win_regedit: 
-    key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
-    value: AllocateDASD
-    data: 0
+      key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+      value: AllocateDASD
+      data: 0
   tags:
       - cat2
       - medium
@@ -225,10 +225,10 @@
 
 - name: "MEDIUM | V-3372 | PATCH | A system must be logged on to before removing from a docking station."
   win_regedit: 
-    key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System'
-    value: UndockWithoutLogon
-    data: 0
-    datatype: dword
+      key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System'
+      value: UndockWithoutLogon
+      data: 0
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -249,10 +249,10 @@
 
 - name: "MEDIUM | V-3376 | PATCH | The system will be configured to prevent the storage of passwords and credentials"
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Control\Lsa'
-    value: DisableDomainCreds
-    data: 1
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Control\Lsa'
+      value: DisableDomainCreds
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -273,10 +273,10 @@
 
 - name: "MEDIUM | V-3377 | PATCH | The system will be configured to prevent anonymous users from having the same rights as the Everyone group."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Control\Lsa'
-    value: EveryoneIncludesAnonymous
-    data: 0
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Control\Lsa'
+      value: EveryoneIncludesAnonymous
+      data: 0
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -297,10 +297,10 @@
 
 - name: "MEDIUM | V-3378 | PATCH | The system will be configured to use the Classic security model."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Control\Lsa'
-    value: ForceGuest
-    data: 0
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Control\Lsa'
+      value: ForceGuest
+      data: 0
+      datatype: dword
   tags:
       - cat2
       - medium
