@@ -87,7 +87,7 @@
       - V-2374
 
 - name: "HIGH | V-2374 | PATCH | Autoplay will be disabled for all drives."
-  win_regedit: 
+  win_regedit:
     key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer'
     value: NoDriveTypeAutorun
     data: 0x000000ff
@@ -97,4 +97,28 @@
       - high
       - patch
       - V-2374
+
+- name: "HIGH | V-3340 | AUDIT | Network shares that can be accessed anonymously will not be allowed."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v NullSessionShares
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-3340
+
+- name: "HIGH | V-3340 | PATCH | Network shares that can be accessed anonymously will not be allowed."
+  win_regedit:
+    key: 'HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters'
+    value: NullSessionShares
+    data: ''
+    datatype: multistring
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-3340
 
