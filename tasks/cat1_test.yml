@@ -100,7 +100,7 @@
 
 - name: "HIGH | V-3340 | AUDIT | Network shares that can be accessed anonymously will not be allowed."
   win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v NullSessionShares
-  register: result
+  register: null_session_shares_audit
   check_mode: no
   changed_when: no
   ignore_errors: yes
