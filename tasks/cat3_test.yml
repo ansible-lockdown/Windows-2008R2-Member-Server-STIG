@@ -167,7 +167,7 @@
 
 - name: "LOW | V-1173 | AUDIT | The default permissions of Global system objects will be increased."
   win_command: reg query \"HKLM\System\CurrentControlSet\Control\Session Manager\" /v ProtectionMode
-  register: result
+  register: protection_mode_audit
   check_mode: no
   changed_when: no
   ignore_errors: yes
@@ -191,7 +191,7 @@
 
 - name: "LOW | V-1174 | AUDIT | The amount of idle time required before suspending a session must be properly set."
   win_command: reg query HKLM\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters /v autodisconnect
-  register: result
+  register: auto_disconnect_audit
   check_mode: no
   changed_when: no
   ignore_errors: yes
@@ -215,7 +215,7 @@
 
 - name: "LOW | V-3373 | AUDIT | The maximum age for machine account passwords will be set to requirements."
   win_command: reg query HKLM\System\CurrentControlSet\Services\Netlogon\Parameters /v MaximumPasswordAge
-  register: result
+  register: max_password_age_audit
   check_mode: no
   changed_when: no
   ignore_errors: yes
