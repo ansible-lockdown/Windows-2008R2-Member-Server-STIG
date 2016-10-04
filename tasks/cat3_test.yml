@@ -38,7 +38,7 @@
   win_regedit: 
     key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
     value: CachedLogonsCount
-    data: 2
+    data: 0
   tags:
       - cat3
       - low
