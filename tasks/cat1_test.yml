@@ -3,7 +3,7 @@
   register: anon_shares_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in anon_shares_audit.stderr and anon_shares_audit.stderr"
   tags:
       - cat1
       - high
@@ -27,7 +27,7 @@
   register: anon_registry_access_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in anon_registry_access_audit.stderr and anon_registry_access_audit.stderr"
   tags:
       - cat1
       - high
@@ -55,7 +55,7 @@
   register: security_level_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in security_level_audit.stderr and security_level_audit.stderr"
   tags:
       - cat1
       - high
@@ -79,7 +79,7 @@
   register: disable_autoplay_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in disable_autoplay_audit.stderr and disable_autoplay_audit.stderr"
   tags:
       - cat1
       - high
@@ -103,7 +103,7 @@
   register: null_session_shares_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in null_session_shares_audit.stderr and null_session_shares_audit.stderr"
   tags:
       - cat1
       - high

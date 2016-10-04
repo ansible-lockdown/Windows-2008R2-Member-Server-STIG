@@ -3,7 +3,7 @@
   register: legal_notice_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in legal_notice_audit.stderr and legal_notice_audit.stderr"
   tags:
       - cat2
       - medium
@@ -26,7 +26,7 @@
   register: plain_text_password_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in plain_text_password_audit.stderr and plain_text_password_audit.stderr"
   tags:
       - cat2
       - medium
@@ -50,7 +50,7 @@
   register: disable_CAD_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in disable_CAD_audit.stderr and disable_CAD_audit.stderr"
   tags:
       - cat2
       - medium
@@ -74,7 +74,7 @@
   register: SC_removal_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in SC_removal_audit.stderr and SC_removal_audit.stderr"
   tags:
       - cat2
       - medium
@@ -97,7 +97,7 @@
   register: SMB_server_packet_signing_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in SMB_server_packet_signing_audit.stderr and SMB_server_packet_signing_audit.stderr"
   tags:
       - cat2
       - medium
@@ -121,7 +121,7 @@
   register: encrypt_outgoing_secure_channel_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in encrypt_outgoing_secure_channel_audit.stderr and encrypt_outgoing_secure_channel_audit.stderr"
   tags:
       - cat2
       - medium
@@ -145,7 +145,7 @@
   register: sign_outgoing_secure_channel_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in sign_outgoing_secure_channel_audit.stderr and sign_outgoing_secure_channel_audit.stderr"
   tags:
       - cat2
       - medium
@@ -169,7 +169,7 @@
   register: SMB_client_packet_signing_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in SMB_client_packet_signing_audit.stderr and SMB_client_packet_signing_audit.stderr"
   tags:
       - cat2
       - medium
@@ -193,7 +193,7 @@
   register: eject_removable_media_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in eject_removable_media_audit.stderr and eject_removable_media_audit.stderr"
   tags:
       - cat2
       - medium
@@ -216,7 +216,7 @@
   register: undock_logon_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in undock_logon_audit.stderr and undock_logon_audit.stderr"
   tags:
       - cat2
       - medium
@@ -240,7 +240,7 @@
   register: creds_storage_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in creds_storage_audit.stderr and creds_storage_audit.stderr"
   tags:
       - cat2
       - medium
@@ -264,7 +264,7 @@
   register: everyone_includes_anon_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in everyone_includes_anon_audit.stderr and everyone_includes_anon_audit.stderr"
   tags:
       - cat2
       - medium
@@ -288,7 +288,7 @@
   register: classic_security_audit
   check_mode: no
   changed_when: no
-  ignore_errors: yes
+  failed_when: "reg_not_found not in classic_security_audit.stderr and classic_security_audit.stderr"
   tags:
       - cat2
       - medium
