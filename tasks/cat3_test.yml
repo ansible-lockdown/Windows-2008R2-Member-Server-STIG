@@ -12,10 +12,10 @@
 
 - name: "LOW | V-1075 | PATCH | The shutdown option will not be available from the logon dialog box."
   win_regedit: 
-    key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System'
-    value: ShutdownWithoutLogon
-    data: 0
-    datatype: dword
+      key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System'
+      value: ShutdownWithoutLogon
+      data: 0
+      datatype: dword
   tags:
       - cat3
       - low
@@ -36,9 +36,9 @@
 
 - name: "LOW | V-1090 | PATCH | Caching of logon credentials must be limited."
   win_regedit: 
-    key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
-    value: CachedLogonsCount
-    data: 0
+      key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+      value: CachedLogonsCount
+      data: 0
   tags:
       - cat3
       - low
@@ -59,10 +59,10 @@
 
 - name: "LOW | V-1136 | PATCH | Users will be forcibly disconnected when their logon hours expire."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters'
-    value: EnableForcedLogoff
-    data: 1
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters'
+      value: EnableForcedLogoff
+      data: 1
+      datatype: dword
   tags:
       - cat3
       - low
@@ -83,10 +83,10 @@
 
 - name: "LOW | V-1151 | PATCH | The print driver installation privilege will be restricted to administrators."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers'
-    value: AddPrinterDrivers
-    data: 1
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers'
+      value: AddPrinterDrivers
+      data: 1
+      datatype: dword
   tags:
       - cat3
       - low
@@ -107,10 +107,10 @@
 
 - name: "LOW | V-1158 | PATCH | The Recovery Console SET command must be disabled."
   win_regedit: 
-    key: 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole'
-    value: SetCommand
-    data: 0
-    datatype: dword
+      key: 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole'
+      value: SetCommand
+      data: 0
+      datatype: dword
   tags:
       - cat3
       - low
@@ -131,10 +131,10 @@
 
 - name: "LOW | V-1165 | PATCH | The computer account password will not be prevented from being reset."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
-    value: DisablePasswordChange
-    data: 0
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
+      value: DisablePasswordChange
+      data: 0
+      datatype: dword
   tags:
       - cat3
       - low
@@ -155,10 +155,10 @@
 
 - name: "LOW | V-1172 | PATCH | Users will be warned in advance that their passwords will expire."
   win_regedit: 
-    key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
-    value: PasswordExpiryWarning
-    data: 7
-    datatype: dword
+      key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+      value: PasswordExpiryWarning
+      data: 7
+      datatype: dword
   tags:
       - cat3
       - low
@@ -179,10 +179,10 @@
 
 - name: "LOW | V-1173 | PATCH | The default permissions of Global system objects will be increased."
   win_regedit: 
-    key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
-    value: ProtectionMode
-    data: 1
-    datatype: dword
+      key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+      value: ProtectionMode
+      data: 1
+      datatype: dword
   tags:
       - cat3
       - low
@@ -203,10 +203,10 @@
 
 - name: "LOW | V-1174 | PATCH | The amount of idle time required before suspending a session must be properly set."
   win_regedit: 
-    key: 'HKLM:\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters'
-    value: autodisconnect
-    data: 0x0000000f
-    datatype: dword
+      key: 'HKLM:\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters'
+      value: autodisconnect
+      data: 0x0000000f
+      datatype: dword
   tags:
       - cat3
       - low
@@ -227,10 +227,10 @@
 
 - name: "LOW | V-3373 | PATCH | The maximum age for machine account passwords will be set to requirements."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
-    value: MaximumPasswordAge
-    data: 30
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
+      value: MaximumPasswordAge
+      data: 30
+      datatype: dword
   tags:
       - cat3
       - low
