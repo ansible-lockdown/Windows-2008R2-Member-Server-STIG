@@ -12,10 +12,10 @@
 
 - name: "HIGH | V-1093 | PATCH | Anonymous enumeration of shares will be restricted."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Control\Lsa'
-    value: RestrictAnonymous
-    data: 1
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Control\Lsa'
+      value: RestrictAnonymous
+      data: 1
+      datatype: dword
   tags:
       - cat1
       - high
@@ -37,13 +37,17 @@
 # NOTE: V-1152 is shared between all OS's, but Backup Operators data for 2k12 is 'Read (This key only)' and for 2k8 is 'Special'.
 - name: "HIGH | V-1152 | PATCH | Anonymous access to the registry must be restricted."
   win_regedit: 
-    key: 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg'
-    value: "{{ item.value }}"
-    data: "{{ item.data }}"
+      key: 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg'
+      value: "{{ item.value }}"
+      data: "{{ item.data }}"
+  
   with_items: 
-    - { value: 'Administrators', data: 'Full' }
-    - { value: 'Backup Operators', data: 'Special' }
-    - { value: 'LOCAL SERVICE', data: 'Read' }
+      - value: 'Administrators'
+        data: 'Full'
+      - value: 'Backup Operators'
+        data: 'Special'
+      - value: 'LOCAL SERVICE'
+        data: 'Read' 
   tags:
       - cat1
       - high
@@ -64,10 +68,10 @@
 
 - name: "HIGH | V-1159 | PATCH | The Recovery Console option will be set to prevent automatic logon to the system."
   win_regedit: 
-    key: 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole'
-    value: SecurityLevel
-    data: 0
-    datatype: dword
+      key: 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole'
+      value: SecurityLevel
+      data: 0
+      datatype: dword
   tags:
       - cat1
       - high
@@ -88,10 +92,10 @@
 
 - name: "HIGH | V-2374 | PATCH | Autoplay will be disabled for all drives."
   win_regedit:
-    key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer'
-    value: NoDriveTypeAutorun
-    data: 0x000000ff
-    datatype: dword
+      key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer'
+      value: NoDriveTypeAutorun
+      data: 0x000000ff
+      datatype: dword
   tags:
       - cat1
       - high
@@ -112,10 +116,10 @@
 
 - name: "HIGH | V-3340 | PATCH | Network shares that can be accessed anonymously will not be allowed."
   win_regedit:
-    key: 'HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters'
-    value: NullSessionShares
-    data: ''
-    datatype: multistring
+      key: 'HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters'
+      value: NullSessionShares
+      data: ''
+      datatype: multistring
   tags:
       - cat1
       - high
