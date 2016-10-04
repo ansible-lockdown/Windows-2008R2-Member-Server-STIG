@@ -1,7 +1,7 @@
 - name: "MEDIUM | V-1070 | AUDIT | The Automated Information System (AIS) will be physically secured in an access controlled area."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -11,7 +11,7 @@
       - V-1070
 
 - name: "MEDIUM | V-1070 | PATCH | The Automated Information System (AIS) will be physically secured in an access controlled area."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -19,9 +19,9 @@
       - V-1070
 
 - name: "MEDIUM | V-1072 | AUDIT | Shared user accounts will not be permitted on the system."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -31,7 +31,7 @@
       - V-1072
 
 - name: "MEDIUM | V-1072 | PATCH | Shared user accounts will not be permitted on the system."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -39,9 +39,9 @@
       - V-1072
 
 - name: "MEDIUM | V-1077 | AUDIT | Permissions for event logs must conform to minimum requirements."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -51,7 +51,7 @@
       - V-1077
 
 - name: "MEDIUM | V-1077 | PATCH | Permissions for event logs must conform to minimum requirements."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -59,9 +59,9 @@
       - V-1077
 
 - name: "MEDIUM | V-1089 | AUDIT | The required legal notice must be configured to display before console logon."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -71,7 +71,7 @@
       - V-1089
 
 - name: "MEDIUM | V-1089 | PATCH | The required legal notice must be configured to display before console logon."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -79,9 +79,9 @@
       - V-1089
 
 - name: "MEDIUM | V-1097 | AUDIT | The system must lockout accounts after 3 invalid logon attempts within a specified time period."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -91,7 +91,7 @@
       - V-1097
 
 - name: "MEDIUM | V-1097 | PATCH | The system must lockout accounts after 3 invalid logon attempts within a specified time period."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -99,9 +99,9 @@
       - V-1097
 
 - name: "MEDIUM | V-1098 | AUDIT | The period of time before the invalid logon counter is reset must be configured to at least 60 minutes."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -111,7 +111,7 @@
       - V-1098
 
 - name: "MEDIUM | V-1098 | PATCH | The period of time before the invalid logon counter is reset must be configured to at least 60 minutes."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -119,9 +119,9 @@
       - V-1098
 
 - name: "MEDIUM | V-1099 | AUDIT | The account lockout duration must be configured to require an administrator to unlock an account."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -131,7 +131,7 @@
       - V-1099
 
 - name: "MEDIUM | V-1099 | PATCH | The account lockout duration must be configured to require an administrator to unlock an account."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -139,9 +139,9 @@
       - V-1099
 
 - name: "MEDIUM | V-1104 | AUDIT | The maximum password age must be configured to 60 days or less."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -151,7 +151,7 @@
       - V-1104
 
 - name: "MEDIUM | V-1104 | PATCH | The maximum password age must be configured to 60 days or less."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -159,9 +159,9 @@
       - V-1104
 
 - name: "MEDIUM | V-1105 | AUDIT | The minimum password age must be configured to at least 1 day."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -171,7 +171,7 @@
       - V-1105
 
 - name: "MEDIUM | V-1105 | PATCH | The minimum password age must be configured to at least 1 day."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -179,9 +179,9 @@
       - V-1105
 
 - name: "MEDIUM | V-1107 | AUDIT | The password history must be configured to 24 passwords remembered."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -191,7 +191,7 @@
       - V-1107
 
 - name: "MEDIUM | V-1107 | PATCH | The password history must be configured to 24 passwords remembered."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -199,9 +199,9 @@
       - V-1107
 
 - name: "MEDIUM | V-1113 | AUDIT | The built-in guest account must be disabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -211,7 +211,7 @@
       - V-1113
 
 - name: "MEDIUM | V-1113 | PATCH | The built-in guest account must be disabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -219,9 +219,9 @@
       - V-1113
 
 - name: "MEDIUM | V-1114 | AUDIT | The built-in guest account will be renamed."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -231,7 +231,7 @@
       - V-1114
 
 - name: "MEDIUM | V-1114 | PATCH | The built-in guest account will be renamed."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -239,9 +239,9 @@
       - V-1114
 
 - name: "MEDIUM | V-1115 | AUDIT | The built-in administrator account will be renamed."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -251,7 +251,7 @@
       - V-1115
 
 - name: "MEDIUM | V-1115 | PATCH | The built-in administrator account will be renamed."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -259,9 +259,9 @@
       - V-1115
 
 - name: "MEDIUM | V-1119 | AUDIT | Booting into alternate non STIG compliant operating systems will not be permitted."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -271,7 +271,7 @@
       - V-1119
 
 - name: "MEDIUM | V-1119 | PATCH | Booting into alternate non STIG compliant operating systems will not be permitted."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -279,9 +279,9 @@
       - V-1119
 
 - name: "MEDIUM | V-1120 | AUDIT | Installed FTP server will not be configured to allow prohibited logins."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -291,7 +291,7 @@
       - V-1120
 
 - name: "MEDIUM | V-1120 | PATCH | Installed FTP server will not be configured to allow prohibited logins."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -299,9 +299,9 @@
       - V-1120
 
 - name: "MEDIUM | V-1122 | AUDIT | The system will be configured with a password-protected screen saver."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -311,7 +311,7 @@
       - V-1122
 
 - name: "MEDIUM | V-1122 | PATCH | The system will be configured with a password-protected screen saver."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -319,9 +319,9 @@
       - V-1122
 
 - name: "MEDIUM | V-1130 | AUDIT | ACLs for system files and directories will conform to minimum requirements."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -331,7 +331,7 @@
       - V-1130
 
 - name: "MEDIUM | V-1130 | PATCH | ACLs for system files and directories will conform to minimum requirements."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -339,9 +339,9 @@
       - V-1130
 
 - name: "MEDIUM | V-1141 | AUDIT | Unencrypted passwords must not be sent to third-party SMB Servers."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -351,7 +351,7 @@
       - V-1141
 
 - name: "MEDIUM | V-1141 | PATCH | Unencrypted passwords must not be sent to third-party SMB Servers."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -359,9 +359,9 @@
       - V-1141
 
 - name: "MEDIUM | V-1145 | AUDIT | Automatic logons must be disabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -371,7 +371,7 @@
       - V-1145
 
 - name: "MEDIUM | V-1145 | PATCH | Automatic logons must be disabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -379,9 +379,9 @@
       - V-1145
 
 - name: "MEDIUM | V-1150 | AUDIT | The built-in Windows password complexity policy must be enabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -391,7 +391,7 @@
       - V-1150
 
 - name: "MEDIUM | V-1150 | PATCH | The built-in Windows password complexity policy must be enabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -399,9 +399,9 @@
       - V-1150
 
 - name: "MEDIUM | V-1154 | AUDIT | The Ctrl+Alt+Del security attention sequence for logons will be enabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -411,7 +411,7 @@
       - V-1154
 
 - name: "MEDIUM | V-1154 | PATCH | The Ctrl+Alt+Del security attention sequence for logons will be enabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -419,9 +419,9 @@
       - V-1154
 
 - name: "MEDIUM | V-1155 | AUDIT | The Deny access to this computer from the network user right on member servers must be configured to prevent access from highly privileged domain accounts and all local accounts on domain systems and unauthenticated access on all systems."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -431,7 +431,7 @@
       - V-1155
 
 - name: "MEDIUM | V-1155 | PATCH | The Deny access to this computer from the network user right on member servers must be configured to prevent access from highly privileged domain accounts and all local accounts on domain systems and unauthenticated access on all systems."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -439,9 +439,9 @@
       - V-1155
 
 - name: "MEDIUM | V-1157 | AUDIT | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -451,7 +451,7 @@
       - V-1157
 
 - name: "MEDIUM | V-1157 | PATCH | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -459,9 +459,9 @@
       - V-1157
 
 - name: "MEDIUM | V-1162 | AUDIT | The Windows SMB server will perform SMB packet signing when possible."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -471,7 +471,7 @@
       - V-1162
 
 - name: "MEDIUM | V-1162 | PATCH | The Windows SMB server will perform SMB packet signing when possible."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -479,9 +479,9 @@
       - V-1162
 
 - name: "MEDIUM | V-1163 | AUDIT | Outgoing secure channel traffic will be encrypted when possible."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -491,7 +491,7 @@
       - V-1163
 
 - name: "MEDIUM | V-1163 | PATCH | Outgoing secure channel traffic will be encrypted when possible."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -499,9 +499,9 @@
       - V-1163
 
 - name: "MEDIUM | V-1164 | AUDIT | Outgoing secure channel traffic will be signed when possible."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -511,7 +511,7 @@
       - V-1164
 
 - name: "MEDIUM | V-1164 | PATCH | Outgoing secure channel traffic will be signed when possible."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -519,9 +519,9 @@
       - V-1164
 
 - name: "MEDIUM | V-1166 | AUDIT | The Windows SMB client will be enabled to perform SMB packet signing when possible."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -531,7 +531,7 @@
       - V-1166
 
 - name: "MEDIUM | V-1166 | PATCH | The Windows SMB client will be enabled to perform SMB packet signing when possible."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -539,9 +539,9 @@
       - V-1166
 
 - name: "MEDIUM | V-1168 | AUDIT | Members of the Backup Operators group will have separate accounts for backup duties and normal operational tasks."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -551,7 +551,7 @@
       - V-1168
 
 - name: "MEDIUM | V-1168 | PATCH | Members of the Backup Operators group will have separate accounts for backup duties and normal operational tasks."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -559,9 +559,9 @@
       - V-1168
 
 - name: "MEDIUM | V-1171 | AUDIT | Ejection of removable NTFS media is not restricted to Administrators."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -571,7 +571,7 @@
       - V-1171
 
 - name: "MEDIUM | V-1171 | PATCH | Ejection of removable NTFS media is not restricted to Administrators."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -579,9 +579,9 @@
       - V-1171
 
 - name: "MEDIUM | V-2372 | AUDIT | Reversible password encryption will be disabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -591,7 +591,7 @@
       - V-2372
 
 - name: "MEDIUM | V-2372 | PATCH | Reversible password encryption will be disabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -599,9 +599,9 @@
       - V-2372
 
 - name: "MEDIUM | V-2907 | AUDIT | System files will be monitored for unauthorized changes."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -611,7 +611,7 @@
       - V-2907
 
 - name: "MEDIUM | V-2907 | PATCH | System files will be monitored for unauthorized changes."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -619,9 +619,9 @@
       - V-2907
 
 - name: "MEDIUM | V-3245 | AUDIT | File share ACLs will be reconfigured to remove the Everyone group."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -631,7 +631,7 @@
       - V-3245
 
 - name: "MEDIUM | V-3245 | PATCH | File share ACLs will be reconfigured to remove the Everyone group."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -639,9 +639,9 @@
       - V-3245
 
 - name: "MEDIUM | V-3289 | AUDIT | Servers will have a host-based Intrusion Detection System."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -651,7 +651,7 @@
       - V-3289
 
 - name: "MEDIUM | V-3289 | PATCH | Servers will have a host-based Intrusion Detection System."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -659,9 +659,9 @@
       - V-3289
 
 - name: "MEDIUM | V-3372 | AUDIT | A system must be logged on to before removing from a docking station."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -671,7 +671,7 @@
       - V-3372
 
 - name: "MEDIUM | V-3372 | PATCH | A system must be logged on to before removing from a docking station."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -679,9 +679,9 @@
       - V-3372
 
 - name: "MEDIUM | V-3374 | AUDIT | The system will be configured to require a strong session key."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -691,7 +691,7 @@
       - V-3374
 
 - name: "MEDIUM | V-3374 | PATCH | The system will be configured to require a strong session key."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -699,9 +699,9 @@
       - V-3374
 
 - name: "MEDIUM | V-3376 | AUDIT | The system will be configured to prevent the storage of passwords and credentials"
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -711,7 +711,7 @@
       - V-3376
 
 - name: "MEDIUM | V-3376 | PATCH | The system will be configured to prevent the storage of passwords and credentials"
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -719,9 +719,9 @@
       - V-3376
 
 - name: "MEDIUM | V-3377 | AUDIT | The system will be configured to prevent anonymous users from having the same rights as the Everyone group."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -731,7 +731,7 @@
       - V-3377
 
 - name: "MEDIUM | V-3377 | PATCH | The system will be configured to prevent anonymous users from having the same rights as the Everyone group."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -739,9 +739,9 @@
       - V-3377
 
 - name: "MEDIUM | V-3378 | AUDIT | The system will be configured to use the Classic security model."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -751,7 +751,7 @@
       - V-3378
 
 - name: "MEDIUM | V-3378 | PATCH | The system will be configured to use the Classic security model."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -759,9 +759,9 @@
       - V-3378
 
 - name: "MEDIUM | V-3380 | AUDIT | The system will be configured to force users to log off when their allowed logon hours expire."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -771,7 +771,7 @@
       - V-3380
 
 - name: "MEDIUM | V-3380 | PATCH | The system will be configured to force users to log off when their allowed logon hours expire."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -779,9 +779,9 @@
       - V-3380
 
 - name: "MEDIUM | V-3381 | AUDIT | The system will be configured to the required LDAP client signing level."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -791,7 +791,7 @@
       - V-3381
 
 - name: "MEDIUM | V-3381 | PATCH | The system will be configured to the required LDAP client signing level."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -799,9 +799,9 @@
       - V-3381
 
 - name: "MEDIUM | V-3382 | AUDIT | The system will be configured to meet the minimum session security requirement for NTLM SSP based clients."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -811,7 +811,7 @@
       - V-3382
 
 - name: "MEDIUM | V-3382 | PATCH | The system will be configured to meet the minimum session security requirement for NTLM SSP based clients."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -819,9 +819,9 @@
       - V-3382
 
 - name: "MEDIUM | V-3383 | AUDIT | The system will be configured to use FIPS-compliant algorithms for encryption, hashing, and signing."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -831,7 +831,7 @@
       - V-3383
 
 - name: "MEDIUM | V-3383 | PATCH | The system will be configured to use FIPS-compliant algorithms for encryption, hashing, and signing."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -839,9 +839,9 @@
       - V-3383
 
 - name: "MEDIUM | V-3385 | AUDIT | The system must be configured to require case insensitivity for non-Windows subsystems."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -851,7 +851,7 @@
       - V-3385
 
 - name: "MEDIUM | V-3385 | PATCH | The system must be configured to require case insensitivity for non-Windows subsystems."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -859,9 +859,9 @@
       - V-3385
 
 - name: "MEDIUM | V-3449 | AUDIT | Remote Desktop Services will limit users to one remote session."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -871,7 +871,7 @@
       - V-3449
 
 - name: "MEDIUM | V-3449 | PATCH | Remote Desktop Services will limit users to one remote session."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -879,9 +879,9 @@
       - V-3449
 
 - name: "MEDIUM | V-3453 | AUDIT | Remote Desktop Services will always prompt a client for passwords upon connection."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -891,7 +891,7 @@
       - V-3453
 
 - name: "MEDIUM | V-3453 | PATCH | Remote Desktop Services will always prompt a client for passwords upon connection."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -899,9 +899,9 @@
       - V-3453
 
 - name: "MEDIUM | V-3454 | AUDIT | Remote Desktop Services will be configured with the client connection encryption set to the required level."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -911,7 +911,7 @@
       - V-3454
 
 - name: "MEDIUM | V-3454 | PATCH | Remote Desktop Services will be configured with the client connection encryption set to the required level."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -919,9 +919,9 @@
       - V-3454
 
 - name: "MEDIUM | V-3455 | AUDIT | Remote Desktop Services will be configured to use session-specific temporary folders."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -931,7 +931,7 @@
       - V-3455
 
 - name: "MEDIUM | V-3455 | PATCH | Remote Desktop Services will be configured to use session-specific temporary folders."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -939,9 +939,9 @@
       - V-3455
 
 - name: "MEDIUM | V-3456 | AUDIT | Remote Desktop Services will delete temporary folders when a session is terminated."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -951,7 +951,7 @@
       - V-3456
 
 - name: "MEDIUM | V-3456 | PATCH | Remote Desktop Services will delete temporary folders when a session is terminated."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -959,9 +959,9 @@
       - V-3456
 
 - name: "MEDIUM | V-3457 | AUDIT | Remote Desktop Services will be configured to set a time limit for disconnected sessions."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -971,7 +971,7 @@
       - V-3457
 
 - name: "MEDIUM | V-3457 | PATCH | Remote Desktop Services will be configured to set a time limit for disconnected sessions."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -979,9 +979,9 @@
       - V-3457
 
 - name: "MEDIUM | V-3458 | AUDIT | Remote Desktop Services will be configured to disconnect an idle session after the specified time period."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -991,7 +991,7 @@
       - V-3458
 
 - name: "MEDIUM | V-3458 | PATCH | Remote Desktop Services will be configured to disconnect an idle session after the specified time period."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -999,9 +999,9 @@
       - V-3458
 
 - name: "MEDIUM | V-3469 | AUDIT | The system will be configured to enable the background refresh of Group Policy."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1011,7 +1011,7 @@
       - V-3469
 
 - name: "MEDIUM | V-3469 | PATCH | The system will be configured to enable the background refresh of Group Policy."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1019,9 +1019,9 @@
       - V-3469
 
 - name: "MEDIUM | V-3470 | AUDIT | The system will be configured to prevent unsolicited remote assistance offers."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1031,7 +1031,7 @@
       - V-3470
 
 - name: "MEDIUM | V-3470 | PATCH | The system will be configured to prevent unsolicited remote assistance offers."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1039,9 +1039,9 @@
       - V-3470
 
 - name: "MEDIUM | V-3479 | AUDIT | The system will be configured to use Safe DLL Search Mode."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1051,7 +1051,7 @@
       - V-3479
 
 - name: "MEDIUM | V-3479 | PATCH | The system will be configured to use Safe DLL Search Mode."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1059,9 +1059,9 @@
       - V-3479
 
 - name: "MEDIUM | V-3480 | AUDIT | Media Player must be configured to prevent automatic checking for updates."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1071,7 +1071,7 @@
       - V-3480
 
 - name: "MEDIUM | V-3480 | PATCH | Media Player must be configured to prevent automatic checking for updates."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1079,9 +1079,9 @@
       - V-3480
 
 - name: "MEDIUM | V-3481 | AUDIT | Media Player will be configured to prevent automatic Codec downloads."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1091,7 +1091,7 @@
       - V-3481
 
 - name: "MEDIUM | V-3481 | PATCH | Media Player will be configured to prevent automatic Codec downloads."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1099,9 +1099,9 @@
       - V-3481
 
 - name: "MEDIUM | V-3487 | AUDIT | Services will be documented and unnecessary services will not be installed or will be disabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1111,7 +1111,7 @@
       - V-3487
 
 - name: "MEDIUM | V-3487 | PATCH | Services will be documented and unnecessary services will not be installed or will be disabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1119,9 +1119,9 @@
       - V-3487
 
 - name: "MEDIUM | V-3491 | AUDIT | Audit logs will be reviewed on a daily basis."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1131,7 +1131,7 @@
       - V-3491
 
 - name: "MEDIUM | V-3491 | PATCH | Audit logs will be reviewed on a daily basis."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1139,9 +1139,9 @@
       - V-3491
 
 - name: "MEDIUM | V-3666 | AUDIT | The system will be configured to meet the minimum session security requirement for NTLM SSP based servers."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1151,7 +1151,7 @@
       - V-3666
 
 - name: "MEDIUM | V-3666 | PATCH | The system will be configured to meet the minimum session security requirement for NTLM SSP based servers."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1159,9 +1159,9 @@
       - V-3666
 
 - name: "MEDIUM | V-3828 | AUDIT | Security-related Software Patches will be applied."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1171,7 +1171,7 @@
       - V-3828
 
 - name: "MEDIUM | V-3828 | PATCH | Security-related Software Patches will be applied."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1179,9 +1179,9 @@
       - V-3828
 
 - name: "MEDIUM | V-4444 | AUDIT | Users must be required to enter a password to access private keys stored on the computer."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1191,7 +1191,7 @@
       - V-4444
 
 - name: "MEDIUM | V-4444 | PATCH | Users must be required to enter a password to access private keys stored on the computer."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1199,9 +1199,9 @@
       - V-4444
 
 - name: "MEDIUM | V-4446 | AUDIT | Software certificate restriction policies will be enforced."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1211,7 +1211,7 @@
       - V-4446
 
 - name: "MEDIUM | V-4446 | PATCH | Software certificate restriction policies will be enforced."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1219,9 +1219,9 @@
       - V-4446
 
 - name: "MEDIUM | V-4447 | AUDIT | The Remote Desktop Session Host will require secure RPC communications."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1231,7 +1231,7 @@
       - V-4447
 
 - name: "MEDIUM | V-4447 | PATCH | The Remote Desktop Session Host will require secure RPC communications."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1239,9 +1239,9 @@
       - V-4447
 
 - name: "MEDIUM | V-4448 | AUDIT | Group Policy objects will be reprocessed even if they have not changed."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1251,7 +1251,7 @@
       - V-4448
 
 - name: "MEDIUM | V-4448 | PATCH | Group Policy objects will be reprocessed even if they have not changed."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1259,9 +1259,9 @@
       - V-4448
 
 - name: "MEDIUM | V-6831 | AUDIT | Outgoing secure channel traffic will be encrypted or signed."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1271,7 +1271,7 @@
       - V-6831
 
 - name: "MEDIUM | V-6831 | PATCH | Outgoing secure channel traffic will be encrypted or signed."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1279,9 +1279,9 @@
       - V-6831
 
 - name: "MEDIUM | V-6832 | AUDIT | The Windows SMB client will be enabled to always perform SMB packet signing."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1291,7 +1291,7 @@
       - V-6832
 
 - name: "MEDIUM | V-6832 | PATCH | The Windows SMB client will be enabled to always perform SMB packet signing."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1299,9 +1299,9 @@
       - V-6832
 
 - name: "MEDIUM | V-6833 | AUDIT | The Windows SMB server will be enabled to always perform SMB packet signing."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1311,7 +1311,7 @@
       - V-6833
 
 - name: "MEDIUM | V-6833 | PATCH | The Windows SMB server will be enabled to always perform SMB packet signing."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1319,9 +1319,9 @@
       - V-6833
 
 - name: "MEDIUM | V-6836 | AUDIT | For systems utilizing a logon ID as the individual identifier, passwords will, at a minimum, be 14 characters."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1331,7 +1331,7 @@
       - V-6836
 
 - name: "MEDIUM | V-6836 | PATCH | For systems utilizing a logon ID as the individual identifier, passwords will, at a minimum, be 14 characters."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1339,9 +1339,9 @@
       - V-6836
 
 - name: "MEDIUM | V-6840 | AUDIT | System mechanisms will be implemented to enforce automatic expiration of passwords."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1351,7 +1351,7 @@
       - V-6840
 
 - name: "MEDIUM | V-6840 | PATCH | System mechanisms will be implemented to enforce automatic expiration of passwords."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1359,9 +1359,9 @@
       - V-6840
 
 - name: "MEDIUM | V-14224 | AUDIT | The system will have a backup administrator account."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1371,7 +1371,7 @@
       - V-14224
 
 - name: "MEDIUM | V-14224 | PATCH | The system will have a backup administrator account."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1379,9 +1379,9 @@
       - V-14224
 
 - name: "MEDIUM | V-14225 | AUDIT | Administrator passwords will be changed as required."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1391,7 +1391,7 @@
       - V-14225
 
 - name: "MEDIUM | V-14225 | PATCH | Administrator passwords will be changed as required."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1399,9 +1399,9 @@
       - V-14225
 
 - name: "MEDIUM | V-14226 | AUDIT | Audit data must be retained for at least one year."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1411,7 +1411,7 @@
       - V-14226
 
 - name: "MEDIUM | V-14226 | PATCH | Audit data must be retained for at least one year."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1419,9 +1419,9 @@
       - V-14226
 
 - name: "MEDIUM | V-14228 | AUDIT | Auditing Access of Global System Objects must be turned off."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1431,7 +1431,7 @@
       - V-14228
 
 - name: "MEDIUM | V-14228 | PATCH | Auditing Access of Global System Objects must be turned off."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1439,9 +1439,9 @@
       - V-14228
 
 - name: "MEDIUM | V-14229 | AUDIT | Audit of Backup and Restore Privileges will be turned off."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1451,7 +1451,7 @@
       - V-14229
 
 - name: "MEDIUM | V-14229 | PATCH | Audit of Backup and Restore Privileges will be turned off."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1459,9 +1459,9 @@
       - V-14229
 
 - name: "MEDIUM | V-14230 | AUDIT | Audit policy using subcategories will be enabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1471,7 +1471,7 @@
       - V-14230
 
 - name: "MEDIUM | V-14230 | PATCH | Audit policy using subcategories will be enabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1479,9 +1479,9 @@
       - V-14230
 
 - name: "MEDIUM | V-14234 | AUDIT | User Account Control approval mode for the built-in Administrator will be enabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1491,7 +1491,7 @@
       - V-14234
 
 - name: "MEDIUM | V-14234 | PATCH | User Account Control approval mode for the built-in Administrator will be enabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1499,9 +1499,9 @@
       - V-14234
 
 - name: "MEDIUM | V-14235 | AUDIT | User Account Control will, at a minimum, prompt administrators for consent."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1511,7 +1511,7 @@
       - V-14235
 
 - name: "MEDIUM | V-14235 | PATCH | User Account Control will, at a minimum, prompt administrators for consent."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1519,9 +1519,9 @@
       - V-14235
 
 - name: "MEDIUM | V-14236 | AUDIT | User Account Control will automatically deny standard user requests for elevation."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1531,7 +1531,7 @@
       - V-14236
 
 - name: "MEDIUM | V-14236 | PATCH | User Account Control will automatically deny standard user requests for elevation."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1539,9 +1539,9 @@
       - V-14236
 
 - name: "MEDIUM | V-14237 | AUDIT | User Account Control will be configured to detect application installations and prompt for elevation."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1551,7 +1551,7 @@
       - V-14237
 
 - name: "MEDIUM | V-14237 | PATCH | User Account Control will be configured to detect application installations and prompt for elevation."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1559,9 +1559,9 @@
       - V-14237
 
 - name: "MEDIUM | V-14239 | AUDIT | User Account Control will only elevate UIAccess applications that are installed in secure locations"
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1571,7 +1571,7 @@
       - V-14239
 
 - name: "MEDIUM | V-14239 | PATCH | User Account Control will only elevate UIAccess applications that are installed in secure locations"
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1579,9 +1579,9 @@
       - V-14239
 
 - name: "MEDIUM | V-14240 | AUDIT | User Account Control will run all administrators in Admin Approval Mode, enabling UAC."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1591,7 +1591,7 @@
       - V-14240
 
 - name: "MEDIUM | V-14240 | PATCH | User Account Control will run all administrators in Admin Approval Mode, enabling UAC."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1599,9 +1599,9 @@
       - V-14240
 
 - name: "MEDIUM | V-14241 | AUDIT | User Account Control will switch to the secure desktop when prompting for elevation."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1611,7 +1611,7 @@
       - V-14241
 
 - name: "MEDIUM | V-14241 | PATCH | User Account Control will switch to the secure desktop when prompting for elevation."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1619,9 +1619,9 @@
       - V-14241
 
 - name: "MEDIUM | V-14242 | AUDIT | User Account Control will virtualize file and registry write failures to per-user locations."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1631,7 +1631,7 @@
       - V-14242
 
 - name: "MEDIUM | V-14242 | PATCH | User Account Control will virtualize file and registry write failures to per-user locations."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1639,9 +1639,9 @@
       - V-14242
 
 - name: "MEDIUM | V-14243 | AUDIT | The system will require username and password to elevate a running application."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1651,7 +1651,7 @@
       - V-14243
 
 - name: "MEDIUM | V-14243 | PATCH | The system will require username and password to elevate a running application."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1659,9 +1659,9 @@
       - V-14243
 
 - name: "MEDIUM | V-14247 | AUDIT | Passwords will not be saved in the Remote Desktop Client."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1671,7 +1671,7 @@
       - V-14247
 
 - name: "MEDIUM | V-14247 | PATCH | Passwords will not be saved in the Remote Desktop Client."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1679,9 +1679,9 @@
       - V-14247
 
 - name: "MEDIUM | V-14249 | AUDIT | Local drives will be prevented from sharing with Remote Desktop Session Hosts (Remote Desktop Services Role)."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1691,7 +1691,7 @@
       - V-14249
 
 - name: "MEDIUM | V-14249 | PATCH | Local drives will be prevented from sharing with Remote Desktop Session Hosts (Remote Desktop Services Role)."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1699,9 +1699,9 @@
       - V-14249
 
 - name: "MEDIUM | V-14253 | AUDIT | Unauthenticated RPC clients must be restricted from connecting to the RPC server."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1711,7 +1711,7 @@
       - V-14253
 
 - name: "MEDIUM | V-14253 | PATCH | Unauthenticated RPC clients must be restricted from connecting to the RPC server."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1719,9 +1719,9 @@
       - V-14253
 
 - name: "MEDIUM | V-14254 | AUDIT | Client computers must be required to authenticate for RPC communication."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1731,7 +1731,7 @@
       - V-14254
 
 - name: "MEDIUM | V-14254 | PATCH | Client computers must be required to authenticate for RPC communication."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1739,9 +1739,9 @@
       - V-14254
 
 - name: "MEDIUM | V-14256 | AUDIT | Web publishing and online ordering wizards will be prevented from downloading a list of providers."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1751,7 +1751,7 @@
       - V-14256
 
 - name: "MEDIUM | V-14256 | PATCH | Web publishing and online ordering wizards will be prevented from downloading a list of providers."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1759,9 +1759,9 @@
       - V-14256
 
 - name: "MEDIUM | V-14259 | AUDIT | Printing over HTTP will be prevented."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1771,7 +1771,7 @@
       - V-14259
 
 - name: "MEDIUM | V-14259 | PATCH | Printing over HTTP will be prevented."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1779,9 +1779,9 @@
       - V-14259
 
 - name: "MEDIUM | V-14260 | AUDIT | Downloading print driver packages over HTTP will be prevented."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1791,7 +1791,7 @@
       - V-14260
 
 - name: "MEDIUM | V-14260 | PATCH | Downloading print driver packages over HTTP will be prevented."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1799,9 +1799,9 @@
       - V-14260
 
 - name: "MEDIUM | V-14261 | AUDIT | Windows will be prevented from using Windows Update to search for drivers."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1811,7 +1811,7 @@
       - V-14261
 
 - name: "MEDIUM | V-14261 | PATCH | Windows will be prevented from using Windows Update to search for drivers."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1819,9 +1819,9 @@
       - V-14261
 
 - name: "MEDIUM | V-14262 | AUDIT | IPv6 must be disabled until a deliberate transition strategy has been implemented."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1831,7 +1831,7 @@
       - V-14262
 
 - name: "MEDIUM | V-14262 | PATCH | IPv6 must be disabled until a deliberate transition strategy has been implemented."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1839,9 +1839,9 @@
       - V-14262
 
 - name: "MEDIUM | V-14268 | AUDIT | Zone information will be preserved when saving attachments."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1851,7 +1851,7 @@
       - V-14268
 
 - name: "MEDIUM | V-14268 | PATCH | Zone information will be preserved when saving attachments."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1859,9 +1859,9 @@
       - V-14268
 
 - name: "MEDIUM | V-14269 | AUDIT | Mechanisms for removing zone information from file attachments will be hidden."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1871,7 +1871,7 @@
       - V-14269
 
 - name: "MEDIUM | V-14269 | PATCH | Mechanisms for removing zone information from file attachments will be hidden."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1879,9 +1879,9 @@
       - V-14269
 
 - name: "MEDIUM | V-14270 | AUDIT | The system will notify antivirus when file attachments are opened."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1891,7 +1891,7 @@
       - V-14270
 
 - name: "MEDIUM | V-14270 | PATCH | The system will notify antivirus when file attachments are opened."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1899,9 +1899,9 @@
       - V-14270
 
 - name: "MEDIUM | V-14271 | AUDIT | Application account passwords will meet DoD requirements for length, complexity and changes."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1911,7 +1911,7 @@
       - V-14271
 
 - name: "MEDIUM | V-14271 | PATCH | Application account passwords will meet DoD requirements for length, complexity and changes."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1919,9 +1919,9 @@
       - V-14271
 
 - name: "MEDIUM | V-15505 | AUDIT | The HBSS McAfee Agent will be installed."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1931,7 +1931,7 @@
       - V-15505
 
 - name: "MEDIUM | V-15505 | PATCH | The HBSS McAfee Agent will be installed."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1939,9 +1939,9 @@
       - V-15505
 
 - name: "MEDIUM | V-15666 | AUDIT | Windows Peer-to-Peer networking services will be turned off."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1951,7 +1951,7 @@
       - V-15666
 
 - name: "MEDIUM | V-15666 | PATCH | Windows Peer-to-Peer networking services will be turned off."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1959,9 +1959,9 @@
       - V-15666
 
 - name: "MEDIUM | V-15667 | AUDIT | Network Bridges will be prohibited in Windows."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1971,7 +1971,7 @@
       - V-15667
 
 - name: "MEDIUM | V-15667 | PATCH | Network Bridges will be prohibited in Windows."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1979,9 +1979,9 @@
       - V-15667
 
 - name: "MEDIUM | V-15674 | AUDIT | The Internet File Association service will be turned off."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -1991,7 +1991,7 @@
       - V-15674
 
 - name: "MEDIUM | V-15674 | PATCH | The Internet File Association service will be turned off."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -1999,9 +1999,9 @@
       - V-15674
 
 - name: "MEDIUM | V-15682 | AUDIT | Attachments must be prevented from being downloaded from RSS feeds."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2011,7 +2011,7 @@
       - V-15682
 
 - name: "MEDIUM | V-15682 | PATCH | Attachments must be prevented from being downloaded from RSS feeds."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2019,9 +2019,9 @@
       - V-15682
 
 - name: "MEDIUM | V-15683 | AUDIT | Windows Explorer shell protocol will run in protected mode."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2031,7 +2031,7 @@
       - V-15683
 
 - name: "MEDIUM | V-15683 | PATCH | Windows Explorer shell protocol will run in protected mode."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2039,9 +2039,9 @@
       - V-15683
 
 - name: "MEDIUM | V-15684 | AUDIT | Users will be notified if a web-based program attempts to install software."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2051,7 +2051,7 @@
       - V-15684
 
 - name: "MEDIUM | V-15684 | PATCH | Users will be notified if a web-based program attempts to install software."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2059,9 +2059,9 @@
       - V-15684
 
 - name: "MEDIUM | V-15685 | AUDIT | Users will be prevented from changing installation options."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2071,7 +2071,7 @@
       - V-15685
 
 - name: "MEDIUM | V-15685 | PATCH | Users will be prevented from changing installation options."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2079,9 +2079,9 @@
       - V-15685
 
 - name: "MEDIUM | V-15696 | AUDIT | The Mapper I/O network protocol driver will be disabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2091,7 +2091,7 @@
       - V-15696
 
 - name: "MEDIUM | V-15696 | PATCH | The Mapper I/O network protocol driver will be disabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2099,9 +2099,9 @@
       - V-15696
 
 - name: "MEDIUM | V-15697 | AUDIT | The Responder network protocol driver will be disabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2111,7 +2111,7 @@
       - V-15697
 
 - name: "MEDIUM | V-15697 | PATCH | The Responder network protocol driver will be disabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2119,9 +2119,9 @@
       - V-15697
 
 - name: "MEDIUM | V-15698 | AUDIT | The configuration of wireless devices using Windows Connect Now will be disabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2131,7 +2131,7 @@
       - V-15698
 
 - name: "MEDIUM | V-15698 | PATCH | The configuration of wireless devices using Windows Connect Now will be disabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2139,9 +2139,9 @@
       - V-15698
 
 - name: "MEDIUM | V-15699 | AUDIT | The Windows Connect Now wizards will be disabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2151,7 +2151,7 @@
       - V-15699
 
 - name: "MEDIUM | V-15699 | PATCH | The Windows Connect Now wizards will be disabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2159,9 +2159,9 @@
       - V-15699
 
 - name: "MEDIUM | V-15700 | AUDIT | Remote access to the Plug and Play interface will be disabled for device installation."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2171,7 +2171,7 @@
       - V-15700
 
 - name: "MEDIUM | V-15700 | PATCH | Remote access to the Plug and Play interface will be disabled for device installation."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2179,9 +2179,9 @@
       - V-15700
 
 - name: "MEDIUM | V-15705 | AUDIT | Users will be prompted for a password on resume from sleep (on battery).  (Applicable to Server 2008 R2 if the system is configured to sleep.)"
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2191,7 +2191,7 @@
       - V-15705
 
 - name: "MEDIUM | V-15705 | PATCH | Users will be prompted for a password on resume from sleep (on battery).  (Applicable to Server 2008 R2 if the system is configured to sleep.)"
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2199,9 +2199,9 @@
       - V-15705
 
 - name: "MEDIUM | V-15706 | AUDIT | The user will be prompted for a password on resume from sleep (Plugged In).  (Applicable on Server 2008 R2 if the system is configured to sleep.)"
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2211,7 +2211,7 @@
       - V-15706
 
 - name: "MEDIUM | V-15706 | PATCH | The user will be prompted for a password on resume from sleep (Plugged In).  (Applicable on Server 2008 R2 if the system is configured to sleep.)"
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2219,9 +2219,9 @@
       - V-15706
 
 - name: "MEDIUM | V-15713 | AUDIT | Windows Defender SpyNet membership will be disabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2231,7 +2231,7 @@
       - V-15713
 
 - name: "MEDIUM | V-15713 | PATCH | Windows Defender SpyNet membership will be disabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2239,9 +2239,9 @@
       - V-15713
 
 - name: "MEDIUM | V-15714 | AUDIT | The system must be configured to save Error Reporting events and messages to the system event log."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2251,7 +2251,7 @@
       - V-15714
 
 - name: "MEDIUM | V-15714 | PATCH | The system must be configured to save Error Reporting events and messages to the system event log."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2259,9 +2259,9 @@
       - V-15714
 
 - name: "MEDIUM | V-15715 | AUDIT | The system must be configured to generate error reports."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2271,7 +2271,7 @@
       - V-15715
 
 - name: "MEDIUM | V-15715 | PATCH | The system must be configured to generate error reports."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2279,9 +2279,9 @@
       - V-15715
 
 - name: "MEDIUM | V-15717 | AUDIT | The system must be configured to allow a local or DOD-wide collector to request additional error reporting diagnostic data to be sent."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2291,7 +2291,7 @@
       - V-15717
 
 - name: "MEDIUM | V-15717 | PATCH | The system must be configured to allow a local or DOD-wide collector to request additional error reporting diagnostic data to be sent."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2299,9 +2299,9 @@
       - V-15717
 
 - name: "MEDIUM | V-15722 | AUDIT | Windows Media Digital Rights Management will be prevented from accessing the Internet."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2311,7 +2311,7 @@
       - V-15722
 
 - name: "MEDIUM | V-15722 | PATCH | Windows Media Digital Rights Management will be prevented from accessing the Internet."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2319,9 +2319,9 @@
       - V-15722
 
 - name: "MEDIUM | V-15727 | AUDIT | Users will be prevented from sharing files in their profiles."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2331,7 +2331,7 @@
       - V-15727
 
 - name: "MEDIUM | V-15727 | PATCH | Users will be prevented from sharing files in their profiles."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2339,9 +2339,9 @@
       - V-15727
 
 - name: "MEDIUM | V-15823 | AUDIT | Software certificate installation files will be removed from a system."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2351,7 +2351,7 @@
       - V-15823
 
 - name: "MEDIUM | V-15823 | PATCH | Software certificate installation files will be removed from a system."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2359,9 +2359,9 @@
       - V-15823
 
 - name: "MEDIUM | V-15991 | AUDIT | UIAccess applications will not be allowed to prompt for elevation without using the secure desktop."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2371,7 +2371,7 @@
       - V-15991
 
 - name: "MEDIUM | V-15991 | PATCH | UIAccess applications will not be allowed to prompt for elevation without using the secure desktop."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2379,9 +2379,9 @@
       - V-15991
 
 - name: "MEDIUM | V-15997 | AUDIT | The system will be configured to prevent users from mapping local COM ports and redirecting data from the Remote Desktop Session Host to local COM ports. (Remote Desktop Services Role)"
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2391,7 +2391,7 @@
       - V-15997
 
 - name: "MEDIUM | V-15997 | PATCH | The system will be configured to prevent users from mapping local COM ports and redirecting data from the Remote Desktop Session Host to local COM ports. (Remote Desktop Services Role)"
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2399,9 +2399,9 @@
       - V-15997
 
 - name: "MEDIUM | V-15998 | AUDIT | The system will be configured to prevent users from mapping local LPT ports and redirecting data from the Remote Desktop Session Host to local LPT ports. (Remote Desktop Services Role)"
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2411,7 +2411,7 @@
       - V-15998
 
 - name: "MEDIUM | V-15998 | PATCH | The system will be configured to prevent users from mapping local LPT ports and redirecting data from the Remote Desktop Session Host to local LPT ports. (Remote Desktop Services Role)"
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2419,9 +2419,9 @@
       - V-15998
 
 - name: "MEDIUM | V-15999 | AUDIT | The system will be configured to prevent users from redirecting Plug and Play devices to the Remote Desktop Session Host. (Remote Desktop Services Role)"
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2431,7 +2431,7 @@
       - V-15999
 
 - name: "MEDIUM | V-15999 | PATCH | The system will be configured to prevent users from redirecting Plug and Play devices to the Remote Desktop Session Host. (Remote Desktop Services Role)"
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2439,9 +2439,9 @@
       - V-15999
 
 - name: "MEDIUM | V-16000 | AUDIT | The system will be configured to ensure smart card devices can be redirected to the Remote Desktop Session. (Remote Desktop Services Role)"
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2451,7 +2451,7 @@
       - V-16000
 
 - name: "MEDIUM | V-16000 | PATCH | The system will be configured to ensure smart card devices can be redirected to the Remote Desktop Session. (Remote Desktop Services Role)"
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2459,9 +2459,9 @@
       - V-16000
 
 - name: "MEDIUM | V-16008 | AUDIT | Windows will elevate all applications in User Account Control, not just signed ones."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2471,7 +2471,7 @@
       - V-16008
 
 - name: "MEDIUM | V-16008 | PATCH | Windows will elevate all applications in User Account Control, not just signed ones."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2479,9 +2479,9 @@
       - V-16008
 
 - name: "MEDIUM | V-16020 | AUDIT | The Windows Customer Experience Improvement Program will be disabled."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2491,7 +2491,7 @@
       - V-16020
 
 - name: "MEDIUM | V-16020 | PATCH | The Windows Customer Experience Improvement Program will be disabled."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2499,9 +2499,9 @@
       - V-16020
 
 - name: "MEDIUM | V-16021 | AUDIT | The Windows Help Experience Improvement Program will be disabled"
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2511,7 +2511,7 @@
       - V-16021
 
 - name: "MEDIUM | V-16021 | PATCH | The Windows Help Experience Improvement Program will be disabled"
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2519,9 +2519,9 @@
       - V-16021
 
 - name: "MEDIUM | V-16048 | AUDIT | Windows Help Ratings feedback will be turned off."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2531,7 +2531,7 @@
       - V-16048
 
 - name: "MEDIUM | V-16048 | PATCH | Windows Help Ratings feedback will be turned off."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2539,9 +2539,9 @@
       - V-16048
 
 - name: "MEDIUM | V-21950 | AUDIT | The service principal name (SPN) target name validation level will be turned off."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2551,7 +2551,7 @@
       - V-21950
 
 - name: "MEDIUM | V-21950 | PATCH | The service principal name (SPN) target name validation level will be turned off."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2559,9 +2559,9 @@
       - V-21950
 
 - name: "MEDIUM | V-21951 | AUDIT | Services using Local System that use negotiate when reverting to NTLM authentication will use the computer identity vs. authenticating anonymously."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2571,7 +2571,7 @@
       - V-21951
 
 - name: "MEDIUM | V-21951 | PATCH | Services using Local System that use negotiate when reverting to NTLM authentication will use the computer identity vs. authenticating anonymously."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2579,9 +2579,9 @@
       - V-21951
 
 - name: "MEDIUM | V-21952 | AUDIT | NTLM will be prevented from falling back to a Null session."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2591,7 +2591,7 @@
       - V-21952
 
 - name: "MEDIUM | V-21952 | PATCH | NTLM will be prevented from falling back to a Null session."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2599,9 +2599,9 @@
       - V-21952
 
 - name: "MEDIUM | V-21953 | AUDIT | PKU2U authentication using online identities will be prevented."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2611,7 +2611,7 @@
       - V-21953
 
 - name: "MEDIUM | V-21953 | PATCH | PKU2U authentication using online identities will be prevented."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium
@@ -2619,9 +2619,9 @@
       - V-21953
 
 - name: "MEDIUM | V-21954 | AUDIT | Kerberos encryption types must be configured to prevent the use of DES encryption suites."
-  command: true
+  win_command: true
   register: result
-  always_run: yes
+  check_mode: no
   changed_when: no
   ignore_errors: yes
   tags:
@@ -2631,7 +2631,7 @@
       - V-21954
 
 - name: "MEDIUM | V-21954 | PATCH | Kerberos encryption types must be configured to prevent the use of DES encryption suites."
-  command: true
+  win_command: true
   tags:
       - cat2
       - medium

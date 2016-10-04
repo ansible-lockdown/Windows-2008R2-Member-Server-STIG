@@ -44,3 +44,169 @@
       - medium
       - patch
       - V-1141
+
+- name: "MEDIUM | V-1154 | AUDIT | The Ctrl+Alt+Del security attention sequence for logons will be enabled."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCAD
+  register: disable_CAD_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1154
+
+- name: "MEDIUM | V-1154 | PATCH | The Ctrl+Alt+Del security attention sequence for logons will be enabled."
+  win_regedit: 
+    key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System'
+    value: DisableCAD
+    data: 0
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1154
+
+- name: "MEDIUM | V-1157 | AUDIT | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
+  win_command: reg query \"HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v SCRemoveOption
+  register: SC_removal_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1157
+
+- name: "MEDIUM | V-1157 | PATCH | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
+  win_regedit: 
+    key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+    value: SCRemoveOption
+    data: 1
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1157
+
+- name: "MEDIUM | V-1162 | AUDIT | The Windows SMB server will perform SMB packet signing when possible."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v EnableSecuritySignature
+  register: SMB_server_packet_signing_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1162
+
+- name: "MEDIUM | V-1162 | PATCH | The Windows SMB server will perform SMB packet signing when possible."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters'
+    value: EnableSecuritySignature
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1162
+
+- name: "MEDIUM | V-1163 | AUDIT | Outgoing secure channel traffic will be encrypted when possible."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\Netlogon\Parameters /v SealSecureChannel
+  register: encrypt_outgoing_secure_channel_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1163
+
+- name: "MEDIUM | V-1163 | PATCH | Outgoing secure channel traffic will be encrypted when possible."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
+    value: SealSecureChannel
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1163
+
+- name: "MEDIUM | V-1164 | AUDIT | Outgoing secure channel traffic will be signed when possible."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\Netlogon\Parameters /v SignSecureChannel
+  register: sign_outgoing_secure_channel_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1164
+
+- name: "MEDIUM | V-1164 | PATCH | Outgoing secure channel traffic will be signed when possible."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
+    value: SignSecureChannel
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1164
+
+- name: "MEDIUM | V-1166 | AUDIT | The Windows SMB client will be enabled to perform SMB packet signing when possible."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\LanmanWorkstation\Parameters /v EnableSecuritySignature
+  register: SMB_client_packet_signing_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1166
+
+- name: "MEDIUM | V-1166 | PATCH | The Windows SMB client will be enabled to perform SMB packet signing when possible."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Services\LanmanWorkstation\Parameters'
+    value: EnableSecuritySignature
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1166
+
+- name: "MEDIUM | V-1171 | AUDIT | Ejection of removable NTFS media is not restricted to Administrators."
+  win_command: reg query \"HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v AllocateDASD
+  register: eject_removable_media_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1171
+
+- name: "MEDIUM | V-1171 | PATCH | Ejection of removable NTFS media is not restricted to Administrators."
+  win_regedit: 
+    key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+    value: AllocateDASD
+    data: 0
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1171
