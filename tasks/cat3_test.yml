@@ -237,3 +237,27 @@
       - patch
       - V-3373
 
+- name: "LOW | V-4110 | AUDIT | The system will be configured to prevent IP source routing."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\Tcpip\Parameters /v DisableIPSourceRouting
+  register: disable_ip_routing_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in disable_ip_routing_audit.stderr and disable_ip_routing_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4110
+
+- name: "LOW | V-4110 | PATCH | The system will be configured to prevent IP source routing."
+  win_regedit: 
+      key: 'HKLM:\System\CurrentControlSet\Services\Tcpip\Parameters'
+      value: DisableIPSourceRouting
+      data: 2
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4110
+
