@@ -491,3 +491,27 @@
       - patch
       - V-3456
 
+- name: "MEDIUM | V-3457 | AUDIT | Remote Desktop Services will be configured to set a time limit for disconnected sessions."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v MaxDisconnectionTime
+  register: max_disconnection_time_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in max_disconnection_time_audit.stderr and max_disconnection_time_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3457
+
+- name: "MEDIUM | V-3457 | PATCH | Remote Desktop Services will be configured to set a time limit for disconnected sessions."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: MaxDisconnectionTime
+      data: 0x0000ea60
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-3457
+
