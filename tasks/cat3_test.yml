@@ -261,3 +261,27 @@
       - patch
       - V-4110
 
+- name: "LOW | V-4111 | AUDIT | The system will be configured to prevent ICMP redirects from overriding OSPF generated routes."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\Tcpip\Parameters /v EnableICMPRedirect
+  register: enable_ICMP_routing_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in enable_ICMP_routing_audit.stderr and enable_ICMP_routing_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4111
+
+- name: "LOW | V-4111 | PATCH | The system will be configured to prevent ICMP redirects from overriding OSPF generated routes."
+  win_regedit: 
+      key: 'HKLM:\System\CurrentControlSet\Services\Tcpip\Parameters'
+      value: EnableICMPRedirect
+      data: 0
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4111
+
