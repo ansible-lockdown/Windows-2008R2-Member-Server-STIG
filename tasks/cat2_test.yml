@@ -660,7 +660,7 @@
       - V-3481
 
 - name: "MEDIUM | V-4444 | AUDIT | Users must be required to enter a password to access private keys stored on the computer."
-  win_command: reg query HKCU\SOFTWARE\Policies\Microsoft\Cryptography /v ForceKeyProtection
+  win_command: reg query HKLM\SOFTWARE\Policies\Microsoft\Cryptography /v ForceKeyProtection
   register: strong_key_protection_audit
   check_mode: no
   changed_when: no
@@ -673,7 +673,7 @@
 
 - name: "MEDIUM | V-4444 | PATCH | Users must be required to enter a password to access private keys stored on the computer."
   win_regedit: 
-      key: 'HKCU:\SOFTWARE\Policies\Microsoft\Cryptography'
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Cryptography'
       value: ForceKeyProtection
       data: 2
       datatype: dword
@@ -682,4 +682,5 @@
       - medium
       - patch
       - V-4444
+
 
