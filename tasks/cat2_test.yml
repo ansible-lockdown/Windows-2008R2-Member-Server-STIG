@@ -587,3 +587,27 @@
       - patch
       - V-3470
 
+- name: "MEDIUM | V-3479 | AUDIT | The system will be configured to use Safe DLL Search Mode."
+  win_command: reg query \"HKLM\System\CurrentControlSet\Control\Session Manager\" /v SafeDllSearchMode
+  register: safe_DLL_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in safe_DLL_audit.stderr and safe_DLL_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3479
+
+- name: "MEDIUM | V-3479 | PATCH | The system will be configured to use Safe DLL Search Mode."
+  win_regedit: 
+      key: 'HKLM:\System\CurrentControlSet\Control\Session Manager'
+      value: SafeDllSearchMode
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-3479
+
