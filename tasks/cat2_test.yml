@@ -683,4 +683,27 @@
       - patch
       - V-4444
 
+- name: "MEDIUM | V-4446 | AUDIT | Software certificate restriction policies will be enforced."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\Safer\CodeIdentifiers /v AuthenticodeEnabled
+  register: software_restricition_policies_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in software_restricition_policies_audit.stderr and software_restricition_policies_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-4446
+
+- name: "MEDIUM | V-4446 | PATCH | Software certificate restriction policies will be enforced."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\Safer\CodeIdentifiers'
+      value: AuthenticodeEnabled
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-4446
 
