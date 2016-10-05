@@ -309,3 +309,26 @@
       - patch
       - V-4112
 
+- name: "LOW | V-4113 | AUDIT | The system will be configured to limit how often keep-alive packets are sent."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\Tcpip\Parameters /v KeepAliveTime
+  register: keep_alive_time_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in keep_alive_time_audit.stderr and keep_alive_time_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4113
+
+- name: "LOW | V-4113 | PATCH | The system will be configured to limit how often keep-alive packets are sent."
+  win_regedit:
+      key: 'HKLM:\System\CurrentControlSet\Services\Tcpip\Parameters'
+      value: KeepAliveTime
+      data: 300000
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+
