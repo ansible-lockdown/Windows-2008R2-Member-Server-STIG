@@ -539,4 +539,27 @@
       - patch
       - V-3458
 
+- name: "MEDIUM | V-3469 | AUDIT | The system will be configured to enable the background refresh of Group Policy."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\system /v DisableBkGndGroupPolicy
+  register: background_group_policy_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in background_group_policy_audit.stderr and background_group_policy_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3469
+
+- name: "MEDIUM | V-3469 | PATCH | The system will be configured to enable the background refresh of Group Policy."
+  win_regedit: 
+      key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\system'
+      value: DisableBkGndGroupPolicy
+      data: 0
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-3469
 
