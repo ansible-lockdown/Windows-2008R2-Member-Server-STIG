@@ -563,3 +563,27 @@
       - patch
       - V-3469
 
+- name: "MEDIUM | V-3470 | AUDIT | The system will be configured to prevent unsolicited remote assistance offers."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v fAllowUnsolicited
+  register: unsolicited_remote_assistance_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in unsolicited_remote_assistance_audit.stderr and unsolicited_remote_assistance_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3470
+
+- name: "MEDIUM | V-3470 | PATCH | The system will be configured to prevent unsolicited remote assistance offers."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: fAllowUnsolicited
+      data: 0
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-3470
+
