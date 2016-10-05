@@ -423,3 +423,23 @@
       - patch
       - V-3453
 
+- name: "MEDIUM | V-3454 | AUDIT | Remote Desktop Services will be configured with the client connection encryption set to the required level."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v MinEncryptionLevel
+  register: min_encrypt_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in min_encrypt_audit.stderr and min_encrypt_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3454
+
+# - name: "MEDIUM | V-3454 | PATCH | Remote Desktop Services will be configured with the client connection encryption set to the required level."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-3454
+
