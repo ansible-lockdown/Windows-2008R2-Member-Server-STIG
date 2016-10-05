@@ -443,3 +443,27 @@
 #       - patch
 #       - V-3454
 
+- name: "MEDIUM | V-3455 | AUDIT | Remote Desktop Services will be configured to use session-specific temporary folders."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v PerSessionTempDir
+  register: temp_folder_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in temp_folder_audit.stderr and temp_folder_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3455
+
+- name: "MEDIUM | V-3455 | PATCH | Remote Desktop Services will be configured to use session-specific temporary folders."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: PerSessionTempDir
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-3455
+
