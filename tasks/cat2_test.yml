@@ -515,3 +515,27 @@
       - patch
       - V-3457
 
+- name: "MEDIUM | V-3458 | AUDIT | Remote Desktop Services will be configured to disconnect an idle session after the specified time period."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v MaxIdleTime
+  register: max_idle_time_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in max_idle_time_audit.stderr and max_idle_time_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3458
+
+- name: "MEDIUM | V-3458 | PATCH | Remote Desktop Services will be configured to disconnect an idle session after the specified time period."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: MaxIdleTime
+      data: 0x000dbba0
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-3458
+
