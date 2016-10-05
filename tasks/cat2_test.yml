@@ -307,3 +307,27 @@
       - patch
       - V-3378
 
+- name: "MEDIUM | V-3381 | AUDIT | The system will be configured to the required LDAP client signing level."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\LDAP /v LDAPClientIntegrity
+  register: LDAP_client_integrity_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in LDAP_client_integrity_audit.stderr and LDAP_client_integrity_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3381
+
+- name: "MEDIUM | V-3381 | PATCH | The system will be configured to the required LDAP client signing level."
+  win_regedit: 
+      key: 'HKLM:\System\CurrentControlSet\Services\LDAP'
+      value: LDAPClientIntegrity
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-3381
+
