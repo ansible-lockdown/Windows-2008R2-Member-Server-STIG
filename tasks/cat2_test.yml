@@ -399,3 +399,27 @@
       - patch
       - V-3449
 
+- name: "MEDIUM | V-3453 | AUDIT | Remote Desktop Services will always prompt a client for passwords upon connection."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v fPromptForPassword
+  register: rdp_password_prompt_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in rdp_password_prompt_audit.stderr and rdp_password_prompt_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3453
+
+- name: "MEDIUM | V-3453 | PATCH | Remote Desktop Services will always prompt a client for passwords upon connection."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: fPromptForPassword
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-3453
+
