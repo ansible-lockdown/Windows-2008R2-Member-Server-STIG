@@ -467,3 +467,27 @@
       - patch
       - V-3455
 
+- name: "MEDIUM | V-3456 | AUDIT | Remote Desktop Services will delete temporary folders when a session is terminated."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v DeleteTempDirsOnExit
+  register: delete_temp_folder_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in delete_temp_folder_audit.stderr and delete_temp_folder_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3456
+
+- name: "MEDIUM | V-3456 | PATCH | Remote Desktop Services will delete temporary folders when a session is terminated."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: DeleteTempDirsOnExit
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-3456
+
