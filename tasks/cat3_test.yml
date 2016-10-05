@@ -332,3 +332,27 @@
       - low
       - patch
       - V-4113
+
+- name: "LOW | V-4438 | AUDIT | The system must limit how many times unacknowledged TCP data is retransmitted."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\Tcpip\Parameters /v TcpMaxDataRetransmissions
+  register: max_TCP_retransmit_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in max_TCP_retransmit_audit.stderr and max_TCP_retransmit_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4438
+
+- name: "LOW | V-4438 | PATCH | The system must limit how many times unacknowledged TCP data is retransmitted."
+  win_regedit:
+      key: 'HKLM:\System\CurrentControlSet\Services\Tcpip\Parameters'
+      value: TcpMaxDataRetransmissions
+      data: 3
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4438
