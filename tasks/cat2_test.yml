@@ -1,25 +1,25 @@
-- name: "MEDIUM | V-1089 | AUDIT | The required legal notice must be configured to display before console logon."
-  win_command: reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LegalNoticeText
-  register: legal_notice_audit
-  check_mode: no
-  changed_when: no
-  failed_when: "reg_not_found not in legal_notice_audit.stderr and legal_notice_audit.stderr"
-  tags:
-      - cat2
-      - medium
-      - audit
-      - V-1089
+# - name: "MEDIUM | V-1089 | AUDIT | The required legal notice must be configured to display before console logon."
+#   win_command: reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LegalNoticeText
+#   register: legal_notice_audit
+#   check_mode: no
+#   changed_when: no
+#   failed_when: "reg_not_found not in legal_notice_audit.stderr and legal_notice_audit.stderr"
+#   tags:
+#       - cat2
+#       - medium
+#       - audit
+#       - V-1089
 
-- name: "MEDIUM | V-1089 | PATCH | The required legal notice must be configured to display before console logon."
-  win_regedit: 
-      key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System'
-      value: "LegalNoticeText"
-      data: "{{ legal_notice }}"
-  tags:
-      - cat2
-      - medium
-      - patch
-      - V-1089
+# - name: "MEDIUM | V-1089 | PATCH | The required legal notice must be configured to display before console logon."
+#   win_regedit: 
+#       key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System'
+#       value: "LegalNoticeText"
+#       data: "{{ legal_notice }}"
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-1089
 
 - name: "MEDIUM | V-1141 | AUDIT | Unencrypted passwords must not be sent to third-party SMB Servers."
   win_command: reg query HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters /v EnablePlainTextPassword
@@ -69,28 +69,28 @@
       - patch
       - V-1154
 
-- name: "MEDIUM | V-1157 | AUDIT | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
-  win_command: reg query \"HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v SCRemoveOption
-  register: SC_removal_audit
-  check_mode: no
-  changed_when: no
-  failed_when: "reg_not_found not in SC_removal_audit.stderr and SC_removal_audit.stderr"
-  tags:
-      - cat2
-      - medium
-      - audit
-      - V-1157
+# - name: "MEDIUM | V-1157 | AUDIT | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
+#   win_command: reg query \"HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v SCRemoveOption
+#   register: SC_removal_audit
+#   check_mode: no
+#   changed_when: no
+#   failed_when: "reg_not_found not in SC_removal_audit.stderr and SC_removal_audit.stderr"
+#   tags:
+#       - cat2
+#       - medium
+#       - audit
+#       - V-1157
 
-- name: "MEDIUM | V-1157 | PATCH | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
-  win_regedit: 
-      key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
-      value: SCRemoveOption
-      data: 1
-  tags:
-      - cat2
-      - medium
-      - patch
-      - V-1157
+# - name: "MEDIUM | V-1157 | PATCH | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
+#   win_regedit: 
+#       key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+#       value: SCRemoveOption
+#       data: 1
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-1157
 
 - name: "MEDIUM | V-1162 | AUDIT | The Windows SMB server will perform SMB packet signing when possible."
   win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v EnableSecuritySignature
@@ -538,4 +538,5 @@
       - medium
       - patch
       - V-3458
+
 
