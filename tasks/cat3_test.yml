@@ -285,3 +285,27 @@
       - patch
       - V-4111
 
+- name: "LOW | V-4112 | AUDIT | The system will be configured to disable the Internet Router Discover Protocol (IRDP)."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\Tcpip\Parameters /v PerformRouterDiscovery
+  register: disable_IRDP_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in disable_IRDP_audit.stderr and disable_IRDP_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-4112
+
+- name: "LOW | V-4112 | PATCH | The system will be configured to disable the Internet Router Discover Protocol (IRDP)."
+  win_regedit:
+      key: 'HKLM:\System\CurrentControlSet\Services\Tcpip\Parameters'
+      value: PerformRouterDiscovery
+      data: 0
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-4112
+
