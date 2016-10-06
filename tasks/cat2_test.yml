@@ -707,3 +707,27 @@
       - patch
       - V-4446
 
+- name: "MEDIUM | V-4447 | AUDIT | The Remote Desktop Session Host will require secure RPC communications."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v fEncryptRPCTraffic
+  register: encrypt_RPC_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in encrypt_RPC_audit.stderr and encrypt_RPC_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-4447
+
+- name: "MEDIUM | V-4447 | PATCH | The Remote Desktop Session Host will require secure RPC communications."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: fEncryptRPCTraffic
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-4447
+
