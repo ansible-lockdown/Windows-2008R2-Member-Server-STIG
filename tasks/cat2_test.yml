@@ -913,3 +913,23 @@
 #       - patch
 #       - V-14234
 
+- name: "MEDIUM | V-14235 | AUDIT | User Account Control will, at a minimum, prompt administrators for consent."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v ConsentPromptBehaviorAdmin
+  register: admin_consent_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in admin_consent_audit.stderr and admin_consent_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14235
+
+# - name: "MEDIUM | V-14235 | PATCH | User Account Control will, at a minimum, prompt administrators for consent."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-14235
+
