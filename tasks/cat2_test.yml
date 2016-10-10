@@ -973,3 +973,23 @@
 #       - patch
 #       - V-14237
 
+- name: "MEDIUM | V-14239 | AUDIT | User Account Control will only elevate UIAccess applications that are installed in secure locations"
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableSecureUIAPaths
+  register: enable_secure_UIA_paths_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in enable_secure_UIA_paths_audit.stderr and enable_secure_UIA_paths_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14239
+
+# - name: "MEDIUM | V-14239 | PATCH | User Account Control will only elevate UIAccess applications that are installed in secure locations"
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-14239
+
