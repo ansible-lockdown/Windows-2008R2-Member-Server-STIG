@@ -756,3 +756,27 @@
       - patch
       - V-4448
 
+- name: "MEDIUM | V-6831 | AUDIT | Outgoing secure channel traffic will be encrypted or signed."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\Netlogon\Parameters /v RequireSignOrSeal
+  register: encrypt_RPC_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in encrypt_RPC_audit.stderr and encrypt_RPC_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-6831
+
+- name: "MEDIUM | V-6831 | PATCH | Outgoing secure channel traffic will be encrypted or signed."
+  win_regedit: 
+      key: 'HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters'
+      value: RequireSignOrSeal
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-6831
+
