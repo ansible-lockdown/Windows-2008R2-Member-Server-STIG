@@ -933,3 +933,23 @@
 #       - patch
 #       - V-14235
 
+- name: "MEDIUM | V-14236 | AUDIT | User Account Control will automatically deny standard user requests for elevation."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v ConsentPromptBehaviorUser
+  register: user_consent_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in user_consent_audit.stderr and user_consent_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14236
+
+# - name: "MEDIUM | V-14236 | PATCH | User Account Control will automatically deny standard user requests for elevation."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-14236
+
