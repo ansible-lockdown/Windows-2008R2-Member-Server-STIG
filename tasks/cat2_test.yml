@@ -1033,3 +1033,23 @@
 #       - patch
 #       - V-14241
 
+- name: "MEDIUM | V-14242 | AUDIT | User Account Control will virtualize file and registry write failures to per-user locations."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableVirtualization
+  register: UAC_virtualization_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in UAC_virtualization_audit.stderr and UAC_virtualization_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14242
+
+# - name: "MEDIUM | V-14242 | PATCH | User Account Control will virtualize file and registry write failures to per-user locations."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-14242
+
