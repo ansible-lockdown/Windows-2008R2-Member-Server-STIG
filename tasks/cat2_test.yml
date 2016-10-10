@@ -993,3 +993,23 @@
 #       - patch
 #       - V-14239
 
+- name: "MEDIUM | V-14240 | AUDIT | User Account Control will run all administrators in Admin Approval Mode, enabling UAC."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA
+  register: enable_UAC
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in enable_UAC.stderr and enable_UAC.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14240
+
+# - name: "MEDIUM | V-14240 | PATCH | User Account Control will run all administrators in Admin Approval Mode, enabling UAC."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-14240
+
