@@ -94,10 +94,10 @@
 
 - name: "MEDIUM | V-1162 | AUDIT | The Windows SMB server will perform SMB packet signing when possible."
   win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v EnableSecuritySignature
-  register: SMB_server_packet_signing_audit
+  register: enable_SMB_server_packet_signing_audit
   check_mode: no
   changed_when: no
-  failed_when: "reg_not_found not in SMB_server_packet_signing_audit.stderr and SMB_server_packet_signing_audit.stderr"
+  failed_when: "reg_not_found not in enable_SMB_server_packet_signing_audit.stderr and enable_SMB_server_packet_signing_audit.stderr"
   tags:
       - cat2
       - medium
@@ -166,10 +166,10 @@
 
 - name: "MEDIUM | V-1166 | AUDIT | The Windows SMB client will be enabled to perform SMB packet signing when possible."
   win_command: reg query HKLM\System\CurrentControlSet\Services\LanmanWorkstation\Parameters /v EnableSecuritySignature
-  register: SMB_client_packet_signing_audit
+  register: enable_SMB_client_packet_signing_audit
   check_mode: no
   changed_when: no
-  failed_when: "reg_not_found not in SMB_client_packet_signing_audit.stderr and SMB_client_packet_signing_audit.stderr"
+  failed_when: "reg_not_found not in enable_SMB_client_packet_signing_audit.stderr and enable_SMB_client_packet_signing_audit.stderr"
   tags:
       - cat2
       - medium
@@ -758,10 +758,10 @@
 
 - name: "MEDIUM | V-6831 | AUDIT | Outgoing secure channel traffic will be encrypted or signed."
   win_command: reg query HKLM\System\CurrentControlSet\Services\Netlogon\Parameters /v RequireSignOrSeal
-  register: encrypt_RPC_audit
+  register: encrypt_or_sign_audit
   check_mode: no
   changed_when: no
-  failed_when: "reg_not_found not in encrypt_RPC_audit.stderr and encrypt_RPC_audit.stderr"
+  failed_when: "reg_not_found not in encrypt_or_sign_audit.stderr and encrypt_or_sign_audit.stderr"
   tags:
       - cat2
       - medium
