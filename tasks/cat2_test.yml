@@ -1013,3 +1013,23 @@
 #       - patch
 #       - V-14240
 
+- name: "MEDIUM | V-14241 | AUDIT | User Account Control will switch to the secure desktop when prompting for elevation."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v PromptOnSecureDesktop
+  register: prompt_on_secure_desktop_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in prompt_on_secure_desktop_audit.stderr and prompt_on_secure_desktop_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14241
+
+# - name: "MEDIUM | V-14241 | PATCH | User Account Control will switch to the secure desktop when prompting for elevation."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-14241
+
