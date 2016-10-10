@@ -800,3 +800,23 @@
 #       - patch
 #       - V-6832
 
+- name: "MEDIUM | V-6833 | AUDIT | The Windows SMB server will be enabled to always perform SMB packet signing."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v RequireSecuritySignature
+  register: require_SMB_server_packet_signing_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in require_SMB_server_packet_signing_audit.stderr and require_SMB_server_packet_signing_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-6833
+
+# - name: "MEDIUM | V-6833 | PATCH | The Windows SMB server will be enabled to always perform SMB packet signing."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-6833
+
