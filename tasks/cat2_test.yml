@@ -1245,3 +1245,27 @@
       - patch
       - V-14261
 
+- name: "MEDIUM | V-14268 | AUDIT | Zone information will be preserved when saving attachments."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments /v SaveZoneInformation
+  register: save_zone_info_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in save_zone_info_audit.stderr and save_zone_info_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14268
+
+- name: "MEDIUM | V-14268 | PATCH | Zone information will be preserved when saving attachments."
+  win_regedit: 
+      key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments'
+      value: SaveZoneInformation
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-14268
+
