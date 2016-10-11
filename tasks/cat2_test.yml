@@ -1365,3 +1365,23 @@
       - patch
       - V-15682
 
+- name: "MEDIUM | V-15683 | AUDIT | Windows Explorer shell protocol will run in protected mode."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer /v PreXPSP2ShellProtocolBehavior
+  register: shell_protocol_protected_mode_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in shell_protocol_protected_mode_audit.stderr and shell_protocol_protected_mode_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15683
+
+# - name: "MEDIUM | V-15683 | PATCH | Windows Explorer shell protocol will run in protected mode."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-15683
+
