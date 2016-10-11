@@ -1410,11 +1410,16 @@
       - V-15684
 
 - name: "MEDIUM | V-15696 | AUDIT | The Mapper I/O network protocol driver will be disabled."
-  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\LLTD
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\LLTD /v {{ item }}
   register: disable_mapper_IO_audit
   check_mode: no
   changed_when: no
-  failed_when: "reg_not_found not in diable_mapper_IO_audit.stderr and diable_mapper_IO_audit.stderr"
+  failed_when: "reg_not_found not in disable_mapper_IO_audit.stderr and disable_mapper_IO_audit.stderr"
+  with_items: 
+      - AllowLLTDIOOndomain
+      - AllowLLTDIOOnPublicNet
+      - EnableLLTDIO
+      - ProhibitLLTDIOOnPrivateNet
   tags:
       - cat2
       - medium
@@ -1439,7 +1444,7 @@
       - V-15696
 
 - name: "MEDIUM | V-15697 | AUDIT | The Responder network protocol driver will be disabled."
-  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\LLTD /V {{ item }}
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\LLTD /v {{ item }}
   register: diable_responder_protocol_audit
   check_mode: no
   changed_when: no
