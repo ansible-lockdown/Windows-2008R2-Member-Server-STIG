@@ -1293,3 +1293,27 @@
       - patch
       - V-14269
 
+- name: "MEDIUM | V-15666 | AUDIT | Windows Peer-to-Peer networking services will be turned off."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Peernet /v Disabled
+  register: p2p_net_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in p2p_net_audit.stderr and p2p_net_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15666
+
+- name: "MEDIUM | V-15666 | PATCH | Windows Peer-to-Peer networking services will be turned off."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Peernet'
+      value: Disabled
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15666
+
