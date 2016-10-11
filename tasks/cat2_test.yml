@@ -1341,3 +1341,27 @@
       - patch
       - V-15667
 
+- name: "MEDIUM | V-15682 | AUDIT | Attachments must be prevented from being downloaded from RSS feeds."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds\" /v DisableEnclosureDownload
+  register: no_attachments_from_RSS_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in no_attachments_from_RSS_audit.stderr and no_attachments_from_RSS_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15682
+
+- name: "MEDIUM | V-15682 | PATCH | Attachments must be prevented from being downloaded from RSS feeds."
+  win_regedit: 
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds'
+      value: DisableEnclosureDownload
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15682
+
