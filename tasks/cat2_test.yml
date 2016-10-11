@@ -1173,3 +1173,27 @@
       - patch
       - V-14256
 
+- name: "MEDIUM | V-14259 | AUDIT | Printing over HTTP will be prevented."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Printers\" /v DisableHTTPPrinting
+  register: disable_HTTP_printing_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in disable_HTTP_printing_audit.stderr and disable_HTTP_printing_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14259
+
+- name: "MEDIUM | V-14259 | PATCH | Printing over HTTP will be prevented."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Printers'
+      value: DisableHTTPPrinting
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-14259
+
