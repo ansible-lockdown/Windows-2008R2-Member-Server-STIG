@@ -476,3 +476,27 @@
       - patch
       - V-15676
 
+- name: "LOW | V-15680 | AUDIT | The classic logon screen must be required for user logons."
+  win_command: reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LogonType
+  register: classic_logon_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in classic_logon_audit.stderr and classic_logon_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15680
+
+- name: "LOW | V-15680 | PATCH | The classic logon screen must be required for user logons."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System'
+      value: LogonType
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15680
+
