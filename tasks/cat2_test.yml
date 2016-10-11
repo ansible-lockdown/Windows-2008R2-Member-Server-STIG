@@ -1149,3 +1149,27 @@
       - patch
       - V-14254
 
+- name: "MEDIUM | V-14256 | AUDIT | Web publishing and online ordering wizards will be prevented from downloading a list of providers."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoWebServices
+  register: no_web_services_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in no_web_services_audit.stderr and no_web_services_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14256
+
+- name: "MEDIUM | V-14256 | PATCH | Web publishing and online ordering wizards will be prevented from downloading a list of providers."
+  win_regedit: 
+      key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer'
+      value: NoWebServices
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-14256
+
