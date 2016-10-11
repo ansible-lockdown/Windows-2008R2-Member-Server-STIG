@@ -1513,3 +1513,27 @@
       - patch
       - V-15698
 
+- name: "MEDIUM | V-15699 | AUDIT | The Windows Connect Now wizards will be disabled."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\WCN\UI /v DisableWcnUi
+  register: disable_WCN_UI_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in disable_WCN_UI_audit.stderr and disable_WCN_UI_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15699
+
+- name: "MEDIUM | V-15699 | PATCH | The Windows Connect Now wizards will be disabled."
+  win_regedit: 
+    key: 'HKLM:\Software\Policies\Microsoft\Windows\WCN\UI'
+    value: DisableWcnUi
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15699
+
