@@ -1261,7 +1261,7 @@
   win_regedit: 
       key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments'
       value: SaveZoneInformation
-      data: 1
+      data: 2
       datatype: dword
   tags:
       - cat2
