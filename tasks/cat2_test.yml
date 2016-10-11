@@ -1221,3 +1221,27 @@
       - patch
       - V-14260
 
+- name: "MEDIUM | V-14261 | AUDIT | Windows will be prevented from using Windows Update to search for drivers."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\DriverSearching /v DontSearchWindowsUpdate
+  register: windows_update_driver_search_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in windows_update_driver_search_audit.stderr and windows_update_driver_search_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14261
+
+- name: "MEDIUM | V-14261 | PATCH | Windows will be prevented from using Windows Update to search for drivers."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\DriverSearching'
+      value: DontSearchWindowsUpdate
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-14261
+
