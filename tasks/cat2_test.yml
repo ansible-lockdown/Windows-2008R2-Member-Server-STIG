@@ -1409,3 +1409,32 @@
       - patch
       - V-15684
 
+- name: "MEDIUM | V-15696 | AUDIT | The Mapper I/O network protocol driver will be disabled."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\LLTD
+  register: diable_mapper_IO_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in diable_mapper_IO_audit.stderr and diable_mapper_IO_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15696
+
+- name: "MEDIUM | V-15696 | PATCH | The Mapper I/O network protocol driver will be disabled."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\LLTD'
+      value: "{{ item }}"
+      data: 0
+      datatype: dword
+  with_items: 
+      - AllowLLTDIOOndomain
+      - AllowLLTDIOOnPublicNet
+      - EnableLLTDIO
+      - ProhibitLLTDIOOnPrivateNet
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15696
+
