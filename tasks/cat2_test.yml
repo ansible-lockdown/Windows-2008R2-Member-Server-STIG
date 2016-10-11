@@ -1125,3 +1125,27 @@
       - patch
       - V-14253
 
+- name: "MEDIUM | V-14254 | AUDIT | Client computers must be required to authenticate for RPC communication."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Rpc\" /v EnableAuthEpResolution
+  register: require_auth_RPC_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in require_auth_RPC_audit.stderr and require_auth_RPC_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14254
+
+- name: "MEDIUM | V-14254 | PATCH | Client computers must be required to authenticate for RPC communication."
+  win_regedit: 
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Rpc'
+      value: EnableAuthEpResolution
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-14254
+
