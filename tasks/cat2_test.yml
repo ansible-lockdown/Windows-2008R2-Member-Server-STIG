@@ -1385,3 +1385,27 @@
 #       - patch
 #       - V-15683
 
+- name: "MEDIUM | V-15684 | AUDIT | Users will be notified if a web-based program attempts to install software."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\Installer /v SafeForScripting
+  register: install_notification_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in install_notification_audit.stderr and install_notification_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15684
+
+- name: "MEDIUM | V-15684 | PATCH | Users will be notified if a web-based program attempts to install software."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\Installer'
+      value: SafeForScripting
+      data: 0
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15684
+
