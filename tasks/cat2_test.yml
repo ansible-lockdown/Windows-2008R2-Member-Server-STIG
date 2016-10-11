@@ -1317,3 +1317,27 @@
       - patch
       - V-15666
 
+- name: "MEDIUM | V-15667 | AUDIT | Network Bridges will be prohibited in Windows."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows\Network Connections\" /v NC_AllowNetBridge_NLA
+  register: network_bridge_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in network_bridge_audit.stderr and network_bridge_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15667
+
+- name: "MEDIUM | V-15667 | PATCH | Network Bridges will be prohibited in Windows."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\Network Connections'
+      value: NC_AllowNetBridge_NLA
+      data: 0
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15667
+
