@@ -1269,3 +1269,27 @@
       - patch
       - V-14268
 
+- name: "MEDIUM | V-14269 | AUDIT | Mechanisms for removing zone information from file attachments will be hidden."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments /v HideZoneInfoOnProperties
+  register: hide_zone_info_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in hide_zone_info_audit.stderr and hide_zone_info_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14269
+
+- name: "MEDIUM | V-14269 | PATCH | Mechanisms for removing zone information from file attachments will be hidden."
+  win_regedit: 
+      key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments'
+      value: HideZoneInfoOnProperties
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-14269
+
