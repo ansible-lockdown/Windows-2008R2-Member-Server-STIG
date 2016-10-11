@@ -428,3 +428,27 @@
       - patch
       - V-11806
 
+- name: "LOW | V-15672 | AUDIT | Event Viewer Events.asp links will be turned off."
+  win_command: reg query HKLM\Software\Policies\Microsoft\EventViewer /v MicrosoftEventVwrDisableLinks
+  register: event_viewer_links_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in event_viewer_links_audit.stderr and event_viewer_links_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15672
+
+- name: "LOW | V-15672 | PATCH | Event Viewer Events.asp links will be turned off."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\EventViewer'
+      value: MicrosoftEventVwrDisableLinks
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15672
+
