@@ -500,3 +500,27 @@
       - patch
       - V-15680
 
+- name: "LOW | V-15686 | AUDIT | Non-administrators will be prevented from applying vendor signed updates."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\Installer /v DisableLUAPatching
+  register: diable_user_patching_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in diable_user_patching_audit.stderr and diable_user_patching_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15686
+
+- name: "LOW | V-15686 | PATCH | Non-administrators will be prevented from applying vendor signed updates."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\Installer'
+      value: DisableLUAPatching
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15686
+
