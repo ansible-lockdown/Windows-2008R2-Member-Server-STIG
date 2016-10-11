@@ -452,3 +452,27 @@
       - patch
       - V-15672
 
+- name: "LOW | V-15676 | AUDIT | The Order Prints Online wizard will be turned off."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoOnlinePrintsWizard
+  register: order_prints_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in order_prints_audit.stderr and order_prints_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15676
+
+- name: "LOW | V-15676 | PATCH | The Order Prints Online wizard will be turned off."
+  win_regedit:
+      key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer'
+      value: NoOnlinePrintsWizard
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15676
+
