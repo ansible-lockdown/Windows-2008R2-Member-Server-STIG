@@ -1704,3 +1704,27 @@
       - patch
       - V-15722
 
+- name: "MEDIUM | V-15727 | AUDIT | Users will be prevented from sharing files in their profiles."
+  win_command: reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoInPlaceSharing
+  register: sharing_files_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in sharing_files_audit.stderr and sharing_files_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15727
+
+- name: "MEDIUM | V-15727 | PATCH | Users will be prevented from sharing files in their profiles."
+  win_regedit: 
+    key: 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer'
+    value: NoInPlaceSharing
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15727
+
