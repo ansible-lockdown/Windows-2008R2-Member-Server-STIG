@@ -1680,3 +1680,27 @@
       - patch
       - V-15715
 
+- name: "MEDIUM | V-15722 | AUDIT | Windows Media Digital Rights Management will be prevented from accessing the Internet."
+  win_command: reg query HKLM\Software\Policies\Microsoft\WMDRM /v DisableOnline
+  register: DRM_online_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in DRM_online_audit.stderr and DRM_online_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15722
+
+- name: "MEDIUM | V-15722 | PATCH | Windows Media Digital Rights Management will be prevented from accessing the Internet."
+  win_regedit: 
+    key: 'HKLM:\Software\Policies\Microsoft\WMDRM'
+    value: DisableOnline
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15722
+
