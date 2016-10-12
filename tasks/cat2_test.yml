@@ -1800,3 +1800,27 @@
       - patch
       - V-15998
 
+- name: "MEDIUM | V-15999 | AUDIT | The system will be configured to prevent users from redirecting Plug and Play devices to the Remote Desktop Session Host. (Remote Desktop Services Role)"
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v fDisablePNPRedir
+  register: PnP_redirect_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in PnP_redirect_audit.stderr and PnP_redirect_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15999
+
+- name: "MEDIUM | V-15999 | PATCH | The system will be configured to prevent users from redirecting Plug and Play devices to the Remote Desktop Session Host. (Remote Desktop Services Role)"
+  win_regedit: 
+    key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+    value: fDisablePNPRedir
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15999
+
