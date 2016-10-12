@@ -1537,3 +1537,27 @@
       - patch
       - V-15699
 
+- name: "MEDIUM | V-15700 | AUDIT | Remote access to the Plug and Play interface will be disabled for device installation."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings /v AllowRemoteRPC
+  register: PnP_device_install_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in PnP_device_install_audit.stderr and PnP_device_install_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15700
+
+- name: "MEDIUM | V-15700 | PATCH | Remote access to the Plug and Play interface will be disabled for device installation."
+  win_regedit: 
+    key: 'HKLM:\Software\Policies\Microsoft\Windows\DeviceInstall\Settings'
+    value: AllowRemoteRPC
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15700
+
