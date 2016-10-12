@@ -1585,3 +1585,27 @@
       - patch
       - V-15705
 
+- name: "MEDIUM | V-15706 | AUDIT | The user will be prompted for a password on resume from sleep (Plugged In).  (Applicable on Server 2008 R2 if the system is configured to sleep.)"
+  win_command: reg query HKLM\Software\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51 /v ACSettingIndex
+  register: prompt_resume_AC_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in prompt_resume_AC_audit.stderr and prompt_resume_AC_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15706
+
+- name: "MEDIUM | V-15706 | PATCH | The user will be prompted for a password on resume from sleep (Plugged In).  (Applicable on Server 2008 R2 if the system is configured to sleep.)"
+  win_regedit: 
+    key: 'HKLM:\Software\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51'
+    value: ACSettingIndex
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15706
+
