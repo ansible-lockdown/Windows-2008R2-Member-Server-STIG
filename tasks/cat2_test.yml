@@ -1824,3 +1824,27 @@
       - patch
       - V-15999
 
+- name: "MEDIUM | V-16000 | AUDIT | The system will be configured to ensure smart card devices can be redirected to the Remote Desktop Session. (Remote Desktop Services Role)"
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v fEnableSmartCard
+  register: smart_card_redirect_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in smart_card_redirect_audit.stderr and smart_card_redirect_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-16000
+
+- name: "MEDIUM | V-16000 | PATCH | The system will be configured to ensure smart card devices can be redirected to the Remote Desktop Session. (Remote Desktop Services Role)"
+  win_regedit: 
+    key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+    value: fEnableSmartCard
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-16000
+
