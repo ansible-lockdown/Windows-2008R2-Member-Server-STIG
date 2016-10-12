@@ -1246,7 +1246,7 @@
       - V-14261
 
 - name: "MEDIUM | V-14268 | AUDIT | Zone information will be preserved when saving attachments."
-  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments /v SaveZoneInformation
+  win_command: reg query HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments /v SaveZoneInformation
   register: save_zone_info_audit
   check_mode: no
   changed_when: no
@@ -1259,7 +1259,7 @@
 
 - name: "MEDIUM | V-14268 | PATCH | Zone information will be preserved when saving attachments."
   win_regedit: 
-      key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments'
+      key: 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments'
       value: SaveZoneInformation
       data: 2
       datatype: dword
