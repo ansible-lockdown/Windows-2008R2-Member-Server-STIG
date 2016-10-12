@@ -596,3 +596,27 @@
       - patch
       - V-15702
 
+- name: "LOW | V-15703 | AUDIT | Users will not be prompted to search Windows Update for device drivers."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\DriverSearching /v DontPromptForWindowsUpdate
+  register: no_prompt_windows_update_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in no_prompt_windows_update_audit.stderr and no_prompt_windows_update_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15703
+
+- name: "LOW | V-15703 | PATCH | Users will not be prompted to search Windows Update for device drivers."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\DriverSearching'
+      value: DontPromptForWindowsUpdate
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15703
+
