@@ -644,3 +644,27 @@
       - patch
       - V-15704
 
+- name: "LOW | V-15707 | AUDIT | Remote Assistance log files will be generated."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v LoggingEnabled
+  register: remote_assistance_logging_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in remote_assistance_logging_audit.stderr and remote_assistance_logging_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15707
+
+- name: "LOW | V-15707 | PATCH | Remote Assistance log files will be generated."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: LoggingEnabled
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15707
+
