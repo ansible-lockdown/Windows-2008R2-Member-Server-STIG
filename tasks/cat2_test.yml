@@ -1848,3 +1848,23 @@
       - patch
       - V-16000
 
+- name: "MEDIUM | V-16008 | AUDIT | Windows will elevate all applications in User Account Control, not just signed ones."
+  win_command: reg query \"HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\" /v ValidateAdminCodeSignatures
+  register: elevate_all_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in elevate_all_audit.stderr and elevate_all_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-16008
+
+# - name: "MEDIUM | V-16008 | PATCH | Windows will elevate all applications in User Account Control, not just signed ones."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-16008
+
