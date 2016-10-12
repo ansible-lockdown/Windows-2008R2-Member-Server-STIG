@@ -1609,3 +1609,26 @@
       - patch
       - V-15706
 
+- name: "MEDIUM | V-15713 | AUDIT | Windows Defender SpyNet membership will be disabled."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows Defender\Spynet\" /v SpyNetReporting
+  register: prompt_resume_AC_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in prompt_resume_AC_audit.stderr and prompt_resume_AC_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15713
+
+- name: "MEDIUM | V-15713 | PATCH | Windows Defender SpyNet membership will be disabled."
+  win_regedit: 
+    key: 'HKLM:\Software\Policies\Microsoft\Windows Defender\Spynet'
+    value: SpyNetReporting
+    state: absent
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15713
+
