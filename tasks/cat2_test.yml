@@ -1776,3 +1776,27 @@
       - patch
       - V-15997
 
+- name: "MEDIUM | V-15998 | AUDIT | The system will be configured to prevent users from mapping local LPT ports and redirecting data from the Remote Desktop Session Host to local LPT ports. (Remote Desktop Services Role)"
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v fDisableLPT
+  register: disable_LPT_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in disable_LPT_audit.stderr and disable_LPT_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15998
+
+- name: "MEDIUM | V-15998 | PATCH | The system will be configured to prevent users from mapping local LPT ports and redirecting data from the Remote Desktop Session Host to local LPT ports. (Remote Desktop Services Role)"
+  win_regedit: 
+    key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+    value: fDisableLPT
+    data: 1
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15998
+
