@@ -548,3 +548,27 @@
       - patch
       - V-15687
 
+- name: "LOW | V-15701 | AUDIT | A system restore point will be created when a new device driver is installed."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings /v DisableSystemRestore
+  register: restore_point_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in restore_point_audit.stderr and restore_point_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15701
+
+- name: "LOW | V-15701 | PATCH | A system restore point will be created when a new device driver is installed."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\DeviceInstall\Settings'
+      value: DisableSystemRestore
+      data: 0
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15701
+
