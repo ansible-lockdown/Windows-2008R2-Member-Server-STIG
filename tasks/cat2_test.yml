@@ -1893,7 +1893,7 @@
       - V-16020
 
 - name: "MEDIUM | V-16021 | AUDIT | The Windows Help Experience Improvement Program will be disabled"
-  win_command: reg query HKLM\Software\Policies\Microsoft\Assistance\Client\1.0 /v NoImplicitFeedback
+  win_command: reg query HKCU\Software\Policies\Microsoft\Assistance\Client\1.0 /v NoImplicitFeedback
   register: WHEIP_audit
   check_mode: no
   changed_when: no
@@ -1906,7 +1906,7 @@
 
 - name: "MEDIUM | V-16021 | PATCH | The Windows Help Experience Improvement Program will be disabled"
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\Assistance\Client\1.0'
+    key: 'HKCU:\Software\Policies\Microsoft\Assistance\Client\1.0'
     value: NoImplicitFeedback
     data: 1
     datatype: dword
