@@ -1868,3 +1868,27 @@
 #       - patch
 #       - V-16008
 
+- name: "MEDIUM | V-16020 | AUDIT | The Windows Customer Experience Improvement Program will be disabled."
+  win_command: reg query HKLM\Software\Policies\Microsoft\SQMClient\Windows /v CEIPEnable
+  register: CEIP_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in CEIP_audit.stderr and CEIP_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-16020
+
+- name: "MEDIUM | V-16020 | PATCH | The Windows Customer Experience Improvement Program will be disabled."
+  win_regedit: 
+    key: 'HKLM:\Software\Policies\Microsoft\SQMClient\Windows'
+    value: CEIPEnable
+    data: 0
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-16020
+
