@@ -1632,3 +1632,27 @@
       - patch
       - V-15713
 
+- name: "MEDIUM | V-15714 | AUDIT | The system must be configured to save Error Reporting events and messages to the system event log."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v LoggingDisabled
+  register: enable_error_logging_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in enable_error_logging_audit.stderr and enable_error_logging_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15714
+
+- name: "MEDIUM | V-15714 | PATCH | The system must be configured to save Error Reporting events and messages to the system event log."
+  win_regedit: 
+    key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+    value: LoggingDisabled
+    data: 0
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15714
+
