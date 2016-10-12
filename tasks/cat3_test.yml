@@ -668,3 +668,27 @@
       - patch
       - V-15707
 
+- name: "LOW | V-15709 | AUDIT | Game explorer information will not be downloaded from Windows Metadata Services."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\GameUX /v DownloadGameInfo
+  register: game_explorer_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in game_explorer_audit.stderr and game_explorer_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15709
+
+- name: "LOW | V-15709 | PATCH | Game explorer information will not be downloaded from Windows Metadata Services."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\GameUX'
+      value: DownloadGameInfo
+      data: 0
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15709
+
