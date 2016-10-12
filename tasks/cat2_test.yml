@@ -1656,3 +1656,27 @@
       - patch
       - V-15714
 
+- name: "MEDIUM | V-15715 | AUDIT | The system must be configured to generate error reports."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v Disabled
+  register: enable_error_logging_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in enable_error_logging_audit.stderr and enable_error_logging_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15715
+
+- name: "MEDIUM | V-15715 | PATCH | The system must be configured to generate error reports."
+  win_regedit: 
+    key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+    value: Disabled
+    data: 0
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-15715
+
