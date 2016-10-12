@@ -572,3 +572,27 @@
       - patch
       - V-15701
 
+- name: "LOW | V-15702 | AUDIT | An Error Report will not be sent when a generic device driver is installed."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings /v DisableSendGenericDriverNotFoundToWER
+  register: no_error_report_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in no_error_report_audit.stderr and no_error_report_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15702
+
+- name: "LOW | V-15702 | PATCH | An Error Report will not be sent when a generic device driver is installed."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\DeviceInstall\Settings'
+      value: DisableSendGenericDriverNotFoundToWER
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15702
+
