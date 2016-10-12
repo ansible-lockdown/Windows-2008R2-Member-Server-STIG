@@ -620,3 +620,27 @@
       - patch
       - V-15703
 
+- name: "LOW | V-15704 | AUDIT | Errors in handwriting recognition on Tablet PCs will not be reported to Microsoft."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\HandwritingErrorReports /v PreventHandwritingErrorReports
+  register: no_handwriting_error_reports_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in no_handwriting_error_reports_audit.stderr and no_handwriting_error_reports_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15704
+
+- name: "LOW | V-15704 | PATCH | Errors in handwriting recognition on Tablet PCs will not be reported to Microsoft."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\HandwritingErrorReports'
+      value: PreventHandwritingErrorReports
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15704
+
