@@ -1553,7 +1553,7 @@
   win_regedit: 
     key: 'HKLM:\Software\Policies\Microsoft\Windows\DeviceInstall\Settings'
     value: AllowRemoteRPC
-    data: 1
+    data: 0
     datatype: dword
   tags:
       - cat2
