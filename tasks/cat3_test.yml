@@ -692,3 +692,27 @@
       - patch
       - V-15709
 
+- name: "LOW | V-15718 | AUDIT | Windows Explorer heap termination on corruption will be disabled."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\Explorer /v NoHeapTerminationOnCorruption
+  register: heap_termination_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in heap_termination_audit.stderr and heap_termination_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-15718
+
+- name: "LOW | V-15718 | PATCH | Windows Explorer heap termination on corruption will be disabled."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\Explorer'
+      value: NoHeapTerminationOnCorruption
+      data: 0
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-15718
+
