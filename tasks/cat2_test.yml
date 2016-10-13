@@ -1751,6 +1751,7 @@
 #       - medium
 #       - patch
 #       - V-15991
+<<<<<<< HEAD
 
 - name: "MEDIUM | V-15997 | AUDIT | The system will be configured to prevent users from mapping local COM ports and redirecting data from the Remote Desktop Session Host to local COM ports. (Remote Desktop Services Role)"
   win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v fDisableCcm
@@ -1940,3 +1941,5 @@
       - patch
       - V-16048
 
+=======
+>>>>>>> 766b33d07cbc89d0c7b3d146d272787c996bfe60
