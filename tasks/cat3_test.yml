@@ -928,3 +928,27 @@
       - patch
       - V-21965
 
+- name: "LOW | V-21967 | AUDIT | Microsoft Support Diagnostic Tool (MSDT) interactive communication with Microsoft will be prevented."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy /v DisableQueryRemoteServer
+  register: MSDT_communication_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in MSDT_communication_audit.stderr and MSDT_communication_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21967
+
+- name: "LOW | V-21967 | PATCH | Microsoft Support Diagnostic Tool (MSDT) interactive communication with Microsoft will be prevented."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy'
+      value: DisableQueryRemoteServer
+      data: 0
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21967
+
