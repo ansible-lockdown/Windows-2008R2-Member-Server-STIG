@@ -140,3 +140,28 @@
       - high
       - patch
       - V-3379
+
+- name: "HIGH | V-6834 | AUDIT | Anonymous access to Named Pipes and Shares must be restricted."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters\ /v RestrictNullSessAccess
+  register: anon_access_pipes_shares_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in anon_access_pipes_shares_audit.stderr and anon_access_pipes_shares_audit.stderr"
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-6834
+
+- name: "HIGH | V-6834 | PATCH | Anonymous access to Named Pipes and Shares must be restricted."
+  win_regedit:
+      key: 'HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters\'
+      value: RestrictNullSessAccess
+      data: 1
+      datatype: dword
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-6834
+
