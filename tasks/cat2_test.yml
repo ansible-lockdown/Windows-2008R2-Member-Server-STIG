@@ -2029,7 +2029,7 @@
       - V-21953
 
 - name: "MEDIUM | V-21973 | AUDIT | Autoplay will be turned off for non-volume devices."
-  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\Explorer\ /v NoAutoplayfornonVolume
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\Explorer /v NoAutoplayfornonVolume
   register: autoplay_nonvolume_audit
   check_mode: no
   changed_when: no
@@ -2042,7 +2042,7 @@
 
 - name: "MEDIUM | V-21973 | PATCH | Autoplay will be turned off for non-volume devices."
   win_regedit:
-      key: 'HKLM:\Software\Policies\Microsoft\Windows\Explorer\'
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\Explorer'
       value: NoAutoplayfornonVolume
       data: 1
       datatype: dword
@@ -2051,4 +2051,28 @@
       - high
       - patch
       - V-21973
+
+- name: "MEDIUM | V-21975 | AUDIT | The system will be prevented from joining a homegroup."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\Homegroup /v DisableHomeGroup
+  register: homegroup_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in homegroup_audit.stderr and homegroup_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-21975
+
+- name: "MEDIUM | V-21975 | PATCH | The system will be prevented from joining a homegroup."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\Homegroup'
+      value: DisableHomeGroup
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-21975
 
