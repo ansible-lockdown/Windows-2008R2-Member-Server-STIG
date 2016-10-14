@@ -1960,3 +1960,23 @@
 #       - patch
 #       - V-21950
 
+- name: "MEDIUM | V-21951 | AUDIT | Services using Local System that use negotiate when reverting to NTLM authentication will use the computer identity vs. authenticating anonymously."
+  win_command: reg query HKLM\System\CurrentControlSet\Control\LSA /v UseMachineId
+  register: use_machine_ID_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in use_machine_ID_audit.stderr and use_machine_ID_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-21951
+
+# - name: "MEDIUM | V-21951 | PATCH | Services using Local System that use negotiate when reverting to NTLM authentication will use the computer identity vs. authenticating anonymously."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-21951
+
