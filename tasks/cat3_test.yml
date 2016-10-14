@@ -880,3 +880,27 @@
       - patch
       - V-21963
 
+- name: "LOW | V-21964 | AUDIT | Device metadata retrieval from the Internet must be prevented."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Device Metadata\" /v PreventDeviceMetadataFromNetwork
+  register: device_metadata_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in device_metadata_audit.stderr and device_metadata_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21964
+
+- name: "LOW | V-21964 | PATCH | Device metadata retrieval from the Internet must be prevented."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Device Metadata'
+      value: PreventDeviceMetadataFromNetwork
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21964
+
