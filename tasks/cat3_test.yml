@@ -788,3 +788,26 @@
       - patch
       - V-21955
 
+- name: "LOW | V-21956 | AUDIT | IPv6 TCP data retransmissions must be configured to prevent resources from becoming exhausted."
+  win_command: reg query HKLM\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters /v TcpMaxDataRetransmissions
+  register: IPv6_retransmit_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in IPv6_retransmit_audit.stderr and IPv6_retransmit_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21956
+
+- name: "LOW | V-21956 | PATCH | IPv6 TCP data retransmissions must be configured to prevent resources from becoming exhausted."
+  win_regedit:
+      key: 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters'
+      value: TcpMaxDataRetransmissions
+      data: 3
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21956
