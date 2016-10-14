@@ -1940,3 +1940,23 @@
       - patch
       - V-16048
 
+- name: "MEDIUM | V-21950 | AUDIT | The service principal name (SPN) target name validation level will be turned off."
+  win_command: reg query HKCU\System\CurrentControlSet\Services\LanmanServer\Parameters /v SmbServerNameHardeningLevel
+  register: SMB_server_name_level_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in SMB_server_name_level_audit.stderr and SMB_server_name_level_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-21950
+
+# - name: "MEDIUM | V-21950 | PATCH | The service principal name (SPN) target name validation level will be turned off."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-21950
+
