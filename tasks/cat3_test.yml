@@ -836,3 +836,23 @@
       - patch
       - V-21960
 
+- name: "LOW | V-21961 | AUDIT | All Direct Access traffic will be routed through the internal network."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\TCPIP\v6Transition /v Force_Tunneling
+  register: force_tunneling_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in force_tunneling_audit.stderr and force_tunneling_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21961
+
+# - name: "LOW | V-21961 | PATCH | All Direct Access traffic will be routed through the internal network."
+#   win_command: true
+#   tags:
+#       - cat3
+#       - low
+#       - patch
+#       - V-21961
+
