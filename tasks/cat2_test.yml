@@ -1941,7 +1941,7 @@
       - V-16048
 
 - name: "MEDIUM | V-21950 | AUDIT | The service principal name (SPN) target name validation level will be turned off."
-  win_command: reg query HKCU\System\CurrentControlSet\Services\LanmanServer\Parameters /v SmbServerNameHardeningLevel
+  win_command: reg query HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters /v SmbServerNameHardeningLevel
   register: SMB_server_name_level_audit
   check_mode: no
   changed_when: no
