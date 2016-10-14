@@ -764,3 +764,27 @@
       - patch
       - V-16005
 
+- name: "LOW | V-21955 | AUDIT | IPv6 source routing will be configured to highest protection."
+  win_command: reg query HKLM\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters /v DisableIPSourceRouting
+  register: IPv6_source_routing_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in IPv6_source_routing_audit.stderr and IPv6_source_routing_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21955
+
+- name: "LOW | V-21955 | PATCH | IPv6 source routing will be configured to highest protection."
+  win_regedit:
+      key: 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters'
+      value: DisableIPSourceRouting
+      data: 2
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21955
+
