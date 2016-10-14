@@ -858,3 +858,323 @@
       - patch
       - V-21956
 
+- name: "LOW | V-21960 | AUDIT | Domain users will be required to elevate when setting a network's location."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21960
+
+- name: "LOW | V-21960 | PATCH | Domain users will be required to elevate when setting a network's location."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21960
+
+- name: "LOW | V-21961 | AUDIT | All Direct Access traffic will be routed through the internal network."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21961
+
+- name: "LOW | V-21961 | PATCH | All Direct Access traffic will be routed through the internal network."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21961
+
+- name: "LOW | V-21963 | AUDIT | Windows Update will be prevented from searching for point and print drivers."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21963
+
+- name: "LOW | V-21963 | PATCH | Windows Update will be prevented from searching for point and print drivers."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21963
+
+- name: "LOW | V-21964 | AUDIT | Device metadata retrieval from the Internet must be prevented."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21964
+
+- name: "LOW | V-21964 | PATCH | Device metadata retrieval from the Internet must be prevented."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21964
+
+- name: "LOW | V-21965 | AUDIT | Device driver searches using Windows Update will be prevented."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21965
+
+- name: "LOW | V-21965 | PATCH | Device driver searches using Windows Update will be prevented."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21965
+
+- name: "LOW | V-21967 | AUDIT | Microsoft Support Diagnostic Tool (MSDT) interactive communication with Microsoft will be prevented."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21967
+
+- name: "LOW | V-21967 | PATCH | Microsoft Support Diagnostic Tool (MSDT) interactive communication with Microsoft will be prevented."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21967
+
+- name: "LOW | V-21969 | AUDIT | Access to Windows Online Troubleshooting Service (WOTS) will be prevented."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21969
+
+- name: "LOW | V-21969 | PATCH | Access to Windows Online Troubleshooting Service (WOTS) will be prevented."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21969
+
+- name: "LOW | V-21970 | AUDIT | Responsiveness events will be prevented from being aggregated and sent to Microsoft."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21970
+
+- name: "LOW | V-21970 | PATCH | Responsiveness events will be prevented from being aggregated and sent to Microsoft."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21970
+
+- name: "LOW | V-21971 | AUDIT | The Application Compatibility Program Inventory will be prevented from collecting data and sending the information to Microsoft."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21971
+
+- name: "LOW | V-21971 | PATCH | The Application Compatibility Program Inventory will be prevented from collecting data and sending the information to Microsoft."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21971
+
+- name: "LOW | V-21974 | AUDIT | Downloading of game update information will be turned off."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21974
+
+- name: "LOW | V-21974 | PATCH | Downloading of game update information will be turned off."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21974
+
+- name: "LOW | V-21978 | AUDIT | Windows Anytime Upgrade will be disabled."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21978
+
+- name: "LOW | V-21978 | PATCH | Windows Anytime Upgrade will be disabled."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21978
+
+- name: "LOW | V-26359 | AUDIT | The Windows dialog box title for the legal banner will be configured."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-26359
+
+- name: "LOW | V-26359 | PATCH | The Windows dialog box title for the legal banner will be configured."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-26359
+
+- name: "LOW | V-26475 | AUDIT | Unauthorized accounts must not have the Bypass traverse checking user right."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-26475
+
+- name: "LOW | V-26475 | PATCH | Unauthorized accounts must not have the Bypass traverse checking user right."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-26475
+
+- name: "LOW | V-26477 | AUDIT | Unauthorized accounts must not have the Change the time zone user right."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-26477
+
+- name: "LOW | V-26477 | PATCH | Unauthorized accounts must not have the Change the time zone user right."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-26477
+
+- name: "LOW | V-26502 | AUDIT | Unauthorized accounts must not have the Remove computer from docking station user right."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-26502
+
+- name: "LOW | V-26502 | PATCH | Unauthorized accounts must not have the Remove computer from docking station user right."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-26502
+
+- name: "LOW | V-28504 | AUDIT | Windows will be prevented from sending an error report when a device driver requests additional software during installation."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-28504
+
+- name: "LOW | V-28504 | PATCH | Windows will be prevented from sending an error report when a device driver requests additional software during installation."
+  win_command: true
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-28504
+

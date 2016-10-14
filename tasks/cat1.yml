@@ -478,3 +478,163 @@
       - patch
       - V-18010
 
+- name: "HIGH | V-22692 | AUDIT | The default autorun behavior will be configured to prevent autorun commands."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-22692
+
+- name: "HIGH | V-22692 | PATCH | The default autorun behavior will be configured to prevent autorun commands."
+  win_command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-22692
+
+- name: "HIGH | V-26070 | AUDIT | Standard user accounts must only have Read permissions to the Winlogon registry key."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-26070
+
+- name: "HIGH | V-26070 | PATCH | Standard user accounts must only have Read permissions to the Winlogon registry key."
+  win_command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-26070
+
+- name: "HIGH | V-26283 | AUDIT | Anonymous enumeration of SAM accounts will not be allowed."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-26283
+
+- name: "HIGH | V-26283 | PATCH | Anonymous enumeration of SAM accounts will not be allowed."
+  win_command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-26283
+
+- name: "HIGH | V-26479 | AUDIT | Unauthorized accounts must not have the Create a token object user right."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-26479
+
+- name: "HIGH | V-26479 | PATCH | Unauthorized accounts must not have the Create a token object user right."
+  win_command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-26479
+
+- name: "HIGH | V-32282 | AUDIT | Standard user accounts must only have Read permissions to the Active Setup\Installed Components registry key."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-32282
+
+- name: "HIGH | V-32282 | PATCH | Standard user accounts must only have Read permissions to the Active Setup\Installed Components registry key."
+  win_command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-32282
+
+- name: "HIGH | V-34974 | AUDIT | The Windows Installer Always install with elevated privileges must be disabled."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-34974
+
+- name: "HIGH | V-34974 | PATCH | The Windows Installer Always install with elevated privileges must be disabled."
+  win_command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-34974
+
+- name: "HIGH | V-36451 | AUDIT | Policy must require that administrative user accounts not be used with applications that access the internet, such as web browsers, or with potential internet sources, such as email."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-36451
+
+- name: "HIGH | V-36451 | PATCH | Policy must require that administrative user accounts not be used with applications that access the internet, such as web browsers, or with potential internet sources, such as email."
+  win_command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-36451
+
+- name: "HIGH | V-36664 | AUDIT | The system must not use removable media as the boot loader."
+  win_command: true
+  register: result
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-36664
+
+- name: "HIGH | V-36664 | PATCH | The system must not use removable media as the boot loader."
+  win_command: true
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-36664
+
