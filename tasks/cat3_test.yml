@@ -856,3 +856,27 @@
 #       - patch
 #       - V-21961
 
+- name: "LOW | V-21963 | AUDIT | Windows Update will be prevented from searching for point and print drivers."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows NT\Printers\" /v DoNotInstallCompatibleDriverFromWindowsUpdate
+  register: windows_update_search_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in windows_update_search_audit.stderr and windows_update_search_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21963
+
+- name: "LOW | V-21963 | PATCH | Windows Update will be prevented from searching for point and print drivers."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Printers'
+      value: DoNotInstallCompatibleDriverFromWindowsUpdate
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21963
+
