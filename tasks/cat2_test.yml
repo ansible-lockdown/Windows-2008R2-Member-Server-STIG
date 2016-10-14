@@ -2004,3 +2004,27 @@
       - patch
       - V-21952
 
+- name: "MEDIUM | V-21953 | AUDIT | PKU2U authentication using online identities will be prevented."
+  win_command: reg query HKLM\System\CurrentControlSet\Control\LSA\pku2u /v AllowOnlineID
+  register: online_ID_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in online_ID_audit.stderr and online_ID_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-21953
+
+- name: "MEDIUM | V-21953 | PATCH | PKU2U authentication using online identities will be prevented."
+  win_regedit: 
+    key: 'HKLM:\System\CurrentControlSet\Control\LSA\pku2u'
+    value: AllowOnlineID
+    data: 0
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-21953
+
