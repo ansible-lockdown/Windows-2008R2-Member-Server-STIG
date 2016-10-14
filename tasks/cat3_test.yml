@@ -811,3 +811,28 @@
       - low
       - patch
       - V-21956
+
+- name: "LOW | V-21960 | AUDIT | Domain users will be required to elevate when setting a network's location."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows\Network Connections\" /v NC_StdDomainUserSetLocation
+  register: elevate_setting_network_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in elevate_setting_network_audit.stderr and elevate_setting_network_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21960
+
+- name: "LOW | V-21960 | PATCH | Domain users will be required to elevate when setting a network's location."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\Network Connections'
+      value: NC_StdDomainUserSetLocation
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21960
+
