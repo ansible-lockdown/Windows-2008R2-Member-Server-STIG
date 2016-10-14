@@ -1048,3 +1048,27 @@
       - patch
       - V-21974
 
+- name: "LOW | V-21978 | AUDIT | Windows Anytime Upgrade will be disabled."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\WAU /v Disabled
+  register: WAU_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in WAU_audit.stderr and WAU_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21978
+
+- name: "LOW | V-21978 | PATCH | Windows Anytime Upgrade will be disabled."
+  win_regedit:
+      key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\WAU'
+      value: Disabled
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21978
+
