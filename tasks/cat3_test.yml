@@ -1000,3 +1000,27 @@
       - patch
       - V-21970
 
+- name: "LOW | V-21971 | AUDIT | The Application Compatibility Program Inventory will be prevented from collecting data and sending the information to Microsoft."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\AppCompat /v DisableInventory
+  register: ACPI_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in ACPI_audit.stderr and ACPI_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21971
+
+- name: "LOW | V-21971 | PATCH | The Application Compatibility Program Inventory will be prevented from collecting data and sending the information to Microsoft."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\AppCompat'
+      value: DisableInventory
+      data: 1
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21971
+
