@@ -952,3 +952,27 @@
       - patch
       - V-21967
 
+- name: "LOW | V-21969 | AUDIT | Access to Windows Online Troubleshooting Service (WOTS) will be prevented."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy /v EnableQueryRemoteServer
+  register: WOTS_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in WOTS_audit.stderr and WOTS_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21969
+
+- name: "LOW | V-21969 | PATCH | Access to Windows Online Troubleshooting Service (WOTS) will be prevented."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy'
+      value: EnableQueryRemoteServer
+      data: 0
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21969
+
