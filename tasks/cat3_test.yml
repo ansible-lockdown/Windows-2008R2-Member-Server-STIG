@@ -976,3 +976,27 @@
       - patch
       - V-21969
 
+- name: "LOW | V-21970 | AUDIT | Responsiveness events will be prevented from being aggregated and sent to Microsoft."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\WDI\{9c5a40da-b965-4fc3-8781-88dd50a6299d} /v ScenarioExecutionEnabled
+  register: WOTS_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in WOTS_audit.stderr and WOTS_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21970
+
+- name: "LOW | V-21970 | PATCH | Responsiveness events will be prevented from being aggregated and sent to Microsoft."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\WDI\{9c5a40da-b965-4fc3-8781-88dd50a6299d}'
+      value: ScenarioExecutionEnabled
+      data: 0
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21970
+
