@@ -2028,3 +2028,27 @@
       - patch
       - V-21953
 
+- name: "MEDIUM | V-21973 | AUDIT | Autoplay will be turned off for non-volume devices."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\Explorer\ /v NoAutoplayfornonVolume
+  register: autoplay_nonvolume_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in autoplay_nonvolume_audit.stderr and autoplay_nonvolume_audit.stderr"
+  tags:
+      - cat1
+      - medium
+      - audit
+      - V-21973
+
+- name: "MEDIUM | V-21973 | PATCH | Autoplay will be turned off for non-volume devices."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\Explorer\'
+      value: NoAutoplayfornonVolume
+      data: 1
+      datatype: dword
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-21973
+
