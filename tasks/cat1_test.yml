@@ -165,3 +165,27 @@
       - patch
       - V-6834
 
+- name: "HIGH | V-22692 | AUDIT | The default Autorun behavior must be configured to prevent Autorun commands."
+  win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\ /v NoAutorun
+  register: autorun_prevent_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in autorun_prevent_audit.stderr and autorun_prevent_audit.stderr"
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-22692
+
+- name: "HIGH | V-22692 | PATCH | The default Autorun behavior must be configured to prevent Autorun commands."
+  win_regedit:
+      key: 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\'
+      value: NoAutorun
+      data: 1
+      datatype: dword
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-22692
+
