@@ -904,3 +904,27 @@
       - patch
       - V-21964
 
+- name: "LOW | V-21965 | AUDIT | Device driver searches using Windows Update will be prevented."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\DriverSearching /v SearchOrderConfig
+  register: windows_update_device_driver_search_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in windows_update_device_driver_search_audit.stderr and windows_update_device_driver_search_audit.stderr"
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-21965
+
+- name: "LOW | V-21965 | PATCH | Device driver searches using Windows Update will be prevented."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\DriverSearching'
+      value: SearchOrderConfig
+      data: 0
+      datatype: dword
+  tags:
+      - cat3
+      - low
+      - patch
+      - V-21965
+
