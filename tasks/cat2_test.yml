@@ -2198,3 +2198,26 @@
       - patch
       - V-26577
 
+- name: "MEDIUM | V-26578 | AUDIT | The Teredo IPv6 transition technology will be disabled."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\TCPIP\v6Transition /v Teredo_State
+  register: Teredo_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "Teredo_audit.stderr and reg_not_found not in Teredo_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26578
+
+- name: "MEDIUM | V-26578 | PATCH | The Teredo IPv6 transition technology will be disabled."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\TCPIP\v6Transition'
+      value: Teredo_State
+      data: Disabled
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26578
+
