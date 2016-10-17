@@ -212,10 +212,11 @@
       - V-26070
 
 - name: "HIGH | V-26283 | AUDIT | Anonymous enumeration of SAM accounts must not be allowed."
-  win_command: reg query HKLM\System\CurrentControlSet\Control\Lsa\ /v RestrictAnonymousSAM /t REG_DWORD /f 1
+  win_command: reg query HKLM\System\CurrentControlSet\Control\Lsa\ /v RestrictAnonymousSAM
   register: anonymous_enum_sam_audit
   check_mode: no
   changed_when: no
+  failed_when: "anonymous_enum_sam_audit.stderr and reg_not_found not in anonymous_enum_sam_audit.stderr"
   tags:
       - cat1
       - high
