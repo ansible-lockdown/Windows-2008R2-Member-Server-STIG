@@ -2175,3 +2175,26 @@
       - patch
       - V-26576
 
+- name: "MEDIUM | V-26577 | AUDIT | The ISATAP IPv6 transition technology will be disabled."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\TCPIP\v6Transition /v ISATAP_State
+  register: ISATAP_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "ISATAP_audit.stderr and reg_not_found not in ISATAP_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26577
+
+- name: "MEDIUM | V-26577 | PATCH | The ISATAP IPv6 transition technology will be disabled."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\TCPIP\v6Transition'
+      value: ISATAP_State
+      data: Disabled
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26577
+
