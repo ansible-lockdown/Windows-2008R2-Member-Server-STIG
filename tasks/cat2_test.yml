@@ -2128,3 +2128,26 @@
       - patch
       - V-21980
 
+- name: "MEDIUM | V-26575 | AUDIT | The 6to4 IPv6 transition technology will be disabled."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\TCPIP\v6Transition /v 6to4_State
+  register: six_to_four_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "six_to_four_audit.stderr and reg_not_found not in six_to_four_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26575
+
+- name: "MEDIUM | V-26575 | PATCH | The 6to4 IPv6 transition technology will be disabled."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\TCPIP\v6Transition'
+      value: 6to4_State
+      data: Disabled
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26575
+
