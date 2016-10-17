@@ -189,3 +189,25 @@
       - patch
       - V-22692
 
+- name: "HIGH | V-26070 | AUDIT | Standard user accounts must only have Read permissions to the Winlogon registry key."
+  win_shell: Get-Acl -PATH 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon' | Format-List
+  register: standard_user_read_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-26070
+
+- name: "HIGH | V-26070 | PATCH | Standard user accounts must only have Read permissions to the Winlogon registry key."
+  script: v26070.ps1
+  when: >
+    'TrustedInstaller Allow  FullControl' not in standard_user_read_audit.stdout or 'SYSTEM Allow  FullControl' not in standard_user_read_audit.stdout or 
+    'Administrators Allow  FullControl' not in standard_user_read_audit.stdout or 'Users Allow  ReadKey' not in standard_user_read_audit.stdout
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-26070
+
