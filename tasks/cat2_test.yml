@@ -2293,3 +2293,27 @@
       - patch
       - V-26581
 
+- name: "MEDIUM | V-26582 | AUDIT | The System event log must be configured to a minimum size requirement."
+  win_command: reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\System /v MaxSize
+  register: system_log_max_size_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "system_log_max_size_audit.stderr and reg_not_found not in system_log_max_size_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26582
+
+- name: "MEDIUM | V-26582 | PATCH | The System event log must be configured to a minimum size requirement."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\System'
+      value: MaxSize
+      data: 0x00008000
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26582
+
