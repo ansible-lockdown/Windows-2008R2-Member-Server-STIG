@@ -2151,3 +2151,27 @@
       - patch
       - V-26575
 
+- name: "MEDIUM | V-26576 | AUDIT | The IP-HTTPS IPv6 transition technology will be disabled."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\TCPIP\v6Transition\IPHTTPS\IPHTTPSInterface /v IPHTTPS_ClientState
+  register: IPv6_transition_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "IPv6_transition_audit.stderr and reg_not_found not in IPv6_transition_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26576
+
+- name: "MEDIUM | V-26576 | PATCH | The IP-HTTPS IPv6 transition technology will be disabled."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\TCPIP\v6Transition\IPHTTPS\IPHTTPSInterface'
+      value: IPHTTPS_ClientState
+      data: 3
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26576
+
