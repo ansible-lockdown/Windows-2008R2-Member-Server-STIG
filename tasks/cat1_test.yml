@@ -235,3 +235,27 @@
       - patch
       - V-26283
 
+- name: "HIGH | V-34974 | AUDIT | The Windows Installer Always install with elevated privileges option must be disabled."
+  win_command: reg query HKLM\Software\Policies\Microsoft\Windows\Installer\ /v AlwaysInstallElevated
+  register: install_elevated_disabled_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in install_elevated_disabled_audit.stderr and install_elevated_disabled_audit.stderr"
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-34974
+
+- name: "HIGH | V-34974 | PATCH | The Windows Installer Always install with elevated privileges option must be disabled."
+  win_regedit:
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\Installer\'
+      value: AlwaysInstallElevated
+      data: 0
+      datatype: dword
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-34974
+
