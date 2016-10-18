@@ -2461,3 +2461,25 @@
       - patch
       - V-36439
 
+- name: "MEDIUM | V-56511 | AUDIT | The Windows Error Reporting Service must be running and configured to start automatically."
+  win_shell: Get-Service -name WerSvc
+  register: WER_service_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-56511
+
+- name: "MEDIUM | V-56511 | PATCH | The Windows Error Reporting Service must be running and configured to start automatically."
+  win_service: 
+      name: WerSvc
+      start_mode: auto
+      state: started
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-56511
+
