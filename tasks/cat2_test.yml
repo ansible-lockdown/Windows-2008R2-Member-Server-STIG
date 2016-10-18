@@ -2507,3 +2507,26 @@
       - patch
       - V-57455
 
+- name: "MEDIUM | V-57457 | AUDIT | The system must be configured to store error reports locally, on the system or in the enclave, and not send them to Microsoft."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v CorporateWerServer
+  register: error_message_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "error_message_audit.stderr and reg_not_found not in error_message_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57457
+
+- name: "MEDIUM | V-57457 | PATCH | The system must be configured to store error reports locally, on the system or in the enclave, and not send them to Microsoft."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: CorporateWerServer
+      data: " "
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57457
+
