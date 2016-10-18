@@ -2442,7 +2442,7 @@
   register: token_filter_audit
   check_mode: no
   changed_when: no
-  failed_when: "token_filter_audit.stderr and service_not_found not in token_filter_audit.stderr"
+  failed_when: "token_filter_audit.stderr and reg_not_found not in token_filter_audit.stderr"
   tags:
       - cat2
       - medium
