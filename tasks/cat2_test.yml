@@ -2519,11 +2519,13 @@
       - audit
       - V-57457
 
+# Only make the data " " if there isn't a value. Existing values should be error reporting server hostname or IP.
 - name: "MEDIUM | V-57457 | PATCH | The system must be configured to store error reports locally, on the system or in the enclave, and not send them to Microsoft."
   win_regedit:
       key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
       value: CorporateWerServer
       data: " "
+  when: not error_message_audit.stdout
   tags:
       - cat2
       - medium
