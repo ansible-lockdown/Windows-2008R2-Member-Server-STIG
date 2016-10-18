@@ -2389,6 +2389,30 @@
       - patch
       - V-26604
 
+- name: "MEDIUM | V-26605 | AUDIT | The Simple TCP/IP Services service will be disabled."
+  win_shell: Get-Service -name simptcp
+  register: simtcp_service_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "simtcp_service_audit.stderr and service_not_found not in simtcp_service_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26605
+
+- name: "MEDIUM | V-26605 | PATCH | The Simple TCP/IP Services service will be disabled."
+  win_service: 
+      name: simptcp
+      start_mode: disabled
+      state: stopped
+  when: not simtcp_service_audit.stderr
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26605
+
 - name: "MEDIUM | V-26606 | AUDIT | The Telnet service will be disabled."
   win_shell: Get-Service -name tlntsvr
   register: telnet_service_audit
