@@ -2532,3 +2532,44 @@
       - patch
       - V-57457
 
+# Need to recheck if WER is being used first. Skip the rest if WER is not configured.
+- name: "MEDIUM | V-57459 | AUDIT | The system must be configured to use SSL to forward error reports."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v CorporateWerServer
+  register: error_message_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "error_message_audit.stderr and reg_not_found not in error_message_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57459
+
+# Only run when WER server isn't blank
+- name: "MEDIUM | V-57459 | AUDIT | The system must be configured to use SSL to forward error reports."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v CorporateWerUseSSL
+  register: error_message_SSL_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "error_message_SSL_audit.stderr and reg_not_found not in error_message_SSL_audit.stderr"
+  when: "'CorporateWerServer    REG_SZ     \\r' not in error_message_audit.stdout"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57459
+
+# Only run when WER server isn't blank
+- name: "MEDIUM | V-57459 | PATCH | The system must be configured to use SSL to forward error reports."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: CorporateWerUseSSL
+      data: 1
+      datatype: dword
+  when: "'CorporateWerServer    REG_SZ     \\r' not in error_message_audit.stdout"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57459
+
