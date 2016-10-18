@@ -2483,3 +2483,27 @@
       - patch
       - V-56511
 
+- name: "MEDIUM | V-57455 | AUDIT | The system must be configured to prevent the display of error messages to the user."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v DontShowUI
+  register: error_message_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "error_message_audit.stderr and reg_not_found not in error_message_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57455
+
+- name: "MEDIUM | V-57455 | PATCH | The system must be configured to prevent the display of error messages to the user."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: DontShowUI
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57455
+
