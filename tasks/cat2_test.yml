@@ -2317,3 +2317,27 @@
       - patch
       - V-26582
 
+- name: "MEDIUM | V-26600 | AUDIT | The Fax service will be disabled."
+  win_shell: Get-Service -name fax
+  register: fax_service_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "fax_service_audit.stderr and service_not_found not in fax_service_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26600
+
+- name: "MEDIUM | V-26600 | PATCH | The Fax service will be disabled."
+  win_service: 
+      name: fax
+      start_mode: disabled
+      state: stopped
+  when: not fax_service_audit.stderr
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26600
+
