@@ -2341,6 +2341,30 @@
       - patch
       - V-26600
 
+- name: "MEDIUM | V-26602 | AUDIT | The Microsoft FTP service will be disabled."
+  win_shell: Get-Service -name msftpsvc
+  register: ftp_service_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "ftp_service_audit.stderr and service_not_found not in ftp_service_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26602
+
+- name: "MEDIUM | V-26602 | PATCH | The Microsoft FTP service will be disabled."
+  win_service: 
+      name: msftpsvc
+      start_mode: disabled
+      state: stopped
+  when: not ftp_service_audit.stderr
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26602
+
 - name: "MEDIUM | V-26606 | AUDIT | The Telnet service will be disabled."
   win_shell: Get-Service -name tlntsvr
   register: telnet_service_audit
