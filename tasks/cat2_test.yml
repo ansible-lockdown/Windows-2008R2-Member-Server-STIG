@@ -2782,3 +2782,27 @@
       - patch
       - V-57475
 
+- name: "MEDIUM | V-57477 | AUDIT | The system must be configured to automatically consent to send all data requested by a local or DOD-wide error collection site."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\Consent\" /v DefaultConsent
+  register: default_consent_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "default_consent_audit.stderr and reg_not_found not in default_consent_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57477
+
+- name: "MEDIUM | V-57477 | PATCH | The system must be configured to automatically consent to send all data requested by a local or DOD-wide error collection site."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\Consent'
+      value: DefaultConsent
+      data: 0x00000004
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57477
+
