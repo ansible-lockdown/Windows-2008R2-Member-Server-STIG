@@ -2090,6 +2090,30 @@
       - patch
       - V-21953
 
+- name: "MEDIUM | V-21954 | AUDIT | Kerberos encryption types must be configured to prevent the use of DES encryption suites."
+  win_command: reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters /v SupportedEncryptionTypes
+  register: kerberos_encryption_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in kerberos_encryption_audit.stderr and kerberos_encryption_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-21954
+
+- name: "MEDIUM | V-21954 | PATCH | Kerberos encryption types must be configured to prevent the use of DES encryption suites."
+  win_regedit: 
+    key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters'
+    value: SupportedEncryptionTypes
+    data: 0x7ffffffc
+    datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-21954
+
 - name: "MEDIUM | V-21973 | AUDIT | Autoplay will be turned off for non-volume devices."
   win_command: reg query HKLM\Software\Policies\Microsoft\Windows\Explorer /v NoAutoplayfornonVolume
   register: autoplay_nonvolume_audit
