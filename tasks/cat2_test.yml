@@ -2734,3 +2734,27 @@
       - patch
       - V-57471
 
+- name: "MEDIUM | V-57473 | AUDIT | The maximum number of error reports to queue on a system must be configured to 50 or greater."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v MaxQueueCount
+  register: max_queue_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "max_queue_audit.stderr and reg_not_found not in max_queue_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57473
+
+- name: "MEDIUM | V-57473 | PATCH | The maximum number of error reports to queue on a system must be configured to 50 or greater."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: MaxQueueCount
+      data: 0x00000032
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57473
+
