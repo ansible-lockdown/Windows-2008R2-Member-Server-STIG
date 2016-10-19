@@ -21,6 +21,40 @@
 #       - patch
 #       - V-1089
 
+- name: "MEDIUM | V-1122 | AUDIT | The system will be configured with a password-protected screen saver."
+  win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows\Control Panel\Desktop\" /v {{ item }}
+  register: screen_saver_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in screen_saver_audit.stderr and screen_saver_audit.stderr"
+  with_items: 
+      - ScreenSaveActive
+      - ScreenSaverIsSecure
+      - ScreenSaveTimeOut
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1122
+
+- name: "MEDIUM | V-1122 | PATCH | The system will be configured with a password-protected screen saver."
+  win_regedit: 
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\Control Panel\Desktop'
+      value: "{{ item.value }}"
+      data: "{{ item.data }}"
+  with_items: 
+      - value: ScreenSaveActive
+        data: 1
+      - value: ScreenSaverIsSecure
+        data: 1
+      - value: ScreenSaveTimeOut
+        data: 900
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1122
+
 - name: "MEDIUM | V-1141 | AUDIT | Unencrypted passwords must not be sent to third-party SMB Servers."
   win_command: reg query HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters /v EnablePlainTextPassword
   register: plain_text_password_audit
