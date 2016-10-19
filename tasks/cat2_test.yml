@@ -2662,3 +2662,27 @@
       - patch
       - V-57465
 
+- name: "MEDIUM | V-57467 | AUDIT | The maximum number of error reports to archive on a system must be configured to 100 or greater."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v MaxArchiveCount
+  register: max_achive_count_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "max_achive_count_audit.stderr and reg_not_found not in max_achive_count_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57467
+
+- name: "MEDIUM | V-57467 | PATCH | The maximum number of error reports to archive on a system must be configured to 100 or greater."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: MaxArchiveCount
+      data: 0x00000064
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57467
+
