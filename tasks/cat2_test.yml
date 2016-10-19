@@ -2758,3 +2758,27 @@
       - patch
       - V-57473
 
+- name: "MEDIUM | V-57475 | AUDIT | The system must be configured to attempt to forward queued error reports once a day."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v QueuePesterInterval
+  register: daily_forward_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "daily_forward_audit.stderr and reg_not_found not in daily_forward_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57475
+
+- name: "MEDIUM | V-57475 | PATCH | The system must be configured to attempt to forward queued error reports once a day."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: QueuePesterInterval
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57475
+
