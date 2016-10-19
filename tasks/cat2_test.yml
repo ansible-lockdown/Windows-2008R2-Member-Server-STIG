@@ -2552,7 +2552,7 @@
   check_mode: no
   changed_when: no
   failed_when: "error_message_SSL_audit.stderr and reg_not_found not in error_message_SSL_audit.stderr"
-  when: "'CorporateWerServer    REG_SZ     \\r' not in error_message_audit.stdout"
+  when: "'CorporateWerServer    REG_SZ     \\r' not in error_message_audit.stdout and reg_not_found not in error_message_audit.stderr"
   tags:
       - cat2
       - medium
@@ -2566,7 +2566,7 @@
       value: CorporateWerUseSSL
       data: 1
       datatype: dword
-  when: "'CorporateWerServer    REG_SZ     \\r' not in error_message_audit.stdout"
+  when: "'CorporateWerServer    REG_SZ     \\r' not in error_message_audit.stdout and reg_not_found not in error_message_audit.stderr"
   tags:
       - cat2
       - medium
