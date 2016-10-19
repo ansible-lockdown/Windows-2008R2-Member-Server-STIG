@@ -2686,3 +2686,27 @@
       - patch
       - V-57467
 
+- name: "MEDIUM | V-57469 | AUDIT | The system must be configured to queue error reports until a local or DOD-wide collector is available."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v DisableQueue
+  register: disable_queue_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "disable_queue_audit.stderr and reg_not_found not in disable_queue_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57469
+
+- name: "MEDIUM | V-57469 | PATCH | The system must be configured to queue error reports until a local or DOD-wide collector is available."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: DisableQueue
+      data: 0
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57469
+
