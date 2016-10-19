@@ -2806,3 +2806,27 @@
       - patch
       - V-57477
 
+- name: "MEDIUM | V-57479 | AUDIT | The system must be configured to permit the default consent levels of Windows Error Reporting to override any other consent policy setting."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\Consent\" /v DefaultOverrideBehavior
+  register: override_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "override_audit.stderr and reg_not_found not in override_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57479
+
+- name: "MEDIUM | V-57479 | PATCH | The system must be configured to permit the default consent levels of Windows Error Reporting to override any other consent policy setting."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\Consent'
+      value: DefaultOverrideBehavior
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57479
+
