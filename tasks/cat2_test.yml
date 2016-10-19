@@ -2710,3 +2710,27 @@
       - patch
       - V-57469
 
+- name: "MEDIUM | V-57471 | AUDIT | The system must be configured to add all error reports to the queue."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v ForceQueue
+  register: force_queue_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "force_queue_audit.stderr and reg_not_found not in force_queue_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57471
+
+- name: "MEDIUM | V-57471 | PATCH | The system must be configured to add all error reports to the queue."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: ForceQueue
+      data: 1
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57471
+
