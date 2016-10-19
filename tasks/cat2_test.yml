@@ -2638,3 +2638,27 @@
       - patch
       - V-57463
 
+- name: "MEDIUM | V-57465 | AUDIT | The system must be configured to store all data in the error report archive."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v ConfigureArchive
+  register: archive_error_reports_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "archive_error_reports_audit.stderr and reg_not_found not in archive_error_reports_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57465
+
+- name: "MEDIUM | V-57465 | PATCH | The system must be configured to store all data in the error report archive."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: ConfigureArchive
+      data: 0x00000002
+      datatype: dword
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57465
+
