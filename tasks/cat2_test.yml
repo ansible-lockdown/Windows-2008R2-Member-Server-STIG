@@ -2616,10 +2616,10 @@
 
 - name: "MEDIUM | V-57463 | AUDIT | The system must be configured to archive error reports."
   win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v DisableArchive
-  register: archive_error_reports_audit
+  register: disable_archive_audit
   check_mode: no
   changed_when: no
-  failed_when: "archive_error_reports_audit.stderr and reg_not_found not in archive_error_reports_audit.stderr"
+  failed_when: "disable_archive_audit.stderr and reg_not_found not in disable_archive_audit.stderr"
   tags:
       - cat2
       - medium
