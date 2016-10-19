@@ -2573,3 +2573,44 @@
       - patch
       - V-57459
 
+# Need to recheck if WER is being used first. Skip the rest if WER is not configured.
+- name: "MEDIUM | V-57461 | AUDIT | The system must be configured to send error reports on TCP port 1232."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v CorporateWerServer
+  register: error_message_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "error_message_audit.stderr and reg_not_found not in error_message_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57461
+
+# Only run when WER server isn't blank
+- name: "MEDIUM | V-57461 | AUDIT | The system must be configured to send error reports on TCP port 1232."
+  win_command: reg query \"HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\" /v CorporateWerPortNumber
+  register: error_message_port_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "error_message_port_audit.stderr and reg_not_found not in error_message_port_audit.stderr"
+  when: "'CorporateWerServer    REG_SZ     \\r' not in error_message_audit.stdout and reg_not_found not in error_message_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-57461
+
+# Only run when WER server isn't blank
+- name: "MEDIUM | V-57461 | PATCH | The system must be configured to send error reports on TCP port 1232."
+  win_regedit:
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: CorporateWerPortNumber
+      data: 0x000004d0
+      datatype: dword
+  when: "'CorporateWerServer    REG_SZ     \\r' not in error_message_audit.stdout and reg_not_found not in error_message_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-57461
+
