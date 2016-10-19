@@ -2326,6 +2326,26 @@
       - patch
       - V-26535
 
+- name: "MEDIUM | V-26536 | AUDIT | The system will be configured to audit 'Account Management -> Security Group Management' failures."
+  win_shell: AuditPol /get /subcategory:"Security Group Management"
+  register: failure_security_group_management_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26536
+
+- name: "MEDIUM | V-26536 | PATCH | The system will be configured to audit 'Account Management -> Security Group Management' failures."
+  win_shell: AuditPol /set /subcategory:"Security Group Management" /failure:enable
+  when: "'Failure' not in failure_security_group_management_audit.stdout"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26536
+
 - name: "MEDIUM | V-26575 | AUDIT | The 6to4 IPv6 transition technology will be disabled."
   win_command: reg query HKLM\Software\Policies\Microsoft\Windows\TCPIP\v6Transition /v 6to4_State
   register: six_to_four_audit
