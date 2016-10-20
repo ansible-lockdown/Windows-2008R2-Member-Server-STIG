@@ -2546,6 +2546,26 @@
       - patch
       - V-26548
 
+- name: "MEDIUM | V-26549 | AUDIT | The system will be configured to audit 'Privilege Use -> Sensitive Privilege Use' successes."
+  win_shell: AuditPol /get /subcategory:"Sensitive Privilege Use"
+  register: success_sensitive_privilege_use_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26549
+
+- name: "MEDIUM | V-26549 | PATCH | The system will be configured to audit 'Privilege Use -> Sensitive Privilege Use' successes."
+  win_shell: AuditPol /set /subcategory:"Sensitive Privilege Use" /success:enable
+  when: "'Success' not in success_sensitive_privilege_use_audit.stdout"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26549
+
 - name: "MEDIUM | V-26575 | AUDIT | The 6to4 IPv6 transition technology will be disabled."
   win_command: reg query HKLM\Software\Policies\Microsoft\Windows\TCPIP\v6Transition /v 6to4_State
   register: six_to_four_audit
