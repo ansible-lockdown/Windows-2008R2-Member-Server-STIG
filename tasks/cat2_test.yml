@@ -2686,6 +2686,26 @@
       - patch
       - V-26555
 
+- name: "MEDIUM | V-26556 | AUDIT | The system will be configured to audit 'System -> Security System Extension' failures."
+  win_shell: AuditPol /get /subcategory:"Security System Extension"
+  register: failure_security_system_extension_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26556
+
+- name: "MEDIUM | V-26556 | PATCH | The system will be configured to audit 'System -> Security System Extension' failures."
+  win_shell: AuditPol /set /subcategory:"Security System Extension" /failure:enable
+  when: "'Failure' not in failure_security_system_extension_audit.stdout"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26556
+
 - name: "MEDIUM | V-26575 | AUDIT | The 6to4 IPv6 transition technology will be disabled."
   win_command: reg query HKLM\Software\Policies\Microsoft\Windows\TCPIP\v6Transition /v 6to4_State
   register: six_to_four_audit
