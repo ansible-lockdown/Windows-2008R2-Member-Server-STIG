@@ -2606,6 +2606,26 @@
       - patch
       - V-26551
 
+- name: "MEDIUM | V-26552 | AUDIT | The system will be configured to audit 'System -> IPSec Driver' failures."
+  win_shell: AuditPol /get /subcategory:"IPSec Driver"
+  register: failure_IPSec_driver_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26552
+
+- name: "MEDIUM | V-26552 | PATCH | The system will be configured to audit 'System -> IPSec Driver' failures."
+  win_shell: AuditPol /set /subcategory:"IPSec Driver" /failure:enable
+  when: "'Failure' not in failure_IPSec_driver_audit.stdout"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26552
+
 - name: "MEDIUM | V-26575 | AUDIT | The 6to4 IPv6 transition technology will be disabled."
   win_command: reg query HKLM\Software\Policies\Microsoft\Windows\TCPIP\v6Transition /v 6to4_State
   register: six_to_four_audit
