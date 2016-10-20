@@ -2706,6 +2706,26 @@
       - patch
       - V-26556
 
+- name: "MEDIUM | V-26557 | AUDIT | The system will be configured to audit 'System -> System Integrity' successes."
+  win_shell: AuditPol /get /subcategory:"System Integrity"
+  register: success_system_integrity_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26557
+
+- name: "MEDIUM | V-26557 | PATCH | The system will be configured to audit 'System -> System Integrity' successes."
+  win_shell: AuditPol /set /subcategory:"System Integrity" /success:enable
+  when: "'Success' not in success_system_integrity_audit.stdout"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26557
+
 - name: "MEDIUM | V-26575 | AUDIT | The 6to4 IPv6 transition technology will be disabled."
   win_command: reg query HKLM\Software\Policies\Microsoft\Windows\TCPIP\v6Transition /v 6to4_State
   register: six_to_four_audit
