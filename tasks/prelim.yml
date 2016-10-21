@@ -10,3 +10,83 @@
       - low
       - medium
       - high
+
+- name: "PRELIM | Update the Windows Security Options File | Copy new file over"
+  win_copy:
+      src: sceregvl.inf
+      dest: c:\windows\inf\sceregvl.STIG.inf
+  register: copy
+
+- block:
+    - name: "PRELIM | Update the Windows Security Options File | Take ownership of the file"
+      win_owner: 
+          path: c:\windows\inf\sceregvl.inf
+          user: Administrator
+
+    - name: "PRELIM | Update the Windows Security Options File | Add Full permissions"
+      win_acl:
+          path: 'c:\windows\inf\sceregvl.inf'
+          user: 'Administrator'
+          rights: 'FullControl'
+          type: 'allow'
+          state: 'present'
+
+    - name: "PRELIM | Update the Windows Security Options File | Backup originial file"
+      win_shell: mv c:\windows\inf\sceregvl.inf c:\windows\inf\sceregvl.inf.bak
+
+    - name: "PRELIM | Update the Windows Security Options File | Rename new file"
+      win_shell: cp c:\windows\inf\sceregvl.STIG.inf c:\windows\inf\sceregvl.inf
+
+    - name: "PRELIM | Update the Windows Security Options File | Re-register scecli.dll"
+      win_shell: "regsvr32 /s scecli.dll"
+
+# TODO: Fix ACLs of new file to match original file
+    - name: "PRELIM | Update the Windows Security Options File | Set ACLs to match original"
+      win_acl:
+          path: 'c:\windows\inf\sceregvl.inf'
+          user: "{{ item.user }}"
+          rights: "{{ item.rights }}"
+          type: 'allow'
+          state: "{{ item.state }}"
+      with_items: 
+        - user: Administrator
+          rights: 'FullControl'
+          state: absent
+        - user: SYSTEM
+          rights: 'FullControl'
+          state: absent
+        - user: SYSTEM
+          rights: 'Read,ReadAndExecute'
+          state: present
+        - user: Administrators
+          rights: 'FullControl'
+          state: absent
+        - user: Administrators
+          rights: 'Read,ReadAndExecute'
+          state: present
+        - user: Users
+          rights: 'FullControl,Read,ReadAndExecute'
+          state: absent
+        - user: Users
+          rights: 'Read,ReadAndExecute'
+          state: present
+          # win_acl cannot currently find NT SERVICE\ users.
+        # - user: 'NT SERVICE\TrustedInstaller'
+        #   rights: 'FullControl'
+        #   state: present
+
+  when: copy.changed
+  rescue:
+      # Remove the copied file so this block can be reran after fixing any issue
+      - name: "PRELIM | Update the Windows Security Options File | Clean up new file"
+        win_file:
+            path: c:\windows\inf\sceregvl.STIG.inf
+            state: absent
+  tags:
+      - cat1
+      - cat2
+      - cat3
+      - low
+      - medium
+      - high
+
