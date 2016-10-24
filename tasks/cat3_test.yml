@@ -45,6 +45,25 @@
       - patch
       - V-1090
 
+- name: "LOW | V-1112 | AUDIT | Outdated or unused accounts must be removed from the system or disabled."
+  script: v1112.ps1 
+  register: outdated_accounts_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat3
+      - low
+      - audit
+      - V-1112
+
+# - name: "LOW | V-1112 | PATCH | Outdated or unused accounts must be removed from the system or disabled."
+#   win_command: true
+#   tags:
+#       - cat3
+#       - low
+#       - patch
+#       - V-1112
+
 # - name: "LOW | V-1136 | AUDIT | Users will be forcibly disconnected when their logon hours expire."
 #   win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v EnableForcedLogoff
 #   register: forced_logoff_audit
