@@ -1,3 +1,61 @@
+- name: "MEDIUM | V-1077 | AUDIT | Permissions for event logs must conform to minimum requirements."
+  win_shell: Get-Acl -PATH 'C:\Windows\System32\winevt\Logs' | Format-List
+  register: event_logs_ACL_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1077
+
+- name: "MEDIUM | V-1077 | AUDIT | Permissions for event logs must conform to minimum requirements."
+  win_shell: (Get-Acl -PATH 'C:\Windows\System32\winevt\Logs').Access.IdentityReference.Value
+  register: event_logs_ACL_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1077
+
+# Remove ACLs for users/groups not listed in STIG
+- name: "MEDIUM | V-1077 | PATCH | Permissions for event logs must conform to minimum requirements."
+  win_acl:
+      path: 'C:\Windows\System32\winevt\Logs'
+      user: '{{ item }}'
+      rights: 'AppendData,ChangePermissions,Delete,DeleteSubdirectoriesAndFiles,ExecuteFile,FullControl,ListDirectory,
+                Modify,Read,ReadAndExecute,ReadAttributes,ReadData,ReadExtendedAttributes,ReadPermissions,Synchronize,
+                TakeOwnership,Traverse,Write,WriteAttributes,WriteData,WriteExtendedAttributes'
+      type: 'allow'
+      state: 'absent'
+  when: "'SYSTEM' not in item and 'eventlog' not in item and 'Administrators' not in item"
+  with_items:
+      - "{{ event_logs_ACL_audit.stdout_lines }}"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1077
+
+- name: "MEDIUM | V-1077 | PATCH | Permissions for event logs must conform to minimum requirements."
+  win_acl:
+      path: 'C:\Windows\System32\winevt\Logs'
+      user: '{{ item }}'
+      rights: 'FullControl'
+      type: 'allow'
+      state: 'present'
+  with_items:
+      - 'NT SERVICE\Eventlog'
+      - SYSTEM
+      - Administrators
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1077
+
 # - name: "MEDIUM | V-1089 | AUDIT | The required legal notice must be configured to display before console logon."
 #   win_command: reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LegalNoticeText
 #   register: legal_notice_audit
