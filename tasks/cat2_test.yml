@@ -79,6 +79,25 @@
 #       - patch
 #       - V-1089
 
+- name: "MEDIUM | V-1119 | AUDIT | Booting into alternate non STIG compliant operating systems will not be permitted."
+  win_command: bcdedit
+  register: OS_list_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1119
+
+# - name: "MEDIUM | V-1119 | PATCH | Booting into alternate non STIG compliant operating systems will not be permitted."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-1119
+
 - name: "MEDIUM | V-1122 | AUDIT | The system will be configured with a password-protected screen saver."
   win_command: reg query \"HKLM\Software\Policies\Microsoft\Windows\Control Panel\Desktop\" /v {{ item }}
   register: screen_saver_audit
