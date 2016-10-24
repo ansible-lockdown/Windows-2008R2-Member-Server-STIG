@@ -40,7 +40,12 @@
     - name: "PRELIM | Update the Windows Security Options File | Re-register scecli.dll"
       win_shell: "regsvr32 /s scecli.dll"
 
-# TODO: Fix ACLs of new file to match original file
+# Fix ACLs of new file to match original file
+    - name: Disable inherited ACE's
+      win_acl_inheritance:
+          path: 'c:\windows\inf\sceregvl.inf'
+          state: absent
+
     - name: "PRELIM | Update the Windows Security Options File | Set ACLs to match original"
       win_acl:
           path: 'c:\windows\inf\sceregvl.inf'
@@ -53,26 +58,20 @@
           rights: 'FullControl'
           state: absent
         - user: SYSTEM
-          rights: 'FullControl'
-          state: absent
-        - user: SYSTEM
           rights: 'Read,ReadAndExecute'
           state: present
-        - user: Administrators
-          rights: 'FullControl'
-          state: absent
         - user: Administrators
           rights: 'Read,ReadAndExecute'
           state: present
         - user: Users
-          rights: 'FullControl,Read,ReadAndExecute'
-          state: absent
-        - user: Users
           rights: 'Read,ReadAndExecute'
           state: present
-          # win_acl cannot currently find NT SERVICE\ users.
-        # - user: 'NT SERVICE\TrustedInstaller'
-        #   rights: 'FullControl'
+        - user: 'NT SERVICE\TrustedInstaller'
+          rights: 'FullControl'
+          state: present
+        # For 2k12
+        # - user: 'ALL APPLICATION PACKAGES'
+        #   rights: 'Read,ReadAndExecute'
         #   state: present
 
   when: copy.changed
