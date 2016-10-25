@@ -22,6 +22,24 @@
       - patch
       - V-1093
 
+- name: "HIGH | V-1127 | AUDIT | Only administrators responsible for the system must have Administrator rights on the system."
+  win_command: net localgroup Administrators
+  register: administrators_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1127
+
+# - name: "HIGH | V-1127 | PATCH | Only administrators responsible for the system must have Administrator rights on the system."
+#   win_command: true
+#   tags:
+#       - cat1
+#       - high
+#       - patch
+#       - V-1127
 
 - name: "HIGH | V-1152 | AUDIT | Anonymous access to the registry must be restricted."
   win_shell: Get-Acl -PATH 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg' | Format-List
