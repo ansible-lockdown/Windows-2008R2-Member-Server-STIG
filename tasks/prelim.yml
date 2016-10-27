@@ -11,6 +11,118 @@
       - medium
       - high
 
+- name: "PRELIM | KB2842230 | Check PowerShell equals 3."
+  win_shell: $PSVersionTable.psversion.Major -eq 3
+  register: check_powershell_version
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat1
+      - cat2
+      - cat3
+      - low
+      - medium
+      - high
+
+- name: "PRELIM | KB2842230 | Check for hotfix KB2842230."
+  win_shell: Get-HotFix -ID KB2842230
+  register: find_hotfix
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat1
+      - cat2
+      - cat3
+      - low
+      - medium
+      - high
+
+- block:
+    - name: "PRELIM | KB2842230 | Copy hotfix KB2842230."
+      win_copy: 
+          src: Windows6.1-KB2842230-x64.msu
+          dest: "{{ temp_dir }}"
+      register: copy_hotfix
+      check_mode: no
+      tags:
+          - cat1
+          - cat2
+          - cat3
+          - low
+          - medium
+          - high
+
+    - name: "PRELIM | KB2842230 | Extract hotfix KB2842230."
+      win_shell: wusa.exe {{ temp_dir }}/Windows6.1-KB2842230-x64.msu /extract:{{ temp_dir }}/hotfix/
+      register: extract_hotfix
+      check_mode: no
+      tags:
+          - cat1
+          - cat2
+          - cat3
+          - low
+          - medium
+          - high
+
+    - name: "PRELIM | KB2842230 | Apply hotfix KB2842230."
+      win_shell:  dism.exe /quiet /norestart /LogPath:{{ temp_dir }}/hotfix/hotfix.log /online /add-package /PackagePath:{{ temp_dir }}/hotfix/Windows6.1-KB2842230-x64.cab
+      register: apply_hotfix
+      check_mode: no
+      # dism always returns rc: 1 even though it worked
+      ignore_errors: yes
+      tags:
+          - cat1
+          - cat2
+          - cat3
+          - low
+          - medium
+          - high
+
+    - name: "PRELIM | KB2842230 | Check for completion."
+      win_shell: Select-String -Path {{ temp_dir }}/hotfix/hotfix.log -Pattern 'Ending Dism.exe session'
+      register: hotfix_log
+      until: hotfix_log.stdout
+      check_mode: no
+      tags:
+          - cat1
+          - cat2
+          - cat3
+          - low
+          - medium
+          - high
+
+    - name: "PRELIM | KB2842230 | Reboot."
+      win_reboot:
+      register: reboot
+      check_mode: no
+      tags:
+          - cat1
+          - cat2
+          - cat3
+          - low
+          - medium
+          - high
+
+    - name: "PRELIM | KB2842230 | Clean up."
+      win_file:
+          path: "{{ item }}"
+          state: absent
+      with_items: 
+        - "{{ temp_dir }}/hotfix/"
+        - "{{ temp_dir }}/Windows6.1-KB2842230-x64.msu"
+      register: reboot
+      check_mode: no
+      tags:
+          - cat1
+          - cat2
+          - cat3
+          - low
+          - medium
+          - high
+
+  when: "'True' in check_powershell_version.stdout and not find_hotfix.stdout"
+
 - name: "PRELIM | Update the Windows Security Options File | Copy new file over"
   win_copy:
       src: sceregvl.inf
