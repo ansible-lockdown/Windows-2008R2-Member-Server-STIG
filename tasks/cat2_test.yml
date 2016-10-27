@@ -1867,6 +1867,39 @@
       - patch
       - V-15727
 
+- name: "MEDIUM | V-15823 | AUDIT | Software certificate installation files will be removed from a system."
+  win_command: wmic logicaldisk get name
+  register: list_of_drives_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15823
+
+- name: "MEDIUM | V-15823 | AUDIT | Software certificate installation files will be removed from a system."
+  win_shell: 'Get-ChildItem {{ item|trim }}\\*.p12, {{ item|trim }}\\*.pfx -recurse'
+  register: certificate_installation_files_audit
+  check_mode: no
+  changed_when: no
+  when: "'Name' not in item and item"
+  with_items: 
+    - "{{ list_of_drives_audit.stdout_lines }}"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-15823
+
+# - name: "MEDIUM | V-15823 | PATCH | Software certificate installation files will be removed from a system."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-15823
+
 - name: "MEDIUM | V-15991 | AUDIT | UIAccess applications will not be allowed to prompt for elevation without using the secure desktop."
   win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v EnableUIADesktopToggle
   register: UIA_desktop_toggle_audit
