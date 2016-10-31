@@ -3070,7 +3070,7 @@
       - V-26600
 
 - name: "MEDIUM | V-26602 | AUDIT | The Microsoft FTP service will be disabled."
-  win_shell: Get-Service -name msftpsvc
+  win_shell: Get-Service -name *ftpsvc
   register: ftp_service_audit
   check_mode: no
   changed_when: no
@@ -3083,7 +3083,7 @@
 
 - name: "MEDIUM | V-26602 | PATCH | The Microsoft FTP service will be disabled."
   win_service: 
-      name: msftpsvc
+      name: '*ftpsvc'
       start_mode: disabled
       state: stopped
   when: not ftp_service_audit.stderr
