@@ -322,6 +322,26 @@
       - patch
       - V-1171
 
+- name: "MEDIUM | V-3245 | AUDIT | File share ACLs will be reconfigured to remove the Everyone group."
+  win_shell:  Get-WmiObject -Class Win32_Share | Get-Acl | fl
+  register: eject_removable_media_audit
+  check_mode: no
+  changed_when: no
+  ignore_errors: yes
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-3245
+
+# - name: "MEDIUM | V-3245 | PATCH | File share ACLs will be reconfigured to remove the Everyone group."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-3245
+
 - name: "MEDIUM | V-3372 | AUDIT | A system must be logged on to before removing from a docking station."
   win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v UndockWithoutLogon
   register: undock_logon_audit
