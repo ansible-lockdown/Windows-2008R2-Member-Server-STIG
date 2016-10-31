@@ -183,6 +183,27 @@
       - patch
       - V-6834
 
+- name: "HIGH | V-7002 | AUDIT | DoD information system access will require the use of a password."
+  win_shell: (([ADSI]"WinNT://$env:computername").Children | Where-Object {$_.schemaclassname -eq 'user' -and $_.PasswordRequired -eq $False}).Name
+  register: no_password_users_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-7002
+
+- name: "HIGH | V-7002 | PATCH | DoD information system access will require the use of a password."
+  win_command: Net users {{ item }} /passwordreq:yes
+  with_items: 
+      - "{{ no_password_users_audit.stdout_lines }}"
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-7002
+
 - name: "HIGH | V-22692 | AUDIT | The default Autorun behavior must be configured to prevent Autorun commands."
   win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\ /v NoAutorun
   register: autorun_prevent_audit
