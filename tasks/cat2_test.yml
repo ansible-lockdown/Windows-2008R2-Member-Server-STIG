@@ -24,15 +24,16 @@
 - name: "MEDIUM | V-1077 | PATCH | Permissions for event logs must conform to minimum requirements."
   win_acl:
       path: 'C:\Windows\System32\winevt\Logs'
-      user: '{{ item }}'
+      user: '{{ item[0] }}'
       rights: 'AppendData,ChangePermissions,Delete,DeleteSubdirectoriesAndFiles,ExecuteFile,FullControl,ListDirectory,
                 Modify,Read,ReadAndExecute,ReadAttributes,ReadData,ReadExtendedAttributes,ReadPermissions,Synchronize,
                 TakeOwnership,Traverse,Write,WriteAttributes,WriteData,WriteExtendedAttributes'
-      type: 'allow'
+      type: '{{ item[1] }}'
       state: 'absent'
-  when: "'SYSTEM' not in item and 'eventlog' not in item and 'Administrators' not in item"
-  with_items:
+  when: "'SYSTEM' not in item[0] and 'eventlog' not in item[0] and 'Administrators' not in item[0] or 'allow' not in item[1]"
+  with_nested:
       - "{{ event_logs_ACL_audit.stdout_lines }}"
+      - [ allow, deny ]
   tags:
       - cat2
       - medium
