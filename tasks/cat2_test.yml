@@ -80,6 +80,26 @@
 #       - patch
 #       - V-1089
 
+- name: "MEDIUM | V-1104 | AUDIT | The maximum password age must be configured to 60 days or less."
+  win_shell: net accounts | Select-String -Pattern "Max"
+  register: max_password_age_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1104
+
+- name: "MEDIUM | V-1104 | PATCH | The maximum password age must be configured to 60 days or less."
+  win_command: net accounts /maxpwage:60
+  when: "'60' not in max_password_age_audit.stdout"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1104
+
 - name: "MEDIUM | V-1119 | AUDIT | Booting into alternate non STIG compliant operating systems will not be permitted."
   win_command: bcdedit
   register: OS_list_audit
