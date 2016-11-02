@@ -1,3 +1,15 @@
+- name: "HIGH | V-1073 | AUDIT | Systems must be maintained at a supported service pack level."
+  win_command: wmic os get Caption, Version, CSDVersion, BuildNumber
+  register: supported_pack_level_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in supported_pack_level_audit.stderr and supported_pack_level_audit.stderr"
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1073
+
 - name: "HIGH | V-1093 | AUDIT | Anonymous enumeration of shares will be restricted."
   win_command: reg query HKLM\System\CurrentControlSet\Control\Lsa /v RestrictAnonymous
   register: anon_shares_audit
