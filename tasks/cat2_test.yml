@@ -92,7 +92,7 @@
       - V-1097
 
 - name: "MEDIUM | V-1097 | PATCH | The system must lockout accounts after 3 invalid logon attempts within a specified time period."
-  win_shell: net account /lockoutthreshold:5
+  win_shell: net accounts /lockoutthreshold:5
   when: "'5' not in lockout_threshold_audit.stdout"
   tags:
       - cat2
