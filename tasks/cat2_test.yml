@@ -3162,17 +3162,17 @@
       - audit
       - V-26602
 
-- name: "MEDIUM | V-26602 | PATCH | The Microsoft FTP service will be disabled."
-  win_service: 
-      name: '*ftpsvc'
-      start_mode: disabled
-      state: stopped
-  when: not ftp_service_audit.stderr
-  tags:
-      - cat2
-      - medium
-      - patch
-      - V-26602
+# - name: "MEDIUM | V-26602 | PATCH | The Microsoft FTP service will be disabled."
+#   win_service: 
+#       name: '*ftpsvc'
+#       start_mode: disabled
+#       state: stopped
+#   when: not ftp_service_audit.stderr
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-26602
 
 - name: "MEDIUM | V-26604 | AUDIT | The Peer Networking Identity Manager service will be disabled."
   win_shell: Get-Service -name p2pimsvc
