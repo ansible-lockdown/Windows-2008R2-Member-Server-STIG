@@ -1031,14 +1031,14 @@
       - audit
       - V-6840
 
-- name: "MEDIUM | V-6840 | PATCH | System mechanisms will be implemented to enforce automatic expiration of passwords."
-  win_shell: WMIC USERACCOUNT WHERE "Domain='$env:computername'" SET PasswordExpires=TRUE
-  when: password_expiry_audit.stdout
-  tags:
-      - cat2
-      - medium
-      - patch
-      - V-6840
+# - name: "MEDIUM | V-6840 | PATCH | System mechanisms will be implemented to enforce automatic expiration of passwords."
+#   win_shell: WMIC USERACCOUNT WHERE "Domain='$env:computername'" SET PasswordExpires=TRUE
+#   when: password_expiry_audit.stdout
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-6840
 
 - name: "MEDIUM | V-14228 | AUDIT | Auditing Access of Global System Objects must be turned off."
   win_command: reg query HKLM\System\CurrentControlSet\Control\Lsa /v AuditBaseObjects
