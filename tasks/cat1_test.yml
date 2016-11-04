@@ -22,6 +22,17 @@
       - audit
       - V-1074
 
+- name: "HIGH | V-1081 | AUDIT | Local volumes must be formatted using NTFS."
+  win_shell: Get-WMIObject -Class Win32_Volume | Select DriveLetter,FileSystem
+  register: local_volume_format_aduit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1081
+
 - name: "HIGH | V-1093 | AUDIT | Anonymous enumeration of shares will be restricted."
   win_command: reg query HKLM\System\CurrentControlSet\Control\Lsa /v RestrictAnonymous
   register: anon_shares_audit
