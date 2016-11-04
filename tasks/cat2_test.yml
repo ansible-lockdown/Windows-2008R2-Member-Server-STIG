@@ -1532,6 +1532,39 @@
       - patch
       - V-14269
 
+# passwordage is in seconds. 31536000 is seconds in a 365 day year
+- name: "MEDIUM | V-14271 | AUDIT | Application account passwords will meet DoD requirements for length, complexity and changes."
+  win_shell: ([ADSI]"WinNT://$env:computername").Children | Where-Object {$_.schemaclassname -eq 'user' -and $_.passwordage -gt 31536000}
+  register: local_accounts_password_age_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14271
+
+# Need to delegate to DC
+- name: "MEDIUM | V-14271 | AUDIT | Application account passwords will meet DoD requirements for length, complexity and changes."
+  win_shell: Get-ADUser -properties passwordlastset –filter * | Where { $_.passwordLastSet –lt (Get-Date).AddYears(-1) }
+  register: domain_accounts_password_age_audit
+  check_mode: no
+  changed_when: no
+  delegate_to: "{{ groups.win2012dc[1] }}"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-14271
+
+# - name: "MEDIUM | V-14271 | PATCH | Application account passwords will meet DoD requirements for length, complexity and changes."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-14271
+
 - name: "MEDIUM | V-15666 | AUDIT | Windows Peer-to-Peer networking services will be turned off."
   win_command: reg query HKLM\Software\Policies\Microsoft\Peernet /v Disabled
   register: p2p_net_audit
@@ -3183,7 +3216,7 @@
 
 # - name: "MEDIUM | V-26602 | PATCH | The Microsoft FTP service will be disabled."
 #   win_service: 
-#       name: '*ftpsvc'
+#       name: 'nope'
 #       start_mode: disabled
 #       state: stopped
 #   when: not ftp_service_audit.stderr
