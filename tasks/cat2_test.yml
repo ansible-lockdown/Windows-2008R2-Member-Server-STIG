@@ -197,6 +197,29 @@
       - patch
       - V-1141
 
+- name: "MEDIUM | V-1145 | AUDIT | Automatic logons must be disabled."
+  win_command: reg query \"HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v AutoAdminLogon
+  register: disable_automatic_logons_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in disable_automatic_logons_audit.stderr and disable_automatic_logons_audit.stderr"
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1145
+
+- name: "MEDIUM | V-1145 | PATCH | Automatic logons must be disabled."
+  win_regedit: 
+    key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+    value: AutoAdminLogon
+    data: 0
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1145
+
 - name: "MEDIUM | V-1154 | AUDIT | The Ctrl+Alt+Del security attention sequence for logons will be enabled."
   win_command: reg query HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCAD
   register: disable_CAD_audit
