@@ -25,9 +25,7 @@
   win_acl:
       path: 'C:\Windows\System32\winevt\Logs'
       user: '{{ item[0] }}'
-      rights: 'AppendData,ChangePermissions,Delete,DeleteSubdirectoriesAndFiles,ExecuteFile,FullControl,ListDirectory,
-                Modify,Read,ReadAndExecute,ReadAttributes,ReadData,ReadExtendedAttributes,ReadPermissions,Synchronize,
-                TakeOwnership,Traverse,Write,WriteAttributes,WriteData,WriteExtendedAttributes'
+      rights: 'FullControl'
       type: '{{ item[1] }}'
       state: 'absent'
   when: "'SYSTEM' not in item[0] and 'eventlog' not in item[0] and 'Administrators' not in item[0] or 'allow' not in item[1]"
