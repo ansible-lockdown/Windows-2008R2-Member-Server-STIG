@@ -87,16 +87,79 @@
       - audit
       - V-1152
 
-# NOTE: V-1152 is shared between all OS's, but Backup Operators data for 2k12 is 'Read (This key only)' and for 2k8 is 'Special'.
-# Need script
-# - name: "HIGH | V-1152 | PATCH | Anonymous access to the registry must be restricted."
-#   script: v1152.ps1
-#   changed_when: no
-#   tags:
-#        - cat1
-#        - high
-#        - patch
-#        - V-1152
+- name: "HIGH | V-1152 | AUDIT | Anonymous access to the registry must be restricted."
+  win_shell: (Get-Acl -PATH 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg').Access.IdentityReference.Value
+  register: anon_registry_access_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-1152
+
+# Remove ACLs for users/groups not listed in STIG
+- name: "REMOVAL HIGH | V-1152 | PATCH | Anonymous access to the registry must be restricted."
+  win_acl:
+      path: 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg'
+      user: '{{ item[0] }}'
+      rights: 'FullControl'
+      type: '{{ item[1] }}'
+      state: 'absent'
+  when: "'Administrators' not in item[0] or 'allow' not in item[1]"
+  with_nested:
+      - "{{ anon_registry_access_audit.stdout_lines }}"
+      - [ allow, deny ]
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-1152
+
+- name: "HIGH | V-1152 | PATCH | Admin Anonymous access to the registry must be restricted."
+  win_acl:
+    path: 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg\'
+    user: 'BUILTIN\Administrators'
+    rights: 'FullControl'
+    type: 'allow'
+    state: 'present'
+    inherit: 'ContainerInherit, ObjectInherit'
+    propagation: 'None'
+  tags:
+       - cat1
+       - high
+       - patch
+       - V-1152
+
+- name: "HIGH | V-1152 | PATCH | BO Anonymous access to the registry must be restricted."
+  win_acl:
+    path: 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg\'
+    user: 'BUILTIN\Backup Operators'
+    rights: 'ReadKey'
+    type: 'allow'
+    state: 'present'
+    inherit: 'None'
+    propagation: 'None'
+  tags:
+       - cat1
+       - high
+       - patch
+       - V-1152
+
+- name: "HIGH | V-1152 | PATCH | LS Anonymous access to the registry must be restricted."
+  win_acl:
+    path: 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg\'
+    user: 'NT AUTHORITY\LOCAL SERVICE'
+    rights: 'ReadKey'
+    type: 'allow'
+    state: 'present'
+    inherit: 'ContainerInherit, ObjectInherit'
+    propagation: 'None'
+  tags:
+       - cat1
+       - high
+       - patch
+       - V-1152
 
 - name: "HIGH | V-1159 | AUDIT | The Recovery Console option will be set to prevent automatic logon to the system."
   win_command: reg query \"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole\" /v SecurityLevel
