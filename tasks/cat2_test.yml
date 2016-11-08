@@ -121,6 +121,29 @@
       - patch
       - V-1099
 
+- name: "MEDIUM | V-1098 | AUDIT | The period of time before the invalid logon counter is reset must be configured to at least 60 minutes."
+  win_shell: net accounts | select-string -Pattern "observation"
+  register: reset_lockout_count_audit
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1098
+
+- name: "MEDIUM | V-1098 | PATCH | The period of time before the invalid logon counter is reset must be configured to at least 60 minutes."
+  win_secedit: 
+      category: 'System Access'
+      key: ResetLockoutCount
+      value: 99999
+  when: "'Never' not in reset_lockout_count_audit.stdout"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1098
+
 - name: "MEDIUM | V-1104 | AUDIT | The maximum password age must be configured to 60 days or less."
   win_shell: net accounts | Select-String -Pattern "Max"
   register: max_password_age_audit
