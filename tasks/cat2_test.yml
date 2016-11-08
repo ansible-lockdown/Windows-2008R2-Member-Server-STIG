@@ -121,6 +121,8 @@
       - patch
       - V-1099
 
+# V-1098 must run after V-1099 because Windows won't allow setting ResetLockoutCount higher than LockoutDuration or setting LockoutDuration
+# lower than ResetLockoutCount unless it's set to -1, which is done in V-1099.
 - name: "MEDIUM | V-1098 | AUDIT | The period of time before the invalid logon counter is reset must be configured to at least 60 minutes."
   win_shell: net accounts | select-string -Pattern "observation"
   register: reset_lockout_count_audit
