@@ -115,6 +115,7 @@
       key: LockoutDuration
       value: -1
   when: "'Never' not in lockout_duration_audit.stdout"
+  failed_when: "lockout_duration_audit.rc == 1 and 'This host is joined to a Domain Controller' not in lockout_duration_audit.msg"
   tags:
       - cat2
       - medium
@@ -140,6 +141,7 @@
       key: ResetLockoutCount
       value: 99999
   when: "'Never' not in reset_lockout_count_audit.stdout"
+  failed_when: "reset_lockout_count_audit.rc == 1 and 'This host is joined to a Domain Controller' not in reset_lockout_count_audit.msg"
   tags:
       - cat2
       - medium
