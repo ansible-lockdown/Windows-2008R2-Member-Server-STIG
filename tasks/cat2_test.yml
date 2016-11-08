@@ -1621,7 +1621,7 @@
   register: domain_accounts_password_age_audit
   check_mode: no
   changed_when: no
-  delegate_to: "{{ groups.win2012dc[1] }}"
+  delegate_to: "{{ groups.win2012dc[0] }}"
   tags:
       - cat2
       - medium
