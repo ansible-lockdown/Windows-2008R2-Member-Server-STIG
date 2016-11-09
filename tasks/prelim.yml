@@ -203,3 +203,12 @@
       - medium
       - high
 
+- name: "PRELIM | Gather secedit facts"
+  win_secedit_facts: 
+  tags:
+      - cat1
+      - cat2
+      - cat3
+      - low
+      - medium
+      - high
