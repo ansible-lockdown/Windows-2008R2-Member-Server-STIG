@@ -59,7 +59,6 @@
 
 - name: "HIGH | V-1102 | AUDIT | Unauthorized accounts must not have the Act as part of the operating system user right."
   debug: var=secedit_rules.Privilege_Rights.SeTcbPrivilege
-  register: act_as_OS_audit
   check_mode: no
   changed_when: no
   tags:
