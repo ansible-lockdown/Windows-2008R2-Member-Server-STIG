@@ -79,8 +79,7 @@
 #       - V-1089
 
 - name: "MEDIUM | V-1097 | AUDIT | The system must lockout accounts after 3 invalid logon attempts within a specified time period."
-  win_shell: net accounts | select-string -Pattern "threshold"
-  register: lockout_threshold_audit
+  debug: var=secedit_rules.System_Access.LockoutBadCount
   check_mode: no
   changed_when: no
   tags:
@@ -91,7 +90,7 @@
 
 - name: "MEDIUM | V-1097 | PATCH | The system must lockout accounts after 3 invalid logon attempts within a specified time period."
   win_shell: net accounts /lockoutthreshold:5
-  when: "'5' not in lockout_threshold_audit.stdout"
+  when: secedit_rules.System_Access.LockoutBadCount != "5"
   tags:
       - cat2
       - medium
