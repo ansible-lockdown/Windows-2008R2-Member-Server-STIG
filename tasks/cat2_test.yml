@@ -150,8 +150,7 @@
       - V-1098
 
 - name: "MEDIUM | V-1104 | AUDIT | The maximum password age must be configured to 60 days or less."
-  win_shell: net accounts | Select-String -Pattern "Max"
-  register: max_password_age_audit
+  debug: var=secedit_rules.System_Access.MaximumPasswordAge
   check_mode: no
   changed_when: no
   tags:
@@ -162,7 +161,7 @@
 
 - name: "MEDIUM | V-1104 | PATCH | The maximum password age must be configured to 60 days or less."
   win_command: net accounts /maxpwage:60
-  when: "'60' not in max_password_age_audit.stdout"
+  when: secedit_rules.System_Access.MaximumPasswordAge != "60"
   tags:
       - cat2
       - medium
