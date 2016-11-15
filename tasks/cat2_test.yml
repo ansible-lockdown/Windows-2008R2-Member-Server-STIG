@@ -99,8 +99,7 @@
       - V-1097
 
 - name: "MEDIUM | V-1099 | AUDIT | The account lockout duration must be configured to require an administrator to unlock an account."
-  win_shell: net accounts | select-string -Pattern "duration"
-  register: lockout_duration_audit
+  debug: var=secedit_rules.System_Access.LockoutDuration
   check_mode: no
   changed_when: no
   tags:
@@ -115,7 +114,7 @@
       key: LockoutDuration
       value: -1
   register: secedit
-  when: "'Never' not in lockout_duration_audit.stdout"
+  when: secedit_rules.System_Access.LockoutDuration != "-1"
   failed_when: "secedit.failed is defined and 'This host is joined to a Domain Controller' not in lockout_duration_audit.msg"
   tags:
       - cat2
