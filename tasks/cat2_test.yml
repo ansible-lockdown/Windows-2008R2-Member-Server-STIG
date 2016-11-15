@@ -113,7 +113,6 @@
       key: LockoutDuration
       value: -1
   register: secedit
-  when: secedit_rules.System_Access.LockoutDuration != "-1"
   failed_when: "secedit.failed is defined and 'This host is joined to a Domain Controller' not in secedit.msg"
   tags:
       - cat2
@@ -139,7 +138,6 @@
       key: ResetLockoutCount
       value: 99999
   register: secedit
-  when: secedit_rules.System_Access.ResetLockoutCount != "99999"
   failed_when: "secedit.failed is defined and 'This host is joined to a Domain Controller' not in secedit.msg"
   tags:
       - cat2
