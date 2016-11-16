@@ -233,6 +233,29 @@
       - patch
       - V-2374
 
+- name: "HIGH | V-3337 | AUDIT | Anonymous SID/Name translation will not be allowed."
+  debug: var=secedit_rules.System_Access.LSAAnonymousNameLookup
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-3337
+
+- name: "HIGH | V-3337 | PATCH | Anonymous SID/Name translation will not be allowed."
+  win_secedit:
+      category: 'System Access'
+      key: LSAAnonymousNameLookup
+      value: '0'
+  register: secedit
+  failed_when: "secedit.failed is defined and 'This host is joined to a Domain Controller' not in secedit.msg"
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-3337
+
 - name: "HIGH | V-3340 | AUDIT | Network shares that can be accessed anonymously will not be allowed."
   win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v NullSessionShares
   register: null_session_shares_audit
