@@ -2771,6 +2771,29 @@
       - patch
       - V-26472
 
+- name: "MEDIUM | V-26473 | AUDIT | The Allow log on through Remote Desktop Services user right must only be assigned to the Administrators group and other approved groups."
+  debug: var=secedit_rules.Privilege_Rights.SeRemoteInteractiveLogonRight
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26473
+
+- name: "MEDIUM | V-26473 | PATCH | The Allow log on through Remote Desktop Services user right must only be assigned to the Administrators group and other approved groups."
+  win_secedit:
+      category: 'Privilege Rights'
+      key: SeRemoteInteractiveLogonRight
+      value: '*S-1-5-32-544'
+  register: secedit
+  failed_when: "secedit.failed is defined and 'This host is joined to a Domain Controller' not in secedit.msg"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26473
+
 - name: "MEDIUM | V-26529 | AUDIT | The system will be configured to audit 'Account Logon -> Credential Validation' successes."
   win_shell: AuditPol /get /subcategory:"Credential Validation"
   register: success_cred_audit
