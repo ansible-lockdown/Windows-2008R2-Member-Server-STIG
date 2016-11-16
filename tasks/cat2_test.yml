@@ -1266,6 +1266,29 @@
 #       - patch
 #       - V-6833
 
+- name: "MEDIUM | V-6836 | AUDIT | For systems utilizing a logon ID as the individual identifier, passwords will, at a minimum, be 14 characters."
+  debug: var=secedit_rules.System_Access.MinimumPasswordLength
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-6836
+
+- name: "MEDIUM | V-6836 | PATCH | For systems utilizing a logon ID as the individual identifier, passwords will, at a minimum, be 14 characters."
+  win_secedit: 
+      category: 'System Access'
+      key: MinimumPasswordLength
+      value: '8'
+  register: secedit
+  failed_when: "secedit.failed is defined and 'This host is joined to a Domain Controller' not in secedit.msg"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-6836
+
 - name: "MEDIUM | V-6840 | AUDIT | System mechanisms will be implemented to enforce automatic expiration of passwords."
   win_shell: (Get-WmiObject -Class Win32_UserAccount -Filter "PasswordExpires=$False and Domain='$env:computername'").Name
   register: password_expiry_audit
