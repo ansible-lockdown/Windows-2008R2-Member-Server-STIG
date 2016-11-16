@@ -73,8 +73,7 @@
       key: SeTcbPrivilege
       value: ''
   register: secedit
-  failed_when: "secedit.failed is defined and 'The key you specified' not in secedit.msg and 'This host is joined to a Domain Controller' not in secedit.msg"
-  when: "secedit_rules.Privilege_Rights.SeTcbPrivilege is defined"
+  failed_when: "secedit.failed is defined and 'This host is joined to a Domain Controller' not in secedit.msg"
   tags:
       - cat1
       - high
