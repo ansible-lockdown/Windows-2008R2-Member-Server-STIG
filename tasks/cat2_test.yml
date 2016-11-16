@@ -400,6 +400,31 @@
       - patch
       - V-1154
 
+- name: "MEDIUM | V-1155 | AUDIT | The Deny access to this computer from the network user right on member servers must be configured to prevent access from highly privileged domain accounts and all local accounts on domain systems and unauthenticated access on all systems."
+  debug: var=secedit_rules.Privilege_Rights.SeDenyNetworkLogonRight
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1155
+
+# Well-known security identifiers in Windows operating systems
+# https://support.microsoft.com/en-us/kb/243330
+- name: "MEDIUM | V-1155 | PATCH | The Deny access to this computer from the network user right on member servers must be configured to prevent access from highly privileged domain accounts and all local accounts on domain systems and unauthenticated access on all systems."
+  win_secedit:
+      category: 'Privilege Rights'
+      key: SeDenyNetworkLogonRight
+      value: '*S-1-5-32-546' # Guests group
+  register: secedit
+  failed_when: "secedit.failed is defined and 'This host is joined to a Domain Controller' not in secedit.msg"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-1155
+
 # - name: "MEDIUM | V-1157 | AUDIT | The Smart Card removal option will be configured to Force Logoff or Lock Workstation."
 #   win_command: reg query \"HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v SCRemoveOption
 #   register: SC_removal_audit
