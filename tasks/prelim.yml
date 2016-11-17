@@ -1,15 +1,15 @@
-- name: "PRELIM | Install GPMC."
-  win_command: PowerShell Add-WindowsFeature –Name GPMC
-  register: install_gpmc
-  check_mode: no
-  changed_when: "'NoChan' not in install_gpmc.stdout"
-  tags:
-      - cat1
-      - cat2
-      - cat3
-      - low
-      - medium
-      - high
+# - name: "PRELIM | Install GPMC."
+#   win_command: PowerShell Add-WindowsFeature –Name GPMC
+#   register: install_gpmc
+#   check_mode: no
+#   changed_when: "'NoChan' not in install_gpmc.stdout"
+#   tags:
+#       - cat1
+#       - cat2
+#       - cat3
+#       - low
+#       - medium
+#       - high
 
 # Hotfix KB2842230 fixes OOM and StackOverflow errors when running long script on 2k8r2
 # https://support.microsoft.com/en-us/kb/2842230
