@@ -2955,6 +2955,29 @@
       - patch
       - V-26483
 
+- name: "MEDIUM | V-26484 | AUDIT | The Deny log on as a service user right on member servers must be configured to prevent access from highly privileged domain accounts on domain systems.  No other groups or accounts must be assigned this right."
+  debug: var=secedit_rules.Privilege_Rights.SeDenyServiceLogonRight
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26484
+
+- name: "MEDIUM | V-26484 | PATCH | The Deny log on as a service user right on member servers must be configured to prevent access from highly privileged domain accounts on domain systems.  No other groups or accounts must be assigned this right."
+  win_secedit:
+      category: 'Privilege Rights'
+      key: SeDenyServiceLogonRight
+      value: ''
+  register: secedit
+  failed_when: "secedit.failed is defined and 'This host is joined to a Domain Controller' not in secedit.msg"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26484
+
 - name: "MEDIUM | V-26529 | AUDIT | The system will be configured to audit 'Account Logon -> Credential Validation' successes."
   win_shell: AuditPol /get /subcategory:"Credential Validation"
   register: success_cred_audit
