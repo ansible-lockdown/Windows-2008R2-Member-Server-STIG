@@ -3254,6 +3254,29 @@
       - patch
       - V-26496
 
+- name: "MEDIUM | V-26497 | AUDIT | Unauthorized accounts must not have the Modify an object label user right."
+  debug: var=secedit_rules.Privilege_Rights.SeRelabelPrivilege
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26497
+
+- name: "MEDIUM | V-26497 | PATCH | Unauthorized accounts must not have the Modify an object label user right."
+  win_secedit:
+      category: 'Privilege Rights'
+      key: SeRelabelPrivilege
+      value: ''
+  register: secedit
+  failed_when: "secedit.failed is defined and 'This host is joined to a Domain Controller' not in secedit.msg"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26497
+
 - name: "MEDIUM | V-26529 | AUDIT | The system will be configured to audit 'Account Logon -> Credential Validation' successes."
   win_shell: AuditPol /get /subcategory:"Credential Validation"
   register: success_cred_audit
