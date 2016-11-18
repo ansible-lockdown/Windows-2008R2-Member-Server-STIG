@@ -3277,6 +3277,29 @@
       - patch
       - V-26497
 
+- name: "MEDIUM | V-26498 | AUDIT | Unauthorized accounts must not have the Modify firmware environment values user right."
+  debug: var=secedit_rules.Privilege_Rights.SeSystemEnvironmentPrivilege
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-26498
+
+- name: "MEDIUM | V-26498 | PATCH | Unauthorized accounts must not have the Modify firmware environment values user right."
+  win_secedit:
+      category: 'Privilege Rights'
+      key: SeSystemEnvironmentPrivilege
+      value: '*S-1-5-32-544' #Administrators
+  register: secedit
+  failed_when: "secedit.failed is defined and 'This host is joined to a Domain Controller' not in secedit.msg"
+  tags:
+      - cat2
+      - medium
+      - patch
+      - V-26498
+
 - name: "MEDIUM | V-26529 | AUDIT | The system will be configured to audit 'Account Logon -> Credential Validation' successes."
   win_shell: AuditPol /get /subcategory:"Credential Validation"
   register: success_cred_audit
