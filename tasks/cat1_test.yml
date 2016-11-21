@@ -286,6 +286,27 @@
       - patch
       - V-3337
 
+- name: "HIGH | V-3338 | AUDIT | Named pipes that can be accessed anonymously must be configured with limited values on domain controllers."
+  win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters\ /v NullSessionPipes
+  register: pipes_limited_dc_audit
+  check_mode: no
+  changed_when: no
+  failed_when: "reg_not_found not in pipes_limited_dc_audit.stderr and pipes_limited_dc_audit.stderr"
+  tags:
+      - cat1
+      - high
+      - audit
+      - V-3338
+
+# Setting to blank / null
+- name: "HIGH | V-3338 | PATCH | Named pipes that can be accessed anonymously must be configured with limited values on domain controllers."
+  win_command: reg add HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v NullSessionPipes /t REG_MULTI_SZ /f
+  tags:
+      - cat1
+      - high
+      - patch
+      - V-3338
+
 - name: "HIGH | V-3340 | AUDIT | Network shares that can be accessed anonymously will not be allowed."
   win_command: reg query HKLM\System\CurrentControlSet\Services\LanManServer\Parameters /v NullSessionShares
   register: null_session_shares_audit
