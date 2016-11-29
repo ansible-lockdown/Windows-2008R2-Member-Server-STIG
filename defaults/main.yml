@@ -17,7 +17,7 @@ legal_notice: |
 
 reg_not_found: "ERROR: The system was unable to find the specified registry key or value"
 
-service_not_found: 'Cannot find any service with service name'
+service_not_found: 'Cannot find any service with'
 
 temp_dir: C:/Users/Administrator/AppData/Local/Temp
 
