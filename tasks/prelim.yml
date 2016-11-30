@@ -28,10 +28,21 @@
       - high
 
 - block:
+    - name: "PRELIM | KB2842230 | Get environment temp directory"
+      win_shell: echo $env:temp
+      register: temp_dir
+      tags:
+          - cat1
+          - cat2
+          - cat3
+          - low
+          - medium
+          - high
+
     - name: "PRELIM | KB2842230 | Copy hotfix KB2842230."
       win_copy: 
           src: Windows6.1-KB2842230-x64.msu
-          dest: "{{ temp_dir }}"
+          dest: "{{ temp_dir.stdout_lines[0] }}"
       register: copy_hotfix
       check_mode: no
       tags:
@@ -43,7 +54,7 @@
           - high
 
     - name: "PRELIM | KB2842230 | Extract hotfix KB2842230."
-      win_shell: wusa.exe {{ temp_dir }}/Windows6.1-KB2842230-x64.msu /extract:{{ temp_dir }}/hotfix/
+      win_shell: wusa.exe {{ temp_dir.stdout_lines[0] }}/Windows6.1-KB2842230-x64.msu /extract:{{ temp_dir.stdout_lines[0] }}/hotfix/
       register: extract_hotfix
       check_mode: no
       tags:
@@ -55,7 +66,7 @@
           - high
 
     - name: "PRELIM | KB2842230 | Apply hotfix KB2842230."
-      win_shell:  dism.exe /quiet /norestart /LogPath:{{ temp_dir }}/hotfix/hotfix.log /online /add-package /PackagePath:{{ temp_dir }}/hotfix/Windows6.1-KB2842230-x64.cab
+      win_shell:  dism.exe /quiet /norestart /LogPath:{{ temp_dir.stdout_lines[0] }}/hotfix/hotfix.log /online /add-package /PackagePath:{{ temp_dir.stdout_lines[0] }}/hotfix/Windows6.1-KB2842230-x64.cab
       register: apply_hotfix
       check_mode: no
       # dism always returns rc: 1 even though it worked
@@ -69,7 +80,7 @@
           - high
 
     - name: "PRELIM | KB2842230 | Check for completion."
-      win_shell: Select-String -Path {{ temp_dir }}/hotfix/hotfix.log -Pattern 'Ending Dism.exe session'
+      win_shell: Select-String -Path {{ temp_dir.stdout_lines[0] }}/hotfix/hotfix.log -Pattern 'Ending Dism.exe session'
       register: hotfix_log
       until: hotfix_log.stdout
       check_mode: no
@@ -98,8 +109,8 @@
           path: "{{ item }}"
           state: absent
       with_items: 
-        - "{{ temp_dir }}/hotfix/"
-        - "{{ temp_dir }}/Windows6.1-KB2842230-x64.msu"
+        - "{{ temp_dir.stdout_lines[0] }}/hotfix/"
+        - "{{ temp_dir.stdout_lines[0] }}/Windows6.1-KB2842230-x64.msu"
       register: reboot
       check_mode: no
       tags:
