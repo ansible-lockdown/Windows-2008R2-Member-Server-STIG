@@ -194,6 +194,10 @@
           rights: 'ReadKey'
           inherit: 'None'
           propagation: 'None'
+        - user: 'LOCAL SERVICE'
+          rights: 'ReadKey'
+          inherit: 'ContainerInherit, ObjectInherit'
+          propagation: 'None'
     tags:
         - cat1
         - high
