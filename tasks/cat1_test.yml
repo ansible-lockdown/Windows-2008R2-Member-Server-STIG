@@ -150,16 +150,6 @@
 - block:
 
   - name: "REMOVAL HIGH | V-1152 | PATCH | Anonymous access to the registry must be restricted."
-    win_acl_inheritance:
-        path: 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg'
-        state: 'absent'
-    tags:
-        - cat1
-        - high
-        - patch
-        - V-1152
-
-  - name: "REMOVAL HIGH | V-1152 | PATCH | Anonymous access to the registry must be restricted."
     win_acl:
         path: 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg'
         user: '{{ item[0] }}'
@@ -198,6 +188,16 @@
           rights: 'ReadKey'
           inherit: 'ContainerInherit, ObjectInherit'
           propagation: 'None'
+    tags:
+        - cat1
+        - high
+        - patch
+        - V-1152
+
+  - name: "REMOVAL HIGH | V-1152 | PATCH | Anonymous access to the registry must be restricted."
+    win_acl_inheritance:
+        path: 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg'
+        state: 'absent'
     tags:
         - cat1
         - high
@@ -735,16 +735,6 @@
 - block:
 
   - name: "REMOVAL HIGH | V-32282 | PATCH | Standard user accounts must only have Read permissions to the Active Setup Installed Components registry key."
-    win_acl_inheritance:
-        path: 'HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components'
-        state: absent
-    tags:
-        - cat1
-        - high
-        - patch
-        - V-32282
-
-  - name: "REMOVAL HIGH | V-32282 | PATCH | Standard user accounts must only have Read permissions to the Active Setup Installed Components registry key."
     win_acl:
         path: 'HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components'
         user: '{{ item[0] | replace("APPLICATION PACKAGE AUTHORITY\ALL APPLICATION PACKAGES" , "ALL APPLICATION PACKAGES")}}'
@@ -793,22 +783,22 @@
         - patch
         - V-32282
 
+  - name: "REMOVAL HIGH | V-32282 | PATCH | Standard user accounts must only have Read permissions to the Active Setup Installed Components registry key."
+    win_acl_inheritance:
+        path: 'HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components'
+        state: absent
+    tags:
+        - cat1
+        - high
+        - patch
+        - V-32282
+
   when: "path_not_found not in standard_read_active_audit.stderr and standard_read_active_audit"
 ######################################### block end #####################################################
 
 ###################### block start - conditionally apply patches if path exists #########################
 
 - block:
-
-  - name: "REMOVAL HIGH | V-32282 | PATCH | Standard user accounts must only have Read permissions to the Active Setup Installed Components registry key."
-    win_acl_inheritance:
-       path: 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Active Setup\Installed Components'
-       state: absent
-    tags:
-        - cat1
-        - high
-        - patch
-        - V-32282
 
   - name: "REMOVAL HIGH | V-32282 | PATCH | Standard user accounts must only have Read permissions to the Active Setup Installed Components registry key."
     win_acl:
@@ -853,6 +843,16 @@
           rights: 'FullControl'
           inherit: 'ContainerInherit'
           propagation: 'InheritOnly'
+    tags:
+        - cat1
+        - high
+        - patch
+        - V-32282
+
+  - name: "REMOVAL HIGH | V-32282 | PATCH | Standard user accounts must only have Read permissions to the Active Setup Installed Components registry key."
+    win_acl_inheritance:
+       path: 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Active Setup\Installed Components'
+       state: absent
     tags:
         - cat1
         - high
