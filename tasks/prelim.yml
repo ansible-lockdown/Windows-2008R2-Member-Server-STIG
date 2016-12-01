@@ -70,7 +70,7 @@
 
     - name: "PRELIM | KB2842230 | Clean up."
       win_file:
-          path: "temp_dir.stdout_lines[0] }}/hotfix/"
+          path: "{{ temp_dir.stdout_lines[0] }}/hotfix/"
           state: absent
       check_mode: no
 
