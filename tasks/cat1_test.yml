@@ -819,7 +819,7 @@
 
   - name: "HIGH | V-32282 | PATCH | Standard user accounts must only have Read permissions to the Active Setup Installed Components registry key."
     win_acl:
-        path: 'HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components'
+        path: 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Active Setup\Installed Components'
         user: "{{ item.user }}"
         rights: "{{ item.rights }}"
         type: 'allow'
