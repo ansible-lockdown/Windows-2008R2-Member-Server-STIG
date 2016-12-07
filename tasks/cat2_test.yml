@@ -344,9 +344,10 @@
 
 - name: "MEDIUM | V-1145 | PATCH | Automatic logons must be disabled."
   win_regedit: 
-    key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
-    value: AutoAdminLogon
-    data: 0
+      key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
+      value: AutoAdminLogon
+      data: 0
+      datatype: string
   tags:
       - cat2
       - medium
@@ -2138,10 +2139,10 @@
 
 - name: "MEDIUM | V-15699 | PATCH | The Windows Connect Now wizards will be disabled."
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\Windows\WCN\UI'
-    value: DisableWcnUi
-    data: 1
-    datatype: dword
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\WCN\UI'
+      value: DisableWcnUi
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2162,10 +2163,10 @@
 
 - name: "MEDIUM | V-15700 | PATCH | Remote access to the Plug and Play interface will be disabled for device installation."
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\Windows\DeviceInstall\Settings'
-    value: AllowRemoteRPC
-    data: 0
-    datatype: dword
+      key: 'HKLM:\Software\Policies\Microsoft\Windows\DeviceInstall\Settings'
+      value: AllowRemoteRPC
+      data: 0
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2186,10 +2187,10 @@
 
 - name: "MEDIUM | V-15705 | PATCH | Users will be prompted for a password on resume from sleep (on battery).  (Applicable to Server 2008 R2 if the system is configured to sleep.)"
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51'
-    value: DCSettingIndex
-    data: 1
-    datatype: dword
+      key: 'HKLM:\Software\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51'
+      value: DCSettingIndex
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2210,10 +2211,10 @@
 
 - name: "MEDIUM | V-15706 | PATCH | The user will be prompted for a password on resume from sleep (Plugged In).  (Applicable on Server 2008 R2 if the system is configured to sleep.)"
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51'
-    value: ACSettingIndex
-    data: 1
-    datatype: dword
+      key: 'HKLM:\Software\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51'
+      value: ACSettingIndex
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2234,9 +2235,9 @@
 
 - name: "MEDIUM | V-15713 | PATCH | Windows Defender SpyNet membership will be disabled."
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\Windows Defender\Spynet'
-    value: SpyNetReporting
-    state: absent
+      key: 'HKLM:\Software\Policies\Microsoft\Windows Defender\Spynet'
+      value: SpyNetReporting
+      state: absent
   tags:
       - cat2
       - medium
@@ -2257,10 +2258,10 @@
 
 - name: "MEDIUM | V-15714 | PATCH | The system must be configured to save Error Reporting events and messages to the system event log."
   win_regedit: 
-    key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
-    value: LoggingDisabled
-    data: 0
-    datatype: dword
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: LoggingDisabled
+      data: 0
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2281,10 +2282,10 @@
 
 - name: "MEDIUM | V-15715 | PATCH | The system must be configured to generate error reports."
   win_regedit: 
-    key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
-    value: Disabled
-    data: 0
-    datatype: dword
+      key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+      value: Disabled
+      data: 0
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2305,10 +2306,10 @@
 
 - name: "MEDIUM | V-15722 | PATCH | Windows Media Digital Rights Management will be prevented from accessing the Internet."
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\WMDRM'
-    value: DisableOnline
-    data: 1
-    datatype: dword
+      key: 'HKLM:\Software\Policies\Microsoft\WMDRM'
+      value: DisableOnline
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2329,10 +2330,10 @@
 
 - name: "MEDIUM | V-15727 | PATCH | Users will be prevented from sharing files in their profiles."
   win_regedit: 
-    key: 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer'
-    value: NoInPlaceSharing
-    data: 1
-    datatype: dword
+      key: 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer'
+      value: NoInPlaceSharing
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2410,10 +2411,10 @@
 
 - name: "MEDIUM | V-15997 | PATCH | The system will be configured to prevent users from mapping local COM ports and redirecting data from the Remote Desktop Session Host to local COM ports. (Remote Desktop Services Role)"
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
-    value: fDisableCcm
-    data: 1
-    datatype: dword
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: fDisableCcm
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2434,10 +2435,10 @@
 
 - name: "MEDIUM | V-15998 | PATCH | The system will be configured to prevent users from mapping local LPT ports and redirecting data from the Remote Desktop Session Host to local LPT ports. (Remote Desktop Services Role)"
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
-    value: fDisableLPT
-    data: 1
-    datatype: dword
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: fDisableLPT
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2458,10 +2459,10 @@
 
 - name: "MEDIUM | V-15999 | PATCH | The system will be configured to prevent users from redirecting Plug and Play devices to the Remote Desktop Session Host. (Remote Desktop Services Role)"
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
-    value: fDisablePNPRedir
-    data: 1
-    datatype: dword
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: fDisablePNPRedir
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2482,10 +2483,10 @@
 
 - name: "MEDIUM | V-16000 | PATCH | The system will be configured to ensure smart card devices can be redirected to the Remote Desktop Session. (Remote Desktop Services Role)"
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
-    value: fEnableSmartCard
-    data: 1
-    datatype: dword
+      key: 'HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services'
+      value: fEnableSmartCard
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2526,10 +2527,10 @@
 
 - name: "MEDIUM | V-16020 | PATCH | The Windows Customer Experience Improvement Program will be disabled."
   win_regedit: 
-    key: 'HKLM:\Software\Policies\Microsoft\SQMClient\Windows'
-    value: CEIPEnable
-    data: 0
-    datatype: dword
+      key: 'HKLM:\Software\Policies\Microsoft\SQMClient\Windows'
+      value: CEIPEnable
+      data: 0
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2550,10 +2551,10 @@
 
 - name: "MEDIUM | V-16021 | PATCH | The Windows Help Experience Improvement Program will be disabled"
   win_regedit: 
-    key: 'HKCU:\Software\Policies\Microsoft\Assistance\Client\1.0'
-    value: NoImplicitFeedback
-    data: 1
-    datatype: dword
+      key: 'HKCU:\Software\Policies\Microsoft\Assistance\Client\1.0'
+      value: NoImplicitFeedback
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2574,10 +2575,10 @@
 
 - name: "MEDIUM | V-16048 | PATCH | Windows Help Ratings feedback will be turned off."
   win_regedit: 
-    key: 'HKCU:\Software\Policies\Microsoft\Assistance\Client\1.0'
-    value: NoExplicitFeedback
-    data: 1
-    datatype: dword
+      key: 'HKCU:\Software\Policies\Microsoft\Assistance\Client\1.0'
+      value: NoExplicitFeedback
+      data: 1
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2638,10 +2639,10 @@
 
 - name: "MEDIUM | V-21952 | PATCH | NTLM will be prevented from falling back to a Null session."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Control\LSA\MSV1_0'
-    value: allownullsessionfallback
-    data: 0
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Control\LSA\MSV1_0'
+      value: allownullsessionfallback
+      data: 0
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2662,10 +2663,10 @@
 
 - name: "MEDIUM | V-21953 | PATCH | PKU2U authentication using online identities will be prevented."
   win_regedit: 
-    key: 'HKLM:\System\CurrentControlSet\Control\LSA\pku2u'
-    value: AllowOnlineID
-    data: 0
-    datatype: dword
+      key: 'HKLM:\System\CurrentControlSet\Control\LSA\pku2u'
+      value: AllowOnlineID
+      data: 0
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -2686,10 +2687,10 @@
 
 - name: "MEDIUM | V-21954 | PATCH | Kerberos encryption types must be configured to prevent the use of DES encryption suites."
   win_regedit: 
-    key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters'
-    value: SupportedEncryptionTypes
-    data: 0x7ffffffc
-    datatype: dword
+      key: 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters'
+      value: SupportedEncryptionTypes
+      data: 0x7ffffffc
+      datatype: dword
   tags:
       - cat2
       - medium
@@ -4127,6 +4128,7 @@
       key: 'HKLM:\Software\Policies\Microsoft\Windows\TCPIP\v6Transition'
       value: 6to4_State
       data: Disabled
+      datatype: string
   tags:
       - cat2
       - medium
@@ -4174,6 +4176,7 @@
       key: 'HKLM:\Software\Policies\Microsoft\Windows\TCPIP\v6Transition'
       value: ISATAP_State
       data: Disabled
+      datatype: string
   tags:
       - cat2
       - medium
@@ -4197,6 +4200,7 @@
       key: 'HKLM:\Software\Policies\Microsoft\Windows\TCPIP\v6Transition'
       value: Teredo_State
       data: Disabled
+      datatype: string
   tags:
       - cat2
       - medium
@@ -4507,6 +4511,7 @@
       key: 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
       value: CorporateWerServer
       data: " "
+      datatype: string
   when: not error_message_audit.stdout
   tags:
       - cat2
