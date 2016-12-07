@@ -852,7 +852,7 @@
   - name: "REMOVAL HIGH | V-32282 | PATCH | Standard user accounts must only have Read permissions to the Active Setup Installed Components registry key."
     win_acl_inheritance:
        path: 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Active Setup\Installed Components'
-       state: present
+       state: absent
     tags:
         - cat1
         - high
