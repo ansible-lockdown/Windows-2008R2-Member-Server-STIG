@@ -39,6 +39,7 @@
       key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
       value: CachedLogonsCount
       data: 0
+      datatype: string
   tags:
       - cat3
       - low
@@ -449,6 +450,7 @@
       key: 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon'
       value: ScreenSaverGracePeriod
       data: 0
+      datatype: string
   tags:
       - cat3
       - low
