@@ -253,6 +253,25 @@
 #       - patch
 #       - V-1114
 
+- name: "MEDIUM | V-1115 | AUDIT | The built-in administrator account will be renamed."
+  debug: var=secedit_rules.System_Access.NewAdministratorName
+  register: result
+  check_mode: no
+  changed_when: no
+  tags:
+      - cat2
+      - medium
+      - audit
+      - V-1115
+
+# - name: "MEDIUM | V-1115 | PATCH | The built-in administrator account will be renamed."
+#   win_command: true
+#   tags:
+#       - cat2
+#       - medium
+#       - patch
+#       - V-1115
+
 - name: "MEDIUM | V-1119 | AUDIT | Booting into alternate non STIG compliant operating systems will not be permitted."
   win_command: bcdedit
   register: OS_list_audit
