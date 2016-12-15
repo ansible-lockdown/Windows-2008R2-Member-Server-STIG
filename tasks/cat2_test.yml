@@ -2377,8 +2377,8 @@
   changed_when: no
   when: "'Name' not in item[0] and item[0]"
   with_nested: 
-    - "{{ list_of_drives_audit.stdout_lines }}"
-    - [ "*.p12", "*.pfx" ]
+      - "{{ list_of_drives_audit.stdout_lines }}"
+      - [ "*.p12", "*.pfx" ]
   tags:
       - cat2
       - medium
