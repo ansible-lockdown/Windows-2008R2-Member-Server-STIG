@@ -1,7 +1,7 @@
 # Hotfix KB2842230 fixes OOM and StackOverflow errors when running long script on 2k8r2
 # https://support.microsoft.com/en-us/kb/2842230
 - name: "PRELIM | KB2842230 | Check PowerShell equals 3."
-  win_shell: $PSVersionTable.psversion.Major -ge 3
+  win_shell: $PSVersionTable.psversion.Major -eq 3
   register: check_powershell_version
   check_mode: no
   changed_when: no
@@ -74,7 +74,7 @@
           state: absent
       check_mode: no
 
-  when: "'True' in check_powershell_version.stdout and not find_hotfix.stdout"
+  # when: "'True' in check_powershell_version.stdout and not find_hotfix.stdout"
   tags:
       - cat1
       - cat2
